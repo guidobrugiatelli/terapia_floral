@@ -70,6 +70,7 @@ namespace terapia_floral.Formularios
 
                         textBoxRespuesta.PlaceholderText = "Respuesta...";
                         textBoxRespuesta.PlaceholderForeColor = Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+                        textBoxRespuesta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         textBoxRespuesta.Multiline = true;
                         textBoxRespuesta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                         textBoxRespuesta.Width = groupBoxPregunta.Width - 4;
@@ -264,14 +265,17 @@ namespace terapia_floral.Formularios
                         if (textBoxRespuesta != null)
                         {
                             // Obtener el ID de la pregunta desde la propiedad Tag del GroupBox
-                            string idPregunta = groupBox.Tag.ToString();
+                            string idCategoria = groupBox.Tag.ToString();
 
                             // Obtener el valor y la propiedad Tag del TextBox de respuesta
                             string respuesta = textBoxRespuesta.Text;
+                            string idPregunta = textBoxRespuesta.Tag.ToString();
 
                             // Ahora puedes hacer lo que necesites con la respuesta y su ID
-                            MessageBox.Show("Pregunta ID: " + idPregunta);
-                            MessageBox.Show("Respuesta: " + respuesta);
+
+                            //MessageBox.Show("categoria ID: " + idCategoria);
+                            //MessageBox.Show("pregunta ID: " + idPregunta);
+                            //MessageBox.Show("Respuesta: " + respuesta);
                         }
                     
                 }
