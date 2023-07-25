@@ -34,5 +34,11 @@ namespace terapia_floral.UsuarioControl
             UC_paciente_sin__seleccion uc = new UC_paciente_sin__seleccion();
             agregarUC_Paciente(uc);
         }
+
+        private void btn_nuevopaciente_Click(object sender, EventArgs e)
+        {
+            Form nuevo_paciente = new Formularios.nuevo_paciente();
+            nuevo_paciente.Show();
+        }
     }
 }

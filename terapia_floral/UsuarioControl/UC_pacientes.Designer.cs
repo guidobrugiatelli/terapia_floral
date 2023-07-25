@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel_busqueda = new Guna.UI2.WinForms.Guna2Panel();
-            this.txt_buscarpaciente = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_nuevopaciente = new Guna.UI2.WinForms.Guna2Button();
+            this.txt_buscarpaciente = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel_pacientes = new Guna.UI2.WinForms.Guna2Panel();
             this.panel_info_pacientes = new Guna.UI2.WinForms.Guna2Panel();
             this.panel_busqueda.SuspendLayout();
@@ -50,6 +50,26 @@
             this.panel_busqueda.Size = new System.Drawing.Size(882, 80);
             this.panel_busqueda.TabIndex = 0;
             // 
+            // btn_nuevopaciente
+            // 
+            this.btn_nuevopaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_nuevopaciente.Animated = true;
+            this.btn_nuevopaciente.AutoRoundedCorners = true;
+            this.btn_nuevopaciente.BorderRadius = 21;
+            this.btn_nuevopaciente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_nuevopaciente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_nuevopaciente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_nuevopaciente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_nuevopaciente.FillColor = System.Drawing.Color.Green;
+            this.btn_nuevopaciente.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_nuevopaciente.ForeColor = System.Drawing.Color.White;
+            this.btn_nuevopaciente.Location = new System.Drawing.Point(679, 17);
+            this.btn_nuevopaciente.Name = "btn_nuevopaciente";
+            this.btn_nuevopaciente.Size = new System.Drawing.Size(180, 45);
+            this.btn_nuevopaciente.TabIndex = 1;
+            this.btn_nuevopaciente.Text = "+ Nuevo Paciente";
+            this.btn_nuevopaciente.Click += new System.EventHandler(this.btn_nuevopaciente_Click);
+            // 
             // txt_buscarpaciente
             // 
             this.txt_buscarpaciente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -65,7 +85,7 @@
             this.txt_buscarpaciente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txt_buscarpaciente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_buscarpaciente.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txt_buscarpaciente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txt_buscarpaciente.HoverState.BorderColor = System.Drawing.Color.Green;
             this.txt_buscarpaciente.Location = new System.Drawing.Point(13, 14);
             this.txt_buscarpaciente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_buscarpaciente.Name = "txt_buscarpaciente";
@@ -74,24 +94,6 @@
             this.txt_buscarpaciente.SelectedText = "";
             this.txt_buscarpaciente.Size = new System.Drawing.Size(660, 48);
             this.txt_buscarpaciente.TabIndex = 0;
-            // 
-            // btn_nuevopaciente
-            // 
-            this.btn_nuevopaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_nuevopaciente.Animated = true;
-            this.btn_nuevopaciente.AutoRoundedCorners = true;
-            this.btn_nuevopaciente.BorderRadius = 21;
-            this.btn_nuevopaciente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_nuevopaciente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_nuevopaciente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_nuevopaciente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_nuevopaciente.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_nuevopaciente.ForeColor = System.Drawing.Color.White;
-            this.btn_nuevopaciente.Location = new System.Drawing.Point(679, 17);
-            this.btn_nuevopaciente.Name = "btn_nuevopaciente";
-            this.btn_nuevopaciente.Size = new System.Drawing.Size(180, 45);
-            this.btn_nuevopaciente.TabIndex = 1;
-            this.btn_nuevopaciente.Text = "+ Nuevo Paciente";
             // 
             // panel_pacientes
             // 

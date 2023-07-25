@@ -89,5 +89,10 @@ namespace terapia_floral.Formularios
 
             return idBuilder.ToString();
         }
+
+        private void mensajeCorrecto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

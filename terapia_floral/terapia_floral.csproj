@@ -85,6 +85,12 @@
     <Compile Include="Formularios\nueva_flor.Designer.cs">
       <DependentUpon>nueva_flor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\nuevo_paciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\nuevo_paciente.Designer.cs">
+      <DependentUpon>nuevo_paciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\nueva_flor.resx">
       <DependentUpon>nueva_flor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\nuevo_paciente.resx">
+      <DependentUpon>nuevo_paciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\terapia_floral.menu_inicio.resources" />
     <EmbeddedResource Include="obj\Debug\terapia_floral.Properties.Resources.resources" />
