@@ -57,25 +57,29 @@ namespace terapia_floral.UsuarioControl
 
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
-
-                    tablaFlores.Rows.Clear();
-
-                    while (reader.Read())
-                    {
-                        string nombre = reader["nombre"].ToString();
-                        string descripcion = reader["descripcion"].ToString();
-                        string equivalente = reader["equivalente"].ToString();
-                        string id = reader["id"].ToString();
-
-                        int rowIndex = tablaFlores.Rows.Add(nombre, descripcion, equivalente);
-                        tablaFlores.Rows[rowIndex].Tag = id;
-                    }
-
-                    reader.Close();
-
+                    mostrarFlores(reader);
                 }
                 connection.Close();
             }
+        }
+
+        private void mostrarFlores(SQLiteDataReader reader)
+        {
+
+            tablaFlores.Rows.Clear();
+
+            while (reader.Read())
+            {
+                string nombre = reader["nombre"].ToString();
+                string descripcion = reader["descripcion"].ToString();
+                string equivalente = reader["equivalente"].ToString();
+                string id = reader["id"].ToString();
+
+                int rowIndex = tablaFlores.Rows.Add(nombre, descripcion, equivalente);
+                tablaFlores.Rows[rowIndex].Tag = id;
+            }
+
+            reader.Close();
         }
 
         private void tablaFlores_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -103,7 +107,9 @@ namespace terapia_floral.UsuarioControl
 
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
-                    detalleFlor.Controls.Clear();
+                    panelNombre.Controls.Clear();
+                    panelDescripcion.Controls.Clear();
+                    panelEquivalentes.Controls.Clear();
 
                     while (reader.Read())
                     {
@@ -113,29 +119,15 @@ namespace terapia_floral.UsuarioControl
 
                         TextBox TextBoxNombre = new TextBox();
                         RichTextBox richTextBoxDescripcion = new RichTextBox();
-                        RichTextBox labelEquivalentes = new RichTextBox();
-                        //Guna2Panel paneldescripcion = new Guna2Panel();
-                        Guna2ImageButton btnCruz = new Guna2ImageButton();
+                        RichTextBox richTextBoxEquivalentes = new RichTextBox();
 
-
-                        btnCruz.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
-                        btnCruz.BackColor = Color.Transparent;
-                        btnCruz.CheckedState.ImageSize = new Size(14, 14);
-                        btnCruz.HoverState.ImageSize = new Size(15, 15);
-                        //btnCruz.Image = global::terapia_floral.Properties.Resources.cruz;
-                        btnCruz.ImageOffset = new Point(0, 0);
-                        btnCruz.ImageRotate = 0F;
-                        btnCruz.ImageSize = new Size(14, 14);
-                        btnCruz.Location = new Point(246, 5);
-                        btnCruz.Name = "guna2ImageButton1";
-                        btnCruz.PressedState.ImageSize = new Size(11, 11);
-                        btnCruz.Size = new Size(20, 20);
-                        btnCruz.TabIndex = 0;
-                        btnCruz.Cursor = Cursors.Hand;
-                        btnCruz.Click += new System.EventHandler(this.guna2ImageButton1_Click);
+                        if (string.IsNullOrEmpty(equivalente))
+                        {
+                            equivalente = "No tiene flores equivalentes";
+                        }
 
                         TextBoxNombre.Text = nombre;
-                        TextBoxNombre.Location = new Point(5,5);
+                        TextBoxNombre.Location = new Point(5, 5);
                         TextBoxNombre.Font = new Font("Segoe UI", 17F, FontStyle.Bold, GraphicsUnit.Pixel);
                         TextBoxNombre.BackColor = Color.White;
                         TextBoxNombre.BorderStyle = BorderStyle.None;
@@ -150,18 +142,27 @@ namespace terapia_floral.UsuarioControl
 
                         richTextBoxDescripcion.Text = descripcion;
                         richTextBoxDescripcion.ReadOnly = true; // Para que el texto no sea editable
-                        richTextBoxDescripcion.Width = 260;
-                        richTextBoxDescripcion.Location = new Point(10, TextBoxNombre.Height + 20);
                         richTextBoxDescripcion.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
                         richTextBoxDescripcion.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         richTextBoxDescripcion.BackColor = Color.White;
                         richTextBoxDescripcion.BorderStyle = BorderStyle.None;
                         richTextBoxDescripcion.Cursor = Cursors.Arrow;
-                        richTextBoxDescripcion.ScrollBars = RichTextBoxScrollBars.Vertical;
+                        richTextBoxDescripcion.Dock = DockStyle.Fill;
 
-                        detalleFlor.Controls.Add(richTextBoxDescripcion);
-                        detalleFlor.Controls.Add(TextBoxNombre);
-                        detalleFlor.Controls.Add(btnCruz);
+                        richTextBoxEquivalentes.Text = equivalente;
+                        richTextBoxEquivalentes.ReadOnly = true; // Para que el texto no sea editable
+                        richTextBoxEquivalentes.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+                        richTextBoxEquivalentes.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+                        richTextBoxEquivalentes.BackColor = Color.White;
+                        richTextBoxEquivalentes.BorderStyle = BorderStyle.None;
+                        richTextBoxEquivalentes.Cursor = Cursors.Arrow;
+                        richTextBoxEquivalentes.Dock = DockStyle.Fill;
+
+
+                        panelNombre.Controls.Add(TextBoxNombre);
+                        panelDescripcion.Controls.Add(richTextBoxDescripcion);
+                        panelEquivalentes.Controls.Add(richTextBoxEquivalentes);
+                        //detalleFlor.Controls.Add(TextBoxNombre);
 
                         // Desplazar el panel para que el labelDescripcion sea visible
                     }
@@ -176,7 +177,6 @@ namespace terapia_floral.UsuarioControl
                 else tableLayoutPanel1.ColumnStyles[1].Width = 0;
             
         }
-
 
         private void btn_nueva_flor_Click(object sender, EventArgs e)
         {
@@ -201,36 +201,23 @@ namespace terapia_floral.UsuarioControl
 
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
-
-                    tablaFlores.Rows.Clear();
-
-                    while (reader.Read())
-                    {
-                        string nombre = reader["nombre"].ToString();
-                        string descripcion = reader["descripcion"].ToString();
-                        string equivalente = reader["equivalente"].ToString();
-                        string id = reader["id"].ToString();
-
-                        int rowIndex = tablaFlores.Rows.Add(nombre, descripcion, equivalente);
-                        tablaFlores.Rows[rowIndex].Tag = id;
-                    }
-
-                    reader.Close();
-
+                    mostrarFlores(reader);
                 }
                 connection.Close();
             }
         }
 
-        private void guna2ImageButton1_Click(object sender, EventArgs e)
-        {
-            detalleFlor.Controls.Clear();
-            tableLayoutPanel1.ColumnStyles[1].Width = 0;
-        }
-
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void guna2ImageButton1_Click_1(object sender, EventArgs e)
+        {
+            panelNombre.Controls.Clear();
+            panelDescripcion.Controls.Clear();
+            panelEquivalentes.Controls.Clear();
+            tableLayoutPanel1.ColumnStyles[1].Width = 0;
         }
     }
 }
