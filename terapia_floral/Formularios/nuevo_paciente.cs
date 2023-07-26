@@ -61,7 +61,7 @@ namespace terapia_floral.Formularios
                         SQLiteCommand command = new SQLiteCommand(sql, connection);
                         command.Parameters.AddWithValue("@id", GenerateId());
                         command.Parameters.AddWithValue("@nombreapellido", txt_nombreapellido.Text);
-                        command.Parameters.AddWithValue("@fechanacimineto", txt_fechanacimiento.Text);
+                        command.Parameters.AddWithValue("@fechanacimiento", txt_fechanacimiento.Text);
                         command.Parameters.AddWithValue("@lugarhora", txt_lugarhora.Text);
                         command.Parameters.AddWithValue("@dondevive", txt_dondevive.Text);
                         command.Parameters.AddWithValue("@conviveanimal", txt_convivenciaanimal.Text);
