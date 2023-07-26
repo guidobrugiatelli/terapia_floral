@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace terapia_floral.UsuarioControl
 {
-    public partial class UC_paciente_sin__seleccion : UserControl
+    public partial class UC_paciente_sin_seleccion : UserControl
     {
-        public UC_paciente_sin__seleccion()
+        public UC_paciente_sin_seleccion()
         {
             InitializeComponent();
         }

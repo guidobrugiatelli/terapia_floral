@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace terapia_floral.UsuarioControl
@@ -31,14 +24,14 @@ namespace terapia_floral.UsuarioControl
 
         private void UC_pacientes_Load(object sender, EventArgs e)
         {
-            UC_paciente_sin__seleccion uc = new UC_paciente_sin__seleccion();
+            UC_paciente_sin_seleccion uc = new UC_paciente_sin_seleccion();
             agregarUC_Paciente(uc);
         }
 
         private void btn_nuevopaciente_Click(object sender, EventArgs e)
         {
             Form nuevo_paciente = new Formularios.nuevo_paciente();
-            nuevo_paciente.Show();
+            nuevo_paciente.ShowDialog();
         }
     }
 }

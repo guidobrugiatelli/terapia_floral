@@ -31,12 +31,10 @@
             this.btn_cancelar = new Guna.UI2.WinForms.Guna2Button();
             this.btn_agregar = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.mensajeError = new System.Windows.Forms.Label();
             this.textBoxEquivalentes = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBoxDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombre = new Guna.UI2.WinForms.Guna2TextBox();
-            this.mensajeCorrecto = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,19 +43,19 @@
             this.btn_cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_cancelar.Animated = true;
             this.btn_cancelar.AutoRoundedCorners = true;
-            this.btn_cancelar.BorderRadius = 31;
+            this.btn_cancelar.BorderRadius = 29;
             this.btn_cancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_cancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_cancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_cancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_cancelar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_cancelar.FillColor = System.Drawing.Color.DarkSeaGreen;
-            this.btn_cancelar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btn_cancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btn_cancelar.Location = new System.Drawing.Point(11, 605);
-            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_cancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(213)))), ((int)(((byte)(182)))));
+            this.btn_cancelar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btn_cancelar.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btn_cancelar.Location = new System.Drawing.Point(13, 583);
+            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(240, 64);
+            this.btn_cancelar.Size = new System.Drawing.Size(239, 61);
             this.btn_cancelar.TabIndex = 0;
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
@@ -67,27 +65,25 @@
             this.btn_agregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_agregar.Animated = true;
             this.btn_agregar.AutoRoundedCorners = true;
-            this.btn_agregar.BorderRadius = 31;
+            this.btn_agregar.BorderRadius = 29;
             this.btn_agregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_agregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_agregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_agregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_agregar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_agregar.FillColor = System.Drawing.Color.ForestGreen;
-            this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_agregar.ForeColor = System.Drawing.Color.White;
-            this.btn_agregar.Location = new System.Drawing.Point(260, 605);
-            this.btn_agregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_agregar.Location = new System.Drawing.Point(260, 583);
+            this.btn_agregar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(309, 64);
+            this.btn_agregar.Size = new System.Drawing.Size(308, 61);
             this.btn_agregar.TabIndex = 1;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.mensajeCorrecto);
-            this.panel1.Controls.Add(this.mensajeError);
             this.panel1.Controls.Add(this.textBoxEquivalentes);
             this.panel1.Controls.Add(this.textBoxDescripcion);
             this.panel1.Controls.Add(this.label1);
@@ -96,26 +92,11 @@
             this.panel1.Controls.Add(this.btn_cancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(107, 74, 107, 74);
-            this.panel1.Size = new System.Drawing.Size(582, 682);
+            this.panel1.Size = new System.Drawing.Size(582, 662);
             this.panel1.TabIndex = 1;
-            // 
-            // mensajeError
-            // 
-            this.mensajeError.AutoSize = true;
-            this.mensajeError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(215)))), ((int)(((byte)(216)))));
-            this.mensajeError.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.mensajeError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(87)))), ((int)(((byte)(90)))));
-            this.mensajeError.Location = new System.Drawing.Point(13, 549);
-            this.mensajeError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.mensajeError.Name = "mensajeError";
-            this.mensajeError.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.mensajeError.Size = new System.Drawing.Size(253, 32);
-            this.mensajeError.TabIndex = 6;
-            this.mensajeError.Text = "El campo \"Nombre\" es obligatorio";
-            this.mensajeError.Visible = false;
             // 
             // textBoxEquivalentes
             // 
@@ -128,18 +109,18 @@
             this.textBoxEquivalentes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.textBoxEquivalentes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.textBoxEquivalentes.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxEquivalentes.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBoxEquivalentes.FocusedState.BorderColor = System.Drawing.Color.ForestGreen;
             this.textBoxEquivalentes.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.textBoxEquivalentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-            this.textBoxEquivalentes.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxEquivalentes.Location = new System.Drawing.Point(9, 469);
+            this.textBoxEquivalentes.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
+            this.textBoxEquivalentes.Location = new System.Drawing.Point(12, 473);
             this.textBoxEquivalentes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxEquivalentes.Name = "textBoxEquivalentes";
             this.textBoxEquivalentes.PasswordChar = '\0';
             this.textBoxEquivalentes.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.textBoxEquivalentes.PlaceholderText = "Equivalentes";
             this.textBoxEquivalentes.SelectedText = "";
-            this.textBoxEquivalentes.Size = new System.Drawing.Size(560, 52);
+            this.textBoxEquivalentes.Size = new System.Drawing.Size(556, 52);
             this.textBoxEquivalentes.TabIndex = 5;
             // 
             // textBoxDescripcion
@@ -152,11 +133,11 @@
             this.textBoxDescripcion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.textBoxDescripcion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.textBoxDescripcion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxDescripcion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBoxDescripcion.FocusedState.BorderColor = System.Drawing.Color.ForestGreen;
             this.textBoxDescripcion.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.textBoxDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-            this.textBoxDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxDescripcion.Location = new System.Drawing.Point(11, 131);
+            this.textBoxDescripcion.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
+            this.textBoxDescripcion.Location = new System.Drawing.Point(12, 145);
             this.textBoxDescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxDescripcion.Multiline = true;
             this.textBoxDescripcion.Name = "textBoxDescripcion";
@@ -164,17 +145,18 @@
             this.textBoxDescripcion.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.textBoxDescripcion.PlaceholderText = "Descripción";
             this.textBoxDescripcion.SelectedText = "";
-            this.textBoxDescripcion.Size = new System.Drawing.Size(557, 318);
+            this.textBoxDescripcion.Size = new System.Drawing.Size(558, 318);
             this.textBoxDescripcion.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label1.Location = new System.Drawing.Point(13, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 31);
+            this.label1.Size = new System.Drawing.Size(151, 38);
             this.label1.TabIndex = 3;
             this.label1.Text = "Nueva Flor";
             // 
@@ -189,48 +171,31 @@
             this.textBoxNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.textBoxNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.textBoxNombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBoxNombre.FocusedState.BorderColor = System.Drawing.Color.ForestGreen;
             this.textBoxNombre.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.textBoxNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-            this.textBoxNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxNombre.Location = new System.Drawing.Point(9, 62);
+            this.textBoxNombre.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
+            this.textBoxNombre.Location = new System.Drawing.Point(12, 83);
             this.textBoxNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.PasswordChar = '\0';
             this.textBoxNombre.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.textBoxNombre.PlaceholderText = "Nombre";
             this.textBoxNombre.SelectedText = "";
-            this.textBoxNombre.Size = new System.Drawing.Size(560, 52);
+            this.textBoxNombre.Size = new System.Drawing.Size(556, 52);
             this.textBoxNombre.TabIndex = 2;
-            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
-            // 
-            // mensajeCorrecto
-            // 
-            this.mensajeCorrecto.AutoSize = true;
-            this.mensajeCorrecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(236)))), ((int)(((byte)(210)))));
-            this.mensajeCorrecto.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.mensajeCorrecto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(145)))), ((int)(((byte)(18)))));
-            this.mensajeCorrecto.Location = new System.Drawing.Point(13, 568);
-            this.mensajeCorrecto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.mensajeCorrecto.Name = "mensajeCorrecto";
-            this.mensajeCorrecto.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.mensajeCorrecto.Size = new System.Drawing.Size(216, 32);
-            this.mensajeCorrecto.TabIndex = 7;
-            this.mensajeCorrecto.Text = "Flor agregada correctamente";
-            this.mensajeCorrecto.Visible = false;
-            this.mensajeCorrecto.Click += new System.EventHandler(this.mensajeCorrecto_Click);
             // 
             // nueva_flor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(582, 682);
+            this.ClientSize = new System.Drawing.Size(582, 662);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MaximumSize = new System.Drawing.Size(600, 700);
-            this.MinimumSize = new System.Drawing.Size(600, 700);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(600, 680);
+            this.MinimumSize = new System.Drawing.Size(600, 680);
             this.Name = "nueva_flor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
@@ -250,7 +215,5 @@
         private Guna.UI2.WinForms.Guna2TextBox textBoxNombre;
         private Guna.UI2.WinForms.Guna2TextBox textBoxEquivalentes;
         private Guna.UI2.WinForms.Guna2TextBox textBoxDescripcion;
-        private System.Windows.Forms.Label mensajeError;
-        private System.Windows.Forms.Label mensajeCorrecto;
     }
 }

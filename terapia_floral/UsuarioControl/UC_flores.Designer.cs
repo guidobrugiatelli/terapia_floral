@@ -37,6 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btn_nueva_flor = new Guna.UI2.WinForms.Guna2Button();
             this.buscadorFlor = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -44,7 +45,6 @@
             this.detalleFlor = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.tablaFlores = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.btn_nueva_flor = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -58,10 +58,32 @@
             this.guna2Panel1.Controls.Add(this.buscadorFlor);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(10);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(900, 50);
+            this.guna2Panel1.Size = new System.Drawing.Size(1200, 62);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // btn_nueva_flor
+            // 
+            this.btn_nueva_flor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_nueva_flor.Animated = true;
+            this.btn_nueva_flor.AutoRoundedCorners = true;
+            this.btn_nueva_flor.BorderRadius = 23;
+            this.btn_nueva_flor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_nueva_flor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_nueva_flor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_nueva_flor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_nueva_flor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_nueva_flor.FillColor = System.Drawing.Color.ForestGreen;
+            this.btn_nueva_flor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btn_nueva_flor.ForeColor = System.Drawing.Color.White;
+            this.btn_nueva_flor.Location = new System.Drawing.Point(944, 14);
+            this.btn_nueva_flor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_nueva_flor.Name = "btn_nueva_flor";
+            this.btn_nueva_flor.Size = new System.Drawing.Size(236, 48);
+            this.btn_nueva_flor.TabIndex = 1;
+            this.btn_nueva_flor.Text = "+Nueva flor";
+            this.btn_nueva_flor.Click += new System.EventHandler(this.btn_nueva_flor_Click);
             // 
             // buscadorFlor
             // 
@@ -69,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buscadorFlor.AutoRoundedCorners = true;
             this.buscadorFlor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.buscadorFlor.BorderRadius = 18;
+            this.buscadorFlor.BorderRadius = 23;
             this.buscadorFlor.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.buscadorFlor.DefaultText = "";
             this.buscadorFlor.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -80,14 +102,14 @@
             this.buscadorFlor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.buscadorFlor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.buscadorFlor.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.buscadorFlor.Location = new System.Drawing.Point(12, 11);
-            this.buscadorFlor.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.buscadorFlor.Location = new System.Drawing.Point(16, 14);
+            this.buscadorFlor.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.buscadorFlor.Name = "buscadorFlor";
             this.buscadorFlor.PasswordChar = '\0';
             this.buscadorFlor.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.buscadorFlor.PlaceholderText = "Buscar por nombre";
             this.buscadorFlor.SelectedText = "";
-            this.buscadorFlor.Size = new System.Drawing.Size(688, 39);
+            this.buscadorFlor.Size = new System.Drawing.Size(917, 48);
             this.buscadorFlor.TabIndex = 0;
             this.buscadorFlor.TextChanged += new System.EventHandler(this.buscadorFlor_TextChanged);
             // 
@@ -127,6 +149,7 @@
             this.guna2DataGridView1.Location = new System.Drawing.Point(0, 0);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RowHeadersVisible = false;
+            this.guna2DataGridView1.RowHeadersWidth = 51;
             this.guna2DataGridView1.Size = new System.Drawing.Size(240, 150);
             this.guna2DataGridView1.TabIndex = 0;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -155,16 +178,16 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 267F));
             this.tableLayoutPanel1.Controls.Add(this.detalleFlor, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel4, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10, 20, 10, 10);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 62);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(13, 25, 13, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(900, 650);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1200, 800);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // detalleFlor
@@ -175,10 +198,10 @@
             this.detalleFlor.BorderRadius = 5;
             this.detalleFlor.BorderThickness = 1;
             this.detalleFlor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.detalleFlor.Location = new System.Drawing.Point(707, 25);
-            this.detalleFlor.Margin = new System.Windows.Forms.Padding(7, 25, 15, 15);
+            this.detalleFlor.Location = new System.Drawing.Point(942, 31);
+            this.detalleFlor.Margin = new System.Windows.Forms.Padding(9, 31, 20, 18);
             this.detalleFlor.Name = "detalleFlor";
-            this.detalleFlor.Size = new System.Drawing.Size(178, 610);
+            this.detalleFlor.Size = new System.Drawing.Size(238, 751);
             this.detalleFlor.TabIndex = 1;
             // 
             // guna2Panel4
@@ -188,11 +211,11 @@
             this.guna2Panel4.BorderThickness = 1;
             this.guna2Panel4.Controls.Add(this.tablaFlores);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel4.Location = new System.Drawing.Point(15, 25);
-            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(15, 25, 15, 15);
+            this.guna2Panel4.Location = new System.Drawing.Point(20, 31);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(20, 31, 20, 18);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Padding = new System.Windows.Forms.Padding(5);
-            this.guna2Panel4.Size = new System.Drawing.Size(670, 610);
+            this.guna2Panel4.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.guna2Panel4.Size = new System.Drawing.Size(893, 751);
             this.guna2Panel4.TabIndex = 0;
             // 
             // tablaFlores
@@ -223,7 +246,7 @@
             this.tablaFlores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaFlores.EnableHeadersVisualStyles = true;
             this.tablaFlores.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.tablaFlores.Location = new System.Drawing.Point(5, 5);
+            this.tablaFlores.Location = new System.Drawing.Point(7, 6);
             this.tablaFlores.Margin = new System.Windows.Forms.Padding(0);
             this.tablaFlores.MultiSelect = false;
             this.tablaFlores.Name = "tablaFlores";
@@ -248,7 +271,7 @@
             this.tablaFlores.RowTemplate.Height = 25;
             this.tablaFlores.RowTemplate.ReadOnly = true;
             this.tablaFlores.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaFlores.Size = new System.Drawing.Size(660, 600);
+            this.tablaFlores.Size = new System.Drawing.Size(879, 739);
             this.tablaFlores.TabIndex = 0;
             this.tablaFlores.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tablaFlores.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -273,37 +296,16 @@
             this.tablaFlores.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.tablaFlores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaFlores_CellClick);
             // 
-            // btn_nueva_flor
-            // 
-            this.btn_nueva_flor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_nueva_flor.Animated = true;
-            this.btn_nueva_flor.AutoRoundedCorners = true;
-            this.btn_nueva_flor.BorderRadius = 18;
-            this.btn_nueva_flor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_nueva_flor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_nueva_flor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_nueva_flor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_nueva_flor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_nueva_flor.FillColor = System.Drawing.Color.OliveDrab;
-            this.btn_nueva_flor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btn_nueva_flor.ForeColor = System.Drawing.Color.White;
-            this.btn_nueva_flor.Location = new System.Drawing.Point(708, 11);
-            this.btn_nueva_flor.Name = "btn_nueva_flor";
-            this.btn_nueva_flor.Size = new System.Drawing.Size(177, 39);
-            this.btn_nueva_flor.TabIndex = 1;
-            this.btn_nueva_flor.Text = "+Nueva flor";
-            this.btn_nueva_flor.Click += new System.EventHandler(this.btn_nueva_flor_Click);
-            // 
             // UC_flores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.guna2Panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UC_flores";
-            this.Size = new System.Drawing.Size(900, 700);
+            this.Size = new System.Drawing.Size(1200, 862);
             this.Load += new System.EventHandler(this.UC_flores_Load);
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();

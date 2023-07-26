@@ -45,14 +45,7 @@ namespace terapia_floral.Formularios
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
 
-                        if (rowsAffected > 0)
-                        {
-                            mensajeCorrecto.Visible = true;
-                            textBoxNombre.Text = "";
-                            textBoxDescripcion.Text = "";
-                            textBoxEquivalentes.Text = "";
-                            this.Hide();
-                        }
+                        if (rowsAffected > 0) this.Hide();                        
                     }
                     catch (Exception ex)
                     {
@@ -62,17 +55,7 @@ namespace terapia_floral.Formularios
                     connection.Close();
                 }
             
-            } else
-            {
-                mensajeError.Visible = true;
             }
-        }
-
-        private void textBoxNombre_TextChanged(object sender, EventArgs e)
-        {
-            mensajeError.Visible = false;
-            mensajeCorrecto.Visible = false;
-
         }
 
         public static string GenerateId()
@@ -90,9 +73,5 @@ namespace terapia_floral.Formularios
             return idBuilder.ToString();
         }
 
-        private void mensajeCorrecto_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
