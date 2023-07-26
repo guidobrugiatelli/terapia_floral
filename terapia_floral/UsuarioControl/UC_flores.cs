@@ -227,5 +227,10 @@ namespace terapia_floral.UsuarioControl
             detalleFlor.Controls.Clear();
             tableLayoutPanel1.ColumnStyles[1].Width = 0;
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

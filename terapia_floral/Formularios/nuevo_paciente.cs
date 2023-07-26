@@ -63,6 +63,7 @@ namespace terapia_floral.Formularios
                         command.Parameters.AddWithValue("@nombreapellido", txt_nombreapellido.Text);
                         command.Parameters.AddWithValue("@fechanacimiento", txt_fechanacimiento.Text);
                         command.Parameters.AddWithValue("@lugarhora", txt_lugarhora.Text);
+                        command.Parameters.AddWithValue("@lugarhora", txt_lugarhora.Text); 
                         command.Parameters.AddWithValue("@dondevive", txt_dondevive.Text);
                         command.Parameters.AddWithValue("@conviveanimal", txt_convivenciaanimal.Text);
                         command.Parameters.AddWithValue("@ocupacion", txt_ocupacion.Text);

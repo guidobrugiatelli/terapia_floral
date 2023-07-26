@@ -55,7 +55,7 @@
             this.btn_flores.Animated = true;
             this.btn_flores.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btn_flores.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btn_flores.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(114)))), ((int)(((byte)(250)))));
+            this.btn_flores.CheckedState.ForeColor = System.Drawing.Color.ForestGreen;
             this.btn_flores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_flores.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_flores.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -78,7 +78,7 @@
             this.btn_pacientes.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btn_pacientes.Checked = true;
             this.btn_pacientes.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btn_pacientes.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(114)))), ((int)(((byte)(250)))));
+            this.btn_pacientes.CheckedState.ForeColor = System.Drawing.Color.ForestGreen;
             this.btn_pacientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_pacientes.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_pacientes.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
