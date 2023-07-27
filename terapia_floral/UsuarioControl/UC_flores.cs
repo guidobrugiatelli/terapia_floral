@@ -7,6 +7,7 @@ using System.Management.Instrumentation;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using terapia_floral.Formularios;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace terapia_floral.UsuarioControl
 {
@@ -90,6 +91,7 @@ namespace terapia_floral.UsuarioControl
                 string id = tablaFlores.Rows[e.RowIndex].Tag.ToString();
 
                 DetalleFlor(id);
+                btnBorrar.Tag = id; 
             }
         }
 
@@ -207,17 +209,44 @@ namespace terapia_floral.UsuarioControl
             }
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void guna2ImageButton1_Click_1(object sender, EventArgs e)
+        private void ocultarDetalleFlor(object sender, EventArgs e)
         {
             panelNombre.Controls.Clear();
             panelDescripcion.Controls.Clear();
             panelEquivalentes.Controls.Clear();
             tableLayoutPanel1.ColumnStyles[1].Width = 0;
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            string sql = "DELETE FROM flores WHERE id = @id";
+
+            using (SQLiteConnection connection = new SQLiteConnection(database))
+            {
+                connection.Open();
+
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", btnBorrar.Tag);
+            
+                try
+                {
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        obtenerFlores();
+                        panelNombre.Controls.Clear();
+                        panelDescripcion.Controls.Clear();
+                        panelEquivalentes.Controls.Clear();
+                        tableLayoutPanel1.ColumnStyles[1].Width = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar flor: " + ex.Message);
+                }
+                connection.Close();
+            }
         }
     }
 }
