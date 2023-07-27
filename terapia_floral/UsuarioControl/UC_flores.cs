@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Configuration;
-using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
-using System.Management.Instrumentation;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using terapia_floral.Formularios;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace terapia_floral.UsuarioControl
 {
     public partial class UC_flores : UserControl
     {
         private static string database = ConfigurationManager.ConnectionStrings["database"].ConnectionString;
+        TextBox TextBoxNombre = new TextBox();
+        RichTextBox richTextBoxDescripcion = new RichTextBox();
+        RichTextBox richTextBoxEquivalentes = new RichTextBox();
+
+        private void editar()
+        {
+
+        }
 
         public UC_flores()
         {
@@ -90,8 +94,15 @@ namespace terapia_floral.UsuarioControl
             {
                 string id = tablaFlores.Rows[e.RowIndex].Tag.ToString();
 
-                DetalleFlor(id);
-                btnBorrar.Tag = id; 
+                if (!btnGuardar.Visible)
+                {
+                    DetalleFlor(id);
+                    btnBorrar.Tag = id;
+                }
+                else
+                {
+                    MessageBox.Show("Guarda los cambios antes de salir del detalle");
+                }
             }
         }
 
@@ -119,14 +130,14 @@ namespace terapia_floral.UsuarioControl
                         string descripcion = reader["descripcion"].ToString();
                         string equivalente = reader["equivalente"].ToString();
 
-                        TextBox TextBoxNombre = new TextBox();
-                        RichTextBox richTextBoxDescripcion = new RichTextBox();
-                        RichTextBox richTextBoxEquivalentes = new RichTextBox();
-
                         if (string.IsNullOrEmpty(equivalente))
                         {
                             equivalente = "No tiene flores equivalentes";
                         }
+
+                        TextBoxNombre.KeyUp += new KeyEventHandler(this.editar);
+                        richTextBoxDescripcion.KeyUp += new KeyEventHandler(this.editar);
+                        richTextBoxEquivalentes.KeyUp += new KeyEventHandler(this.editar);
 
                         TextBoxNombre.Text = nombre;
                         TextBoxNombre.Location = new Point(5, 5);
@@ -135,15 +146,15 @@ namespace terapia_floral.UsuarioControl
                         TextBoxNombre.BorderStyle = BorderStyle.None;
                         TextBoxNombre.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         TextBoxNombre.Cursor = Cursors.Arrow;
-                        TextBoxNombre.Width = 230;
+                        //TextBoxNombre.Width = 230;
+                        TextBoxNombre.Dock = DockStyle.Fill;
                         TextBoxNombre.Multiline = true;
-                        TextBoxNombre.ReadOnly = true;
+                        TextBoxNombre.ScrollBars = ScrollBars.None;
 
                         int preferredHeight = TextBoxNombre.GetPreferredSize(new Size(TextBoxNombre.Width, 0)).Height;
                         TextBoxNombre.Height = preferredHeight;
 
                         richTextBoxDescripcion.Text = descripcion;
-                        richTextBoxDescripcion.ReadOnly = true; // Para que el texto no sea editable
                         richTextBoxDescripcion.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
                         richTextBoxDescripcion.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         richTextBoxDescripcion.BackColor = Color.White;
@@ -152,7 +163,6 @@ namespace terapia_floral.UsuarioControl
                         richTextBoxDescripcion.Dock = DockStyle.Fill;
 
                         richTextBoxEquivalentes.Text = equivalente;
-                        richTextBoxEquivalentes.ReadOnly = true; // Para que el texto no sea editable
                         richTextBoxEquivalentes.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
                         richTextBoxEquivalentes.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         richTextBoxEquivalentes.BackColor = Color.White;
@@ -160,13 +170,14 @@ namespace terapia_floral.UsuarioControl
                         richTextBoxEquivalentes.Cursor = Cursors.Arrow;
                         richTextBoxEquivalentes.Dock = DockStyle.Fill;
 
-
                         panelNombre.Controls.Add(TextBoxNombre);
                         panelDescripcion.Controls.Add(richTextBoxDescripcion);
                         panelEquivalentes.Controls.Add(richTextBoxEquivalentes);
-                        //detalleFlor.Controls.Add(TextBoxNombre);
 
-                        // Desplazar el panel para que el labelDescripcion sea visible
+                        TextBoxNombre.Tag = id;
+                        richTextBoxDescripcion.Tag = id;
+                        richTextBoxEquivalentes.Tag = id;
+
                     }
 
                     reader.Close();
@@ -211,10 +222,17 @@ namespace terapia_floral.UsuarioControl
 
         private void ocultarDetalleFlor(object sender, EventArgs e)
         {
-            panelNombre.Controls.Clear();
-            panelDescripcion.Controls.Clear();
-            panelEquivalentes.Controls.Clear();
-            tableLayoutPanel1.ColumnStyles[1].Width = 0;
+            if (!btnGuardar.Visible)
+            {
+                panelNombre.Controls.Clear();
+                panelDescripcion.Controls.Clear();
+                panelEquivalentes.Controls.Clear();
+                tableLayoutPanel1.ColumnStyles[1].Width = 0;
+                btnGuardar.Visible = false;
+            } else
+            {
+                MessageBox.Show("Guarda los cambios antes de salir del detalle");
+            }
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
@@ -238,6 +256,7 @@ namespace terapia_floral.UsuarioControl
                         panelNombre.Controls.Clear();
                         panelDescripcion.Controls.Clear();
                         panelEquivalentes.Controls.Clear();
+                        btnGuardar.Visible = false;
                         tableLayoutPanel1.ColumnStyles[1].Width = 0;
                     }
                 }
@@ -245,6 +264,97 @@ namespace terapia_floral.UsuarioControl
                 {
                     MessageBox.Show("Error al eliminar flor: " + ex.Message);
                 }
+                connection.Close();
+            }
+        }
+
+        private void editar(object sender, KeyEventArgs e)
+        {
+            string id = "";
+
+            if (sender is TextBox textBox)
+            {
+                id = textBox.Tag.ToString();
+            }
+            else if (sender is RichTextBox richTextBox)
+            {
+                id = richTextBox.Tag.ToString();
+            }
+
+            string sql = "SELECT * FROM flores WHERE id = @id";
+
+            using (SQLiteConnection connection = new SQLiteConnection(database))
+            {
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                connection.Open();
+
+                command.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        string nombre = reader["nombre"].ToString();
+                        string descripcion = reader["descripcion"].ToString();
+                        string equivalente = reader["equivalente"].ToString();
+
+                        if (nombre != TextBoxNombre.Text || descripcion != richTextBoxDescripcion.Text || equivalente != richTextBoxEquivalentes.Text)
+                        {
+                            btnGuardar.Visible = true;
+                            btnGuardar.Tag = id;
+                        } else
+                        {
+                            btnGuardar.Visible = false;
+                        }
+                    }
+
+                    reader.Close();
+
+                }
+                connection.Close();
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string equivalente = richTextBoxEquivalentes.Text;
+            string id = btnGuardar.Tag.ToString();
+
+            if (equivalente == "No tiene flores equivalentes")
+            {
+                equivalente = "";
+            }
+
+            string sql = "UPDATE flores SET nombre = @nombre, descripcion = @descripcion, equivalente = @equivalente WHERE id = @id";
+
+            using (SQLiteConnection connection = new SQLiteConnection(database))
+            {
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@nombre", TextBoxNombre.Text);
+                command.Parameters.AddWithValue("@descripcion", richTextBoxDescripcion.Text);
+                command.Parameters.AddWithValue("@equivalente", equivalente);
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        obtenerFlores();
+                        DetalleFlor(id);
+                        btnGuardar.Visible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar: " + ex.Message);
+                }
+
                 connection.Close();
             }
         }
