@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace terapia_floral.Formularios
@@ -15,10 +9,11 @@ namespace terapia_floral.Formularios
     public partial class nuevo_paciente : Form
     {
         private static string database = ConfigurationManager.ConnectionStrings["database"].ConnectionString;
+        public string PacienteID { get; private set; }
+
         public nuevo_paciente()
         {
             InitializeComponent();
-
         }
 
         private void guna2TextBox7_TextChanged(object sender, EventArgs e)
@@ -28,6 +23,7 @@ namespace terapia_floral.Formularios
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel; // Establecer el resultado como Cancel
             this.Close();
         }
 
@@ -58,8 +54,11 @@ namespace terapia_floral.Formularios
                 {
                     using (SQLiteConnection connection = new SQLiteConnection(database))
                     {
+
+                        string id = GenerateId();
+
                         SQLiteCommand command = new SQLiteCommand(sql, connection);
-                        command.Parameters.AddWithValue("@id", GenerateId());
+                        command.Parameters.AddWithValue("@id", id);
                         command.Parameters.AddWithValue("@nombreapellido", txt_nombreapellido.Text);
                         command.Parameters.AddWithValue("@fechanacimiento", txt_fechanacimiento.Text);
                         command.Parameters.AddWithValue("@lugarhora", txt_lugarhora.Text);
@@ -71,16 +70,15 @@ namespace terapia_floral.Formularios
                         command.Parameters.AddWithValue("@celular", txt_celular.Text);
                         command.Parameters.AddWithValue("@correo", txt_correo.Text);
 
-
                     try
                     {
-                            connection.Open();
-                            int rowsAffected = command.ExecuteNonQuery();
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
 
                             if (rowsAffected > 0)
                             {
-                                MessageBox.Show("Guardado correctamente");  
-                                this.Hide();
+                                this.PacienteID = id;
+                                this.Close();
                             }
                         }
                         catch (Exception ex)
@@ -94,5 +92,5 @@ namespace terapia_floral.Formularios
                 }
 
             }
-        }
+    }
 }

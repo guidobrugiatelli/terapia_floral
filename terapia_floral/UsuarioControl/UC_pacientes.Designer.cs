@@ -32,15 +32,15 @@
             this.btn_nuevopaciente = new Guna.UI2.WinForms.Guna2Button();
             this.txt_buscarpaciente = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel_pacientes = new Guna.UI2.WinForms.Guna2Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_todoslospacientes = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel_info_pacientes = new Guna.UI2.WinForms.Guna2Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel_todoslospacientes = new Guna.UI2.WinForms.Guna2Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_busqueda.SuspendLayout();
             this.panel_pacientes.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_busqueda
@@ -63,6 +63,7 @@
             this.btn_nuevopaciente.Animated = true;
             this.btn_nuevopaciente.AutoRoundedCorners = true;
             this.btn_nuevopaciente.BorderRadius = 23;
+            this.btn_nuevopaciente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_nuevopaciente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_nuevopaciente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_nuevopaciente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -124,6 +125,46 @@
             this.panel_pacientes.Size = new System.Drawing.Size(350, 533);
             this.panel_pacientes.TabIndex = 1;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel_todoslospacientes, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(330, 513);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel_todoslospacientes
+            // 
+            this.panel_todoslospacientes.AutoScroll = true;
+            this.panel_todoslospacientes.AutoScrollMargin = new System.Drawing.Size(0, 10);
+            this.panel_todoslospacientes.BackColor = System.Drawing.Color.White;
+            this.panel_todoslospacientes.CustomBorderThickness = new System.Windows.Forms.Padding(2);
+            this.panel_todoslospacientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_todoslospacientes.Location = new System.Drawing.Point(3, 53);
+            this.panel_todoslospacientes.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.panel_todoslospacientes.Name = "panel_todoslospacientes";
+            this.panel_todoslospacientes.Size = new System.Drawing.Size(324, 440);
+            this.panel_todoslospacientes.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(324, 50);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Pacientes";
+            // 
             // panel_info_pacientes
             // 
             this.panel_info_pacientes.BackColor = System.Drawing.Color.White;
@@ -149,51 +190,11 @@
             this.panel1.Size = new System.Drawing.Size(532, 533);
             this.panel1.TabIndex = 3;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(324, 50);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Pacientes";
-            // 
-            // panel_todoslospacientes
-            // 
-            this.panel_todoslospacientes.AutoScroll = true;
-            this.panel_todoslospacientes.AutoScrollMargin = new System.Drawing.Size(0, 10);
-            this.panel_todoslospacientes.BackColor = System.Drawing.Color.White;
-            this.panel_todoslospacientes.CustomBorderThickness = new System.Windows.Forms.Padding(2);
-            this.panel_todoslospacientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_todoslospacientes.Location = new System.Drawing.Point(3, 53);
-            this.panel_todoslospacientes.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.panel_todoslospacientes.Name = "panel_todoslospacientes";
-            this.panel_todoslospacientes.Size = new System.Drawing.Size(324, 440);
-            this.panel_todoslospacientes.TabIndex = 1;
-            this.panel_todoslospacientes.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_todoslospacientes_Paint);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel_todoslospacientes, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(330, 513);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
             // UC_pacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_pacientes);
             this.Controls.Add(this.panel_busqueda);
@@ -202,9 +203,9 @@
             this.Load += new System.EventHandler(this.UC_pacientes_Load);
             this.panel_busqueda.ResumeLayout(false);
             this.panel_pacientes.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

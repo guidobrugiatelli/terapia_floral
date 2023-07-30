@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using terapia_floral.UsuarioControl;
 
@@ -42,5 +35,6 @@ namespace terapia_floral
             UC_pacientes uc = new UC_pacientes();
             agregarUC(uc);
         }
+
     }
 }

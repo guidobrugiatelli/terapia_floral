@@ -54,3 +54,5 @@ C:\Users\Guido\Documents\Software Terapista Floral\TERAPIA FLORAL - copia\terapi
 C:\Users\Guido\Documents\Software Terapista Floral\TERAPIA FLORAL - copia\terapia_floral\terapia_floral\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Guido\Documents\Software Terapista Floral\TERAPIA FLORAL - copia\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.xml
 C:\Users\Guido\Documents\Software Terapista Floral\TERAPIA FLORAL - copia\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.CopyComplete
+C:\Users\aguco\Desktop\terapia floral\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_paciente_seleccionado.resources
+C:\Users\aguco\Desktop\terapia floral\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.ficha.resources

@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\ficha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ficha.Designer.cs">
+      <DependentUpon>ficha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\menu_inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,12 @@
     <Compile Include="UsuarioControl\UC_pacientes.Designer.cs">
       <DependentUpon>UC_pacientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioControl\UC_paciente_seleccionado.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioControl\UC_paciente_seleccionado.Designer.cs">
+      <DependentUpon>UC_paciente_seleccionado.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioControl\UC_paciente_sin _seleccion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,6 +130,9 @@
       <DependentUpon>UC_paciente_sin _seleccion.cs</DependentUpon>
     </Compile>
     <Content Include="Resources\cruz.png" />
+    <EmbeddedResource Include="Formularios\ficha.resx">
+      <DependentUpon>ficha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\menu_inicio.resx">
       <DependentUpon>menu_inicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioControl\UC_pacientes.resx">
       <DependentUpon>UC_pacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioControl\UC_paciente_seleccionado.resx">
+      <DependentUpon>UC_paciente_seleccionado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioControl\UC_paciente_sin _seleccion.resx">
       <DependentUpon>UC_paciente_sin _seleccion.cs</DependentUpon>
