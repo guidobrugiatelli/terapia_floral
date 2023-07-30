@@ -315,7 +315,6 @@
             // 
             this.txt_fechanacimiento.Animated = true;
             this.txt_fechanacimiento.AutoRoundedCorners = true;
-            this.txt_fechanacimiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.txt_fechanacimiento.BorderRadius = 22;
             this.txt_fechanacimiento.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_fechanacimiento.DefaultText = "";
@@ -332,7 +331,7 @@
             this.txt_fechanacimiento.Name = "txt_fechanacimiento";
             this.txt_fechanacimiento.PasswordChar = '\0';
             this.txt_fechanacimiento.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.txt_fechanacimiento.PlaceholderText = "Fecha Nacimiento";
+            this.txt_fechanacimiento.PlaceholderText = "Fecha de nacimiento";
             this.txt_fechanacimiento.SelectedText = "";
             this.txt_fechanacimiento.Size = new System.Drawing.Size(544, 47);
             this.txt_fechanacimiento.TabIndex = 2;

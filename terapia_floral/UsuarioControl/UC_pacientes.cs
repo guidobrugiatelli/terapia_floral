@@ -23,10 +23,6 @@ namespace terapia_floral.UsuarioControl
             panel_info_pacientes.Controls.Add(userControl);
             userControl.BringToFront();
         }
-        private void contenedor_boton_nuevaconsulta_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void UC_pacientes_Load(object sender, EventArgs e)
         {
@@ -38,6 +34,7 @@ namespace terapia_floral.UsuarioControl
         private void btn_nuevopaciente_Click(object sender, EventArgs e)
         {
             Form nuevo_paciente = new Formularios.nuevo_paciente();
+            nuevo_paciente.TopMost = true;
             nuevo_paciente.ShowDialog();
             GenerarPanelesPacientes();
         }
@@ -100,13 +97,16 @@ namespace terapia_floral.UsuarioControl
             }
         }
 
-        private void richTextBoxPacientes_TextChanged(object sender, EventArgs e)
-        {
-        }
 
         private void txt_buscarpaciente_TextChanged(object sender, EventArgs e)
         {
             Filtrar_por_nombreyapellido(txt_buscarpaciente.Text);
+        }
+
+        private void detallePaciente(string id)
+        {
+            UC_paciente_seleccionado uc = new UC_paciente_seleccionado(id);
+            agregarUC_Paciente(uc);
         }
 
         private void Obtener_pacientes(SQLiteDataReader reader)
@@ -123,18 +123,17 @@ namespace terapia_floral.UsuarioControl
                 // Crear el panel para el paciente
                 Panel panelPaciente = new Panel();
                 panelPaciente.BorderStyle = BorderStyle.None;
-                panelPaciente.Size = new Size(panel_todoslospacientes.Width -20 , 50);
+                panelPaciente.Size = new Size(panel_todoslospacientes.Width - 20 , 50);
                 panelPaciente.Location = new Point(0, panelOffsetY); // Ubicación del panel
 
                 // Crear los labels para los datos del paciente
                 Label labelNombreApellido = new Label();
                 labelNombreApellido.Text = nombreApellido;
                 labelNombreApellido.Font = new Font("Segoe UI", 10, FontStyle.Regular);
-                labelNombreApellido.ForeColor = Color.Black;
+                labelNombreApellido.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                 labelNombreApellido.AutoSize = true;
                 labelNombreApellido.Location = new Point(5, 5); // Ubicación del primer label
 
-                // Para nombres largos completar con 3 puntos
                 if (nombreApellido.Length > 20)
                 {
                     labelNombreApellido.Text = nombreApellido.Substring(0, 20) + "...";
@@ -146,7 +145,6 @@ namespace terapia_floral.UsuarioControl
                     labelNombreApellido.Text = nombreApellido;
                 }
 
-
                 Label labelUltimaConsulta = new Label();
                 labelUltimaConsulta.Text = "Última consulta: " + ultimaConsulta;
                 labelUltimaConsulta.Font = new Font("Segoe UI", 8, FontStyle.Regular);
@@ -154,8 +152,6 @@ namespace terapia_floral.UsuarioControl
                 labelUltimaConsulta.AutoSize = true;
                 labelUltimaConsulta.Location = new Point(5, labelNombreApellido.Bottom + 1); // Ubicación del segundo label
 
-
-                // Crear el botón para cada paciente
                 Guna2Button btnVerDetalles = new Guna2Button();
                 btnVerDetalles.AutoRoundedCorners = true;
                 btnVerDetalles.Tag = id;
@@ -165,18 +161,16 @@ namespace terapia_floral.UsuarioControl
                 btnVerDetalles.Text = "Ver";
                 btnVerDetalles.Size = new Size(50, 30);
                 btnVerDetalles.Location = new Point(panelPaciente.Width - btnVerDetalles.Width - 5, (panelPaciente.Height - btnVerDetalles.Height) / 2); // Ubicación del botón a la derecha
+                btnVerDetalles.Click += (sender, e) => detallePaciente(id);
 
                 btnVerDetalles.Anchor = AnchorStyles.Right | AnchorStyles.Top;
 
-                // Agregar los labels y botón al panel del paciente
                 panelPaciente.Controls.Add(labelNombreApellido);
                 panelPaciente.Controls.Add(labelUltimaConsulta);
                 panelPaciente.Controls.Add(btnVerDetalles);
 
-                // Agregar el panel del paciente al panel principal
                 panel_todoslospacientes.Controls.Add(panelPaciente);
-
-                // Actualizar el desplazamiento vertical para el próximo panel
+                
                 panelOffsetY += panelPaciente.Height + 5;
             }
         }

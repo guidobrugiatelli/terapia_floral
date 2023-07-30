@@ -14,11 +14,6 @@ namespace terapia_floral.UsuarioControl
         RichTextBox richTextBoxDescripcion = new RichTextBox();
         RichTextBox richTextBoxEquivalentes = new RichTextBox();
 
-        private void editar()
-        {
-
-        }
-
         public UC_flores()
         {
             InitializeComponent();

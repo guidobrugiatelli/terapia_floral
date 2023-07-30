@@ -18,7 +18,6 @@ namespace terapia_floral.Formularios
         public nuevo_paciente()
         {
             InitializeComponent();
-
         }
 
         private void guna2TextBox7_TextChanged(object sender, EventArgs e)
@@ -58,6 +57,7 @@ namespace terapia_floral.Formularios
                 {
                     using (SQLiteConnection connection = new SQLiteConnection(database))
                     {
+
                         SQLiteCommand command = new SQLiteCommand(sql, connection);
                         command.Parameters.AddWithValue("@id", GenerateId());
                         command.Parameters.AddWithValue("@nombreapellido", txt_nombreapellido.Text);
@@ -71,7 +71,6 @@ namespace terapia_floral.Formularios
                         command.Parameters.AddWithValue("@celular", txt_celular.Text);
                         command.Parameters.AddWithValue("@correo", txt_correo.Text);
 
-
                     try
                     {
                             connection.Open();
@@ -79,7 +78,6 @@ namespace terapia_floral.Formularios
 
                             if (rowsAffected > 0)
                             {
-                                MessageBox.Show("Guardado correctamente");  
                                 this.Hide();
                             }
                         }
