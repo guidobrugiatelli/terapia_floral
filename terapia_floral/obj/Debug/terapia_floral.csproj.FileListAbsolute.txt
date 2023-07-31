@@ -86,3 +86,4 @@ D:\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_fl
 D:\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.CopyComplete
 D:\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.exe
 D:\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.pdb
+D:\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.editar_paciente.resources

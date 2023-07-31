@@ -23,7 +23,6 @@ namespace terapia_floral.Formularios
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel; // Establecer el resultado como Cancel
             this.Close();
         }
 
