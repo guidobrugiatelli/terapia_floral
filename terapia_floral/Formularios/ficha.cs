@@ -66,10 +66,9 @@ namespace terapia_floral.Formularios
                             seccionFicha.Tag = idSeccion;
 
                             panel_preguntas_respuestas.Controls.Add(seccionFicha);
-                            posicion = posicion + 25;
+                            posicion = posicion + 30;
                         }
 
-                        MessageBox.Show(posicion.ToString());
                         reader.Close();
                     }
                     connection.Close();
@@ -86,8 +85,40 @@ namespace terapia_floral.Formularios
             if (sender is CheckBox checkBox)
             {
                 string tag = checkBox.Tag.ToString();
+                bool checkEstado = checkBox.Checked;
 
-                MessageBox.Show(tag);
+                if(checkEstado)
+                {
+                    // buscar en la tabla preguntas todas las que tienen el id que coincide con el "tag"
+                    string sql = "SELECT * FROM preguntas WHERE idseccion = @id";
+
+                    using (SQLiteConnection connection = new SQLiteConnection(database))
+                    {
+                        SQLiteCommand command = new SQLiteCommand(sql, connection);
+                        command.Parameters.AddWithValue("@id", tag);
+                        connection.Open();
+
+                        command.CommandType = CommandType.Text;
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                //Mostrar las prguntas con su respectivo TextBox
+                                //Para guardar la respuesta para que tenga relacion con su pregunta
+                                //hay que ponerle en la propiedad Tag del TextBox el id de la pregunta
+                            }
+
+                            reader.Close();
+                        }
+                        connection.Close();
+                            }
+                    } else
+                {
+                    MessageBox.Show("deseleccionado");
+
+                }
             }
         }
 
