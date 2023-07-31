@@ -137,7 +137,7 @@ namespace terapia_floral.UsuarioControl
         {
             Form ficha = new Formularios.ficha(idPaciente);
             ficha.TopMost = true;
-            ficha.ShowDialog();
+            ficha.Show();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -190,15 +190,6 @@ namespace terapia_floral.UsuarioControl
                                 ucPacienteSinSeleccion.BringToFront();
                                 panelInfoPacientes.Controls.Remove(this);
                                 panelInfoPacientes.Controls.Add(ucPacienteSinSeleccion);
-
-                                if (panelInfoPacientes.Parent is Control ucPacientes )
-                                {
-                                    if(ucPacientes != null)
-                                    {
-                                        Debug.WriteLine("pruebaaaaaa",ucPacientes);
-                                    }
-                                }
-
                             }
                         }
                     }

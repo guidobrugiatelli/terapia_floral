@@ -37,11 +37,13 @@
             this.panelGuna2 = new Guna.UI2.WinForms.Guna2Panel();
             this.comboBox_categoria = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.panel_preguntas_respuestas = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.header_ficha.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.panelGuna2.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // nombre_paciente
@@ -50,9 +52,8 @@
             this.nombre_paciente.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.nombre_paciente.Location = new System.Drawing.Point(10, 15);
             this.nombre_paciente.Name = "nombre_paciente";
-            this.nombre_paciente.Size = new System.Drawing.Size(204, 31);
+            this.nombre_paciente.Size = new System.Drawing.Size(0, 31);
             this.nombre_paciente.TabIndex = 0;
-            this.nombre_paciente.Text = "Nombre y apellido";
             // 
             // tableLayoutPanel1
             // 
@@ -72,7 +73,7 @@
             // header_ficha
             // 
             this.header_ficha.ColumnCount = 3;
-            this.header_ficha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.header_ficha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.header_ficha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.header_ficha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
             this.header_ficha.Controls.Add(this.guna2Panel1, 0, 0);
@@ -94,7 +95,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(20, 60);
+            this.guna2Panel1.Size = new System.Drawing.Size(10, 60);
             this.guna2Panel1.TabIndex = 0;
             // 
             // guna2Panel2
@@ -130,11 +131,11 @@
             // 
             this.panelGuna2.Controls.Add(this.comboBox_categoria);
             this.panelGuna2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGuna2.Location = new System.Drawing.Point(20, 0);
+            this.panelGuna2.Location = new System.Drawing.Point(10, 0);
             this.panelGuna2.Margin = new System.Windows.Forms.Padding(0);
             this.panelGuna2.Name = "panelGuna2";
             this.panelGuna2.Padding = new System.Windows.Forms.Padding(0, 15, 0, 0);
-            this.panelGuna2.Size = new System.Drawing.Size(632, 60);
+            this.panelGuna2.Size = new System.Drawing.Size(642, 60);
             this.panelGuna2.TabIndex = 2;
             // 
             // comboBox_categoria
@@ -158,12 +159,22 @@
             // 
             // guna2Panel4
             // 
+            this.guna2Panel4.Controls.Add(this.panel_preguntas_respuestas);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel4.Location = new System.Drawing.Point(0, 60);
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(882, 593);
             this.guna2Panel4.TabIndex = 1;
+            // 
+            // panel_preguntas_respuestas
+            // 
+            this.panel_preguntas_respuestas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_preguntas_respuestas.Location = new System.Drawing.Point(0, 0);
+            this.panel_preguntas_respuestas.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_preguntas_respuestas.Name = "panel_preguntas_respuestas";
+            this.panel_preguntas_respuestas.Size = new System.Drawing.Size(882, 593);
+            this.panel_preguntas_respuestas.TabIndex = 0;
             // 
             // ficha
             // 
@@ -182,6 +193,7 @@
             this.guna2Panel1.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.panelGuna2.ResumeLayout(false);
+            this.guna2Panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -197,5 +209,6 @@
         private Guna.UI2.WinForms.Guna2Panel panelGuna2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private Guna.UI2.WinForms.Guna2ComboBox comboBox_categoria;
+        private Guna.UI2.WinForms.Guna2Panel panel_preguntas_respuestas;
     }
 }
