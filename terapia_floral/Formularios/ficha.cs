@@ -1,13 +1,11 @@
 ﻿using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace terapia_floral.Formularios
 {
@@ -65,7 +63,7 @@ namespace terapia_floral.Formularios
                         groupBoxPregunta.CustomBorderColor = Color.WhiteSmoke;
                         groupBoxPregunta.BorderColor = Color.WhiteSmoke;
                         groupBoxPregunta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-                        groupBoxPregunta.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+                        groupBoxPregunta.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
                         groupBoxPregunta.Tag = idPregunta;
                         groupBoxPregunta.Text = pregunta;
                         groupBoxPregunta.Click += groupBoxPregunta_Click;
@@ -77,6 +75,7 @@ namespace terapia_floral.Formularios
                         textBoxRespuesta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                         textBoxRespuesta.Width = groupBoxPregunta.Width - 4;
                         textBoxRespuesta.Height = groupBoxPregunta.Height - 45;
+                        textBoxRespuesta.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
                         textBoxRespuesta.BorderThickness = 0;
                         textBoxRespuesta.Visible = false;
                         textBoxRespuesta.Dock = DockStyle.Fill;
@@ -92,12 +91,7 @@ namespace terapia_floral.Formularios
                     reader.Close();
                 }
                 connection.Close();
-            }
-
-                //hacer el llamado a la base de datos seccion, recupero el nombre y id
-                //cuando se hace click en una se las secciones, se aplía y se hace otro llamado a la base de datos
-                //a la de preguntas y se obtienen todas las prguntas que tengan el mismo id de categoria y de seccion
-                
+            }               
         }
 
 
@@ -112,13 +106,6 @@ namespace terapia_floral.Formularios
                 bool isExpanded = currentHeight == ExpandedGroupBoxHeight;
 
                 clickedGroupBox.Height = isExpanded ? DefaultGroupBoxHeight : ExpandedGroupBoxHeight;
-
-                Guna2TextBox textBox = clickedGroupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
-
-                if (textBox != null)
-                {
-                    textBox.Visible = !isExpanded;
-                }
 
                 if (!isExpanded)
                 {
@@ -140,6 +127,15 @@ namespace terapia_floral.Formularios
                         }
                     }
                 }
+
+
+                Guna2TextBox textBox = clickedGroupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
+
+                if (textBox != null)
+                {
+                    textBox.Visible = !isExpanded;
+                }
+
             }
         }
 
@@ -172,8 +168,11 @@ namespace terapia_floral.Formularios
                         Guna2Button btnCategoria = new Guna2Button();
 
                         btnCategoria.Text = nombreCategoria;
+                        btnCategoria.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+                        btnCategoria.CheckedState.ForeColor = Color.White;
+                        btnCategoria.CheckedState.FillColor = Color.ForestGreen;
                         btnCategoria.Tag = idCategoria;
-                        btnCategoria.Location = new System.Drawing.Point(posicion, 0);
+                        btnCategoria.Location = new Point(posicion, 0);
                         btnCategoria.Cursor = Cursors.Hand;
                         btnCategoria.AutoSize = true;
                         btnCategoria.AutoRoundedCorners = true;
@@ -203,6 +202,22 @@ namespace terapia_floral.Formularios
 
         private void btn_finalizar_ficha_Click(object sender, EventArgs e)
         {
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            string estado = "off";
+            if (guna2Button2.Tag.ToString() == estado)
+            {
+                tableLayoutPanel1.RowStyles[3].Height = 250;
+                guna2Button2.Tag = "on";
+            }
+            else
+            {
+                tableLayoutPanel1.RowStyles[3].Height = 55;
+                guna2Button2.Tag = "off";
+
+            }
         }
     }
 }
