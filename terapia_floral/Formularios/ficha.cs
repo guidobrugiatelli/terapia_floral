@@ -4,137 +4,140 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace terapia_floral.Formularios
 {
     public partial class ficha : Form
     {
         private static string database = ConfigurationManager.ConnectionStrings["database"].ConnectionString;
-        private List<Opcion> opciones = new List<Opcion>();
         private string idPaciente;
+        private const int DefaultGroupBoxHeight = 40;
+        private const int ExpandedGroupBoxHeight = 150;
+
         public ficha(string id)
         {
             InitializeComponent();
             idPaciente = id;            
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void btn_categoria_Click(object sender, EventArgs e)
         {
+
+            Guna2Button botonCategoria = (Guna2Button)sender;
+            string idCategoria = botonCategoria.Tag.ToString();
+            string nombreCategoria = botonCategoria.Text;
+
             panel_preguntas_respuestas.Controls.Clear();
 
-            if (comboBox_categoria.SelectedItem != null && comboBox_categoria.SelectedItem is Opcion opcionSeleccionada)
+            string sql = "SELECT * FROM preguntas WHERE idcategoria = @id";
+
+            using (SQLiteConnection connection = new SQLiteConnection(database))
             {
-                string idSeleccionado = opcionSeleccionada.Id;
-                string textoSeleccionado = opcionSeleccionada.Texto;
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", idCategoria);
+                connection.Open();
 
-                string sql = "SELECT * FROM secciones WHERE idcategoria = @id";
+                command.CommandType = CommandType.Text;
 
-                using (SQLiteConnection connection = new SQLiteConnection(database))
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
-                    SQLiteCommand command = new SQLiteCommand(sql, connection);
-                    command.Parameters.AddWithValue("@id", idSeleccionado);
-                    connection.Open();
+                    int posicion = 0;
 
-                    command.CommandType = CommandType.Text;
-
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    while (reader.Read())
                     {
-                        int posicion = 0;
+                        string pregunta = reader["pregunta"].ToString();
+                        string idPregunta = reader["id"].ToString();
 
-                        while (reader.Read())
-                        {
-                            string nombre = reader["nombreseccion"].ToString();
-                            string idSeccion = reader["idseccion"].ToString();
+                        Guna2GroupBox groupBoxPregunta = new Guna2GroupBox();
+                        Guna2TextBox textBoxRespuesta = new Guna2TextBox();
 
-                            Guna2CheckBox seccionFicha = new Guna2CheckBox();
+                        groupBoxPregunta.Location = new Point(0, posicion);
+                        groupBoxPregunta.Width = panel.Width - 30;
+                        groupBoxPregunta.Height = 40;
+                        groupBoxPregunta.BorderThickness = 1;
+                        groupBoxPregunta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                        groupBoxPregunta.AutoSize = true;
+                        groupBoxPregunta.BorderRadius = 5;
+                        groupBoxPregunta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88))))); ;
+                        groupBoxPregunta.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+                        groupBoxPregunta.Tag = idPregunta;
+                        groupBoxPregunta.Text = pregunta;
+                        groupBoxPregunta.Click += groupBoxPregunta_Click;
+                        groupBoxPregunta.Padding = new Padding(3);
 
-                            seccionFicha.Text = nombre;                           
-                            seccionFicha.Width = panel_preguntas_respuestas.Width;
-                            seccionFicha.Location = new System.Drawing.Point(0, posicion);
-                            seccionFicha.CheckedState.BorderColor = System.Drawing.Color.ForestGreen;
-                            seccionFicha.CheckedState.BorderRadius = 2;
-                            seccionFicha.CheckedState.BorderThickness = 1;
-                            seccionFicha.CheckedState.FillColor = System.Drawing.Color.ForestGreen;
-                            seccionFicha.Cursor = Cursors.Hand;
-                            seccionFicha.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-                            seccionFicha.UncheckedState.BorderRadius = 2;
-                            seccionFicha.UncheckedState.BorderThickness = 1;
-                            seccionFicha.UncheckedState.FillColor = System.Drawing.Color.White;
-                            seccionFicha.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-                            seccionFicha.CheckedChanged += seccionFicha_Changed;
-                            seccionFicha.Tag = idSeccion;
+                        textBoxRespuesta.PlaceholderText = "Respuesta...";
+                        textBoxRespuesta.PlaceholderForeColor = Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170))))); ;
+                        textBoxRespuesta.Multiline = true;
+                        textBoxRespuesta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                        textBoxRespuesta.Width = groupBoxPregunta.Width - 4;
+                        textBoxRespuesta.Height = groupBoxPregunta.Height - 45;
+                        textBoxRespuesta.BorderThickness = 0;
+                        textBoxRespuesta.Visible = false;
+                        textBoxRespuesta.Dock = DockStyle.Fill;
+                        textBoxRespuesta.Tag = idPregunta;
 
-                            panel_preguntas_respuestas.Controls.Add(seccionFicha);
-                            posicion = posicion + 30;
-                        }
+                        groupBoxPregunta.Controls.Add(textBoxRespuesta);
+                        panel_preguntas_respuestas.Controls.Add(groupBoxPregunta);
 
-                        reader.Close();
+
+                        posicion += groupBoxPregunta.Height + 10;
                     }
-                    connection.Close();
-                }
 
-                    //hacer el llamado a la base de datos seccion, recupero el nombre y id
-                    //cuando se hace click en una se las secciones, se aplía y se hace otro llamado a la base de datos
-                    //a la de preguntas y se obtienen todas las prguntas que tengan el mismo id de categoria y de seccion
+                    reader.Close();
                 }
+                connection.Close();
+            }
+
+                //hacer el llamado a la base de datos seccion, recupero el nombre y id
+                //cuando se hace click en una se las secciones, se aplía y se hace otro llamado a la base de datos
+                //a la de preguntas y se obtienen todas las prguntas que tengan el mismo id de categoria y de seccion
+                
         }
 
-        private void seccionFicha_Changed(object sender, EventArgs e)
+
+        private void groupBoxPregunta_Click(object sender, EventArgs e)
         {
-            if (sender is CheckBox checkBox)
+            if (sender is Guna2GroupBox clickedGroupBox)
             {
-                string tag = checkBox.Tag.ToString();
-                bool checkEstado = checkBox.Checked;
+                
+                int currentHeight = clickedGroupBox.Height;
 
-                if(checkEstado)
+                // Verificar si el GroupBox está expandido o no
+                bool isExpanded = currentHeight == ExpandedGroupBoxHeight;
+
+                clickedGroupBox.Height = isExpanded ? DefaultGroupBoxHeight : ExpandedGroupBoxHeight;
+
+                Guna2TextBox textBox = clickedGroupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
+
+                if (textBox != null)
                 {
-                    // buscar en la tabla preguntas todas las que tienen el id que coincide con el "tag"
-                    string sql = "SELECT * FROM preguntas WHERE idseccion = @id";
+                    textBox.Visible = !isExpanded;
+                }
 
-                    using (SQLiteConnection connection = new SQLiteConnection(database))
+                if (!isExpanded)
+                {
+                    foreach (Guna2GroupBox groupBox in panel_preguntas_respuestas.Controls.OfType<Guna2GroupBox>())
                     {
-                        SQLiteCommand command = new SQLiteCommand(sql, connection);
-                        command.Parameters.AddWithValue("@id", tag);
-                        connection.Open();
-
-                        command.CommandType = CommandType.Text;
-
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        if (groupBox != clickedGroupBox && groupBox.Location.Y > clickedGroupBox.Location.Y)
                         {
-
-                            while (reader.Read())
-                            {
-                                //Mostrar las prguntas con su respectivo TextBox
-                                //Para guardar la respuesta para que tenga relacion con su pregunta
-                                //hay que ponerle en la propiedad Tag del TextBox el id de la pregunta
-                            }
-
-                            reader.Close();
+                            groupBox.Location = new Point(groupBox.Location.X, groupBox.Location.Y + 110);
                         }
-                        connection.Close();
-                            }
-                    } else
-                {
-                    MessageBox.Show("deseleccionado");
-
+                    }
                 }
-            }
-        }
-
-        public class Opcion
-        {
-            public string Id { get; set; }
-            public string Texto { get; set; }
-
-            public Opcion(string id, string texto)
-            {
-                Id = id;
-                Texto = texto;
-            }
-            public override string ToString()
-            {
-                return Texto; // Método ToString se usa para mostrar el texto en la lista desplegable
+                else
+                {
+                    foreach (Guna2GroupBox groupBox in panel_preguntas_respuestas.Controls.OfType<Guna2GroupBox>())
+                    {
+                        if (groupBox != clickedGroupBox && groupBox.Location.Y > clickedGroupBox.Location.Y)
+                        {
+                            groupBox.Location = new Point(groupBox.Location.X, groupBox.Location.Y - 110);
+                        }
+                    }
+                }
             }
         }
 
@@ -154,6 +157,7 @@ namespace terapia_floral.Formularios
 
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
+                    int posicion = 0;
 
                     while (reader.Read())
                     {
@@ -163,21 +167,35 @@ namespace terapia_floral.Formularios
 
                         string idCategoria = reader["idcategoria"].ToString();
                         string nombreCategoria = reader["nombrecategoria"].ToString();
-                        opciones.Add(new Opcion(idCategoria, nombreCategoria));
+
+                        Guna2Button categoria = new Guna2Button();
+
+                        categoria.Text = nombreCategoria;
+                        categoria.Tag = idCategoria;
+                        categoria.Location = new System.Drawing.Point(posicion, 0);
+                        categoria.Cursor = Cursors.Hand;
+                        categoria.AutoSize = true;
+                        categoria.AutoRoundedCorners = true;
+                        categoria.FillColor = Color.ForestGreen;
+                        categoria.ForeColor = Color.White;
+                        categoria.Height = 55;
+                        categoria.Click += btn_categoria_Click;
+
+                        menu_categorias.Controls.Add(categoria);
+
+                        posicion += categoria.Width + 10;
                     }
 
 
                     reader.Close();
                 }
 
-                comboBox_categoria.DataSource = opciones;
-                comboBox_categoria.ValueMember = "Id";
-                comboBox_categoria.DisplayMember = "Texto";
-
                 connection.Close();
             }
         }
 
-
+        private void btn_finalizar_ficha_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

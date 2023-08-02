@@ -154,7 +154,7 @@ namespace terapia_floral.UsuarioControl
 
         private void btn_nueva_consulta_Click(object sender, EventArgs e)
         {
-            Form ficha = new Formularios.ficha(idPaciente);
+            Form ficha = new ficha(idPaciente);
             ficha.TopMost = true;
             ficha.Show();
         }
