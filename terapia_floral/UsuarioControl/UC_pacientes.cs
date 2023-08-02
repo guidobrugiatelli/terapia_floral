@@ -134,7 +134,7 @@ namespace terapia_floral.UsuarioControl
                 // Crear los labels para los datos del paciente
                 Label labelNombreApellido = new Label();
                 labelNombreApellido.Text = nombreApellido;
-                labelNombreApellido.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+                labelNombreApellido.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
                 labelNombreApellido.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                 labelNombreApellido.AutoSize = true;
                 labelNombreApellido.Location = new Point(5, 5); // Ubicación del primer label

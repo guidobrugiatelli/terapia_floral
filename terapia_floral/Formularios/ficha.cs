@@ -62,7 +62,9 @@ namespace terapia_floral.Formularios
                         groupBoxPregunta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                         groupBoxPregunta.AutoSize = true;
                         groupBoxPregunta.BorderRadius = 5;
-                        groupBoxPregunta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88))))); ;
+                        groupBoxPregunta.CustomBorderColor = Color.WhiteSmoke;
+                        groupBoxPregunta.BorderColor = Color.WhiteSmoke;
+                        groupBoxPregunta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         groupBoxPregunta.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
                         groupBoxPregunta.Tag = idPregunta;
                         groupBoxPregunta.Text = pregunta;
@@ -70,7 +72,7 @@ namespace terapia_floral.Formularios
                         groupBoxPregunta.Padding = new Padding(3);
 
                         textBoxRespuesta.PlaceholderText = "Respuesta...";
-                        textBoxRespuesta.PlaceholderForeColor = Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170))))); ;
+                        textBoxRespuesta.PlaceholderForeColor = Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170))))); 
                         textBoxRespuesta.Multiline = true;
                         textBoxRespuesta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                         textBoxRespuesta.Width = groupBoxPregunta.Width - 4;
@@ -80,9 +82,9 @@ namespace terapia_floral.Formularios
                         textBoxRespuesta.Dock = DockStyle.Fill;
                         textBoxRespuesta.Tag = idPregunta;
 
+
                         groupBoxPregunta.Controls.Add(textBoxRespuesta);
                         panel_preguntas_respuestas.Controls.Add(groupBoxPregunta);
-
 
                         posicion += groupBoxPregunta.Height + 10;
                     }
@@ -163,27 +165,28 @@ namespace terapia_floral.Formularios
                     {
                         string nombre = reader["nombre_paciente"].ToString();
                         nombre_paciente.Text = nombre;
-                        header_ficha.ColumnStyles[0].Width = nombre_paciente.Width + 15;
 
                         string idCategoria = reader["idcategoria"].ToString();
                         string nombreCategoria = reader["nombrecategoria"].ToString();
 
-                        Guna2Button categoria = new Guna2Button();
+                        Guna2Button btnCategoria = new Guna2Button();
 
-                        categoria.Text = nombreCategoria;
-                        categoria.Tag = idCategoria;
-                        categoria.Location = new System.Drawing.Point(posicion, 0);
-                        categoria.Cursor = Cursors.Hand;
-                        categoria.AutoSize = true;
-                        categoria.AutoRoundedCorners = true;
-                        categoria.FillColor = Color.ForestGreen;
-                        categoria.ForeColor = Color.White;
-                        categoria.Height = 55;
-                        categoria.Click += btn_categoria_Click;
+                        btnCategoria.Text = nombreCategoria;
+                        btnCategoria.Tag = idCategoria;
+                        btnCategoria.Location = new System.Drawing.Point(posicion, 0);
+                        btnCategoria.Cursor = Cursors.Hand;
+                        btnCategoria.AutoSize = true;
+                        btnCategoria.AutoRoundedCorners = true;
+                        btnCategoria.FillColor = Color.White;
+                        btnCategoria.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+                        btnCategoria.BorderColor = Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+                        btnCategoria.BorderThickness = 1;   
+                        btnCategoria.Height = 55;
+                        btnCategoria.Click += btn_categoria_Click;
 
-                        menu_categorias.Controls.Add(categoria);
+                        menu_categorias.Controls.Add(btnCategoria);
 
-                        posicion += categoria.Width + 10;
+                        posicion += btnCategoria.Width + 10;
                     }
 
 
@@ -192,6 +195,10 @@ namespace terapia_floral.Formularios
 
                 connection.Close();
             }
+
+            DateTime fecha = DateTime.Now;
+
+            label_fecha.Text = fecha.ToLongDateString();
         }
 
         private void btn_finalizar_ficha_Click(object sender, EventArgs e)
