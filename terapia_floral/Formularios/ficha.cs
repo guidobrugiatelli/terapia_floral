@@ -1,10 +1,13 @@
 ﻿using Guna.UI2.WinForms;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Web.UI;
 using System.Windows.Forms;
 
 namespace terapia_floral.Formularios
@@ -16,20 +19,16 @@ namespace terapia_floral.Formularios
         private const int DefaultGroupBoxHeight = 40;
         private const int ExpandedGroupBoxHeight = 150;
 
+        private Dictionary<string, string> respuestasAnteriores = new Dictionary<string, string>();
+
         public ficha(string id)
         {
             InitializeComponent();
             idPaciente = id;            
         }
 
-        private void btn_categoria_Click(object sender, EventArgs e)
+        private void mostrarPreguntas(string idCategoria, int posicionPanel)
         {
-
-            Guna2Button botonCategoria = (Guna2Button)sender;
-            string idCategoria = botonCategoria.Tag.ToString();
-            string nombreCategoria = botonCategoria.Text;
-
-            panel_preguntas_respuestas.Controls.Clear();
 
             string sql = "SELECT * FROM preguntas WHERE idcategoria = @id";
 
@@ -64,13 +63,13 @@ namespace terapia_floral.Formularios
                         groupBoxPregunta.BorderColor = Color.WhiteSmoke;
                         groupBoxPregunta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         groupBoxPregunta.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-                        groupBoxPregunta.Tag = idPregunta;
+                        groupBoxPregunta.Tag = idCategoria;
                         groupBoxPregunta.Text = pregunta;
                         groupBoxPregunta.Click += groupBoxPregunta_Click;
                         groupBoxPregunta.Padding = new Padding(3);
 
                         textBoxRespuesta.PlaceholderText = "Respuesta...";
-                        textBoxRespuesta.PlaceholderForeColor = Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170))))); 
+                        textBoxRespuesta.PlaceholderForeColor = Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
                         textBoxRespuesta.Multiline = true;
                         textBoxRespuesta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                         textBoxRespuesta.Width = groupBoxPregunta.Width - 4;
@@ -81,12 +80,16 @@ namespace terapia_floral.Formularios
                         textBoxRespuesta.Dock = DockStyle.Fill;
                         textBoxRespuesta.Tag = idPregunta;
 
-
                         groupBoxPregunta.Controls.Add(textBoxRespuesta);
-                        panel_preguntas_respuestas.Controls.Add(groupBoxPregunta);
+
+                        if(posicionPanel == 1) categoria_1.Controls.Add(groupBoxPregunta);
+                        else if(posicionPanel == 2) categoria_2.Controls.Add(groupBoxPregunta);
+                        else if(posicionPanel == 3) categoria_3.Controls.Add(groupBoxPregunta);
+                        else if(posicionPanel == 4) categoria_4.Controls.Add(groupBoxPregunta);
 
                         posicion += groupBoxPregunta.Height + 10;
                     }
+
 
                     reader.Close();
                 }
@@ -109,21 +112,29 @@ namespace terapia_floral.Formularios
 
                 if (!isExpanded)
                 {
-                    foreach (Guna2GroupBox groupBox in panel_preguntas_respuestas.Controls.OfType<Guna2GroupBox>())
+                    foreach (Guna2Panel panelCategoria in panel_preguntas_respuestas.Controls.OfType<Guna2Panel>())
                     {
-                        if (groupBox != clickedGroupBox && groupBox.Location.Y > clickedGroupBox.Location.Y)
+
+                        foreach (Guna2GroupBox groupBox in panelCategoria.Controls.OfType<Guna2GroupBox>())
                         {
-                            groupBox.Location = new Point(groupBox.Location.X, groupBox.Location.Y + 110);
+                            if (groupBox != clickedGroupBox && groupBox.Location.Y > clickedGroupBox.Location.Y && clickedGroupBox.Tag == panelCategoria.Tag)
+                            {
+                                groupBox.Location = new Point(groupBox.Location.X, groupBox.Location.Y + 110);
+                            }
                         }
                     }
                 }
                 else
                 {
-                    foreach (Guna2GroupBox groupBox in panel_preguntas_respuestas.Controls.OfType<Guna2GroupBox>())
+                    foreach (Guna2Panel panelCategoria in panel_preguntas_respuestas.Controls.OfType<Guna2Panel>())
                     {
-                        if (groupBox != clickedGroupBox && groupBox.Location.Y > clickedGroupBox.Location.Y)
+
+                        foreach (Guna2GroupBox groupBox in panelCategoria.Controls.OfType<Guna2GroupBox>())
                         {
-                            groupBox.Location = new Point(groupBox.Location.X, groupBox.Location.Y - 110);
+                            if (groupBox != clickedGroupBox && groupBox.Location.Y > clickedGroupBox.Location.Y && clickedGroupBox.Tag == panelCategoria.Tag)
+                            {
+                                groupBox.Location = new Point(groupBox.Location.X, groupBox.Location.Y - 110);
+                            }
                         }
                     }
                 }
@@ -136,6 +147,33 @@ namespace terapia_floral.Formularios
                     textBox.Visible = !isExpanded;
                 }
 
+            }
+        }
+
+        private void btn_categoria_Click(object sender, EventArgs e)
+        {
+            panel_preguntas_respuestas.ColumnStyles[4] = new ColumnStyle(SizeType.Absolute, 0);
+
+            Guna2Button botonCategoria = (Guna2Button)sender;
+
+            int columnIndex = int.Parse(botonCategoria.Tag.ToString()); // Suponiendo que esto obtiene el índice de la columna
+            int totalColumns = panel_preguntas_respuestas.ColumnCount; // Obtener el número total de columnas
+
+            if (columnIndex >= 0 && columnIndex < totalColumns)
+            {
+                // Configurar la columna seleccionada para un ancho del 100% (SizeType.Percent)
+                ColumnStyle selectedColumnStyle = new ColumnStyle(SizeType.Percent, 100);
+                panel_preguntas_respuestas.ColumnStyles[columnIndex] = selectedColumnStyle;
+
+                // Configurar las otras columnas para un ancho absoluto de 0 (SizeType.Absolute)
+                for (int i = 0; i < totalColumns; i++)
+                {
+                    if (i != columnIndex)
+                    {
+                        ColumnStyle columnStyle = new ColumnStyle(SizeType.Absolute, 0);
+                        panel_preguntas_respuestas.ColumnStyles[i] = columnStyle;
+                    }
+                }
             }
         }
 
@@ -156,6 +194,8 @@ namespace terapia_floral.Formularios
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     int posicion = 0;
+                    int indexBtnCategoria = 0;
+                    int posicionPanel = 1;
 
                     while (reader.Read())
                     {
@@ -165,13 +205,14 @@ namespace terapia_floral.Formularios
                         string idCategoria = reader["idcategoria"].ToString();
                         string nombreCategoria = reader["nombrecategoria"].ToString();
 
+                        Guna2Panel panelCategoria = new Guna2Panel();    
                         Guna2Button btnCategoria = new Guna2Button();
 
                         btnCategoria.Text = nombreCategoria;
                         btnCategoria.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
                         btnCategoria.CheckedState.ForeColor = Color.White;
                         btnCategoria.CheckedState.FillColor = Color.ForestGreen;
-                        btnCategoria.Tag = idCategoria;
+                        btnCategoria.Tag = indexBtnCategoria;
                         btnCategoria.Location = new Point(posicion, 0);
                         btnCategoria.Cursor = Cursors.Hand;
                         btnCategoria.AutoSize = true;
@@ -183,9 +224,19 @@ namespace terapia_floral.Formularios
                         btnCategoria.Height = 55;
                         btnCategoria.Click += btn_categoria_Click;
 
+                        if (posicionPanel == 1) categoria_1.Tag = idCategoria;                        
+                        else if (posicionPanel == 2) categoria_2.Tag = idCategoria;                        
+                        else if (posicionPanel == 3) categoria_3.Tag = idCategoria;                        
+                        else if (posicionPanel == 4) categoria_4.Tag = idCategoria;                        
+
+                        mostrarPreguntas(idCategoria, posicionPanel);
+
                         menu_categorias.Controls.Add(btnCategoria);
 
                         posicion += btnCategoria.Width + 10;
+                        indexBtnCategoria++;
+                        posicionPanel++;
+
                     }
 
 
@@ -202,6 +253,29 @@ namespace terapia_floral.Formularios
 
         private void btn_finalizar_ficha_Click(object sender, EventArgs e)
         {
+            foreach (Guna2Panel panelCategoria in panel_preguntas_respuestas.Controls.OfType<Guna2Panel>())
+            {
+                foreach (Guna2GroupBox groupBox in panelCategoria.Controls.OfType<Guna2GroupBox>())
+                {
+
+                        // Encontrar el TextBox de respuesta dentro del GroupBox
+                        Guna2TextBox textBoxRespuesta = groupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
+
+                        if (textBoxRespuesta != null)
+                        {
+                            // Obtener el ID de la pregunta desde la propiedad Tag del GroupBox
+                            string idPregunta = groupBox.Tag.ToString();
+
+                            // Obtener el valor y la propiedad Tag del TextBox de respuesta
+                            string respuesta = textBoxRespuesta.Text;
+
+                            // Ahora puedes hacer lo que necesites con la respuesta y su ID
+                            MessageBox.Show("Pregunta ID: " + idPregunta);
+                            MessageBox.Show("Respuesta: " + respuesta);
+                        }
+                    
+                }
+            }             
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
