@@ -45,9 +45,9 @@
             this.panel_superior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_superior.Location = new System.Drawing.Point(0, 0);
             this.panel_superior.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_superior.MaximumSize = new System.Drawing.Size(0, 42);
+            this.panel_superior.MaximumSize = new System.Drawing.Size(0, 34);
             this.panel_superior.Name = "panel_superior";
-            this.panel_superior.Size = new System.Drawing.Size(882, 40);
+            this.panel_superior.Size = new System.Drawing.Size(663, 32);
             this.panel_superior.TabIndex = 0;
             // 
             // btn_flores
@@ -64,10 +64,10 @@
             this.btn_flores.FillColor = System.Drawing.Color.White;
             this.btn_flores.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_flores.ForeColor = System.Drawing.Color.Gray;
-            this.btn_flores.Location = new System.Drawing.Point(135, 1);
+            this.btn_flores.Location = new System.Drawing.Point(101, 1);
             this.btn_flores.Margin = new System.Windows.Forms.Padding(1);
             this.btn_flores.Name = "btn_flores";
-            this.btn_flores.Size = new System.Drawing.Size(92, 35);
+            this.btn_flores.Size = new System.Drawing.Size(69, 28);
             this.btn_flores.TabIndex = 1;
             this.btn_flores.Text = "Flores";
             this.btn_flores.Click += new System.EventHandler(this.btn_flores_Click);
@@ -90,28 +90,30 @@
             this.btn_pacientes.Location = new System.Drawing.Point(0, 1);
             this.btn_pacientes.Margin = new System.Windows.Forms.Padding(1);
             this.btn_pacientes.Name = "btn_pacientes";
-            this.btn_pacientes.Size = new System.Drawing.Size(133, 35);
+            this.btn_pacientes.Size = new System.Drawing.Size(100, 28);
             this.btn_pacientes.TabIndex = 0;
-            this.btn_pacientes.Text = "Pacientes";
+            this.btn_pacientes.Text = "Consultantes";
             this.btn_pacientes.Click += new System.EventHandler(this.btn_pacientes_Click);
             // 
             // panel_informacion
             // 
             this.panel_informacion.BackColor = System.Drawing.Color.White;
             this.panel_informacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_informacion.Location = new System.Drawing.Point(0, 40);
+            this.panel_informacion.Location = new System.Drawing.Point(0, 32);
+            this.panel_informacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_informacion.Name = "panel_informacion";
-            this.panel_informacion.Size = new System.Drawing.Size(882, 613);
+            this.panel_informacion.Size = new System.Drawing.Size(663, 505);
             this.panel_informacion.TabIndex = 1;
             // 
             // menu_inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 653);
+            this.ClientSize = new System.Drawing.Size(663, 537);
             this.Controls.Add(this.panel_informacion);
             this.Controls.Add(this.panel_superior);
-            this.MinimumSize = new System.Drawing.Size(900, 700);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(679, 576);
             this.Name = "menu_inicio";
             this.Text = "Software Terapia Floral";
             this.Load += new System.EventHandler(this.menu_inicio_Load);

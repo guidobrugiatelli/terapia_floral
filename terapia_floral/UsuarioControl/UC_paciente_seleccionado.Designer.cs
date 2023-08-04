@@ -35,26 +35,22 @@
             this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.NombreApellido = new System.Windows.Forms.Label();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.panelInfoPaciente = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
             this.btn_nueva_consulta = new Guna.UI2.WinForms.Guna2Button();
+            this.panel_info_paciente = new Guna.UI2.WinForms.Guna2Panel();
+            this.panelInfoPaciente = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel_historial_consultas = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.guna2Panel5.SuspendLayout();
             this.guna2Panel6.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.guna2Panel7.SuspendLayout();
+            this.panel_info_paciente.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -63,11 +59,11 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.guna2Panel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.guna2Panel6, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel_info_paciente, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
@@ -174,79 +170,6 @@
             this.NombreApellido.Size = new System.Drawing.Size(0, 26);
             this.NombreApellido.TabIndex = 0;
             // 
-            // guna2Panel3
-            // 
-            this.guna2Panel3.AutoScroll = true;
-            this.guna2Panel3.Controls.Add(this.tableLayoutPanel3);
-            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(2, 51);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(685, 352);
-            this.guna2Panel3.TabIndex = 1;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.panelInfoPaciente, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.guna2Panel4, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.guna2Panel5, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 228F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(685, 352);
-            this.tableLayoutPanel3.TabIndex = 1;
-            // 
-            // panelInfoPaciente
-            // 
-            this.panelInfoPaciente.BackColor = System.Drawing.Color.White;
-            this.panelInfoPaciente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelInfoPaciente.BorderRadius = 15;
-            this.panelInfoPaciente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInfoPaciente.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.panelInfoPaciente.Location = new System.Drawing.Point(0, 8);
-            this.panelInfoPaciente.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.panelInfoPaciente.Name = "panelInfoPaciente";
-            this.panelInfoPaciente.Size = new System.Drawing.Size(685, 220);
-            this.panelInfoPaciente.TabIndex = 0;
-            // 
-            // guna2Panel4
-            // 
-            this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel4.Location = new System.Drawing.Point(0, 269);
-            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(685, 83);
-            this.guna2Panel4.TabIndex = 2;
-            // 
-            // guna2Panel5
-            // 
-            this.guna2Panel5.Controls.Add(this.label1);
-            this.guna2Panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel5.Location = new System.Drawing.Point(2, 230);
-            this.guna2Panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(681, 37);
-            this.guna2Panel5.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-            this.label1.Location = new System.Drawing.Point(0, 15);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Historial de consultas";
-            // 
             // guna2Panel6
             // 
             this.guna2Panel6.BorderRadius = 10;
@@ -271,7 +194,7 @@
             this.tableLayoutPanel4.Controls.Add(this.guna2Panel7, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -283,7 +206,7 @@
             this.guna2Panel7.Controls.Add(this.btn_nueva_consulta);
             this.guna2Panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel7.Location = new System.Drawing.Point(252, 2);
-            this.guna2Panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel7.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel7.Name = "guna2Panel7";
             this.guna2Panel7.Size = new System.Drawing.Size(184, 61);
             this.guna2Panel7.TabIndex = 0;
@@ -302,12 +225,62 @@
             this.btn_nueva_consulta.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_nueva_consulta.ForeColor = System.Drawing.Color.ForestGreen;
             this.btn_nueva_consulta.Location = new System.Drawing.Point(2, 13);
-            this.btn_nueva_consulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_nueva_consulta.Margin = new System.Windows.Forms.Padding(2);
             this.btn_nueva_consulta.Name = "btn_nueva_consulta";
             this.btn_nueva_consulta.Size = new System.Drawing.Size(178, 33);
             this.btn_nueva_consulta.TabIndex = 0;
             this.btn_nueva_consulta.Text = "Nueva consulta";
             this.btn_nueva_consulta.Click += new System.EventHandler(this.btn_nueva_consulta_Click);
+            // 
+            // panel_info_paciente
+            // 
+            this.panel_info_paciente.AutoScroll = true;
+            this.panel_info_paciente.AutoScrollMargin = new System.Drawing.Size(0, 10);
+            this.panel_info_paciente.Controls.Add(this.label1);
+            this.panel_info_paciente.Controls.Add(this.panel_historial_consultas);
+            this.panel_info_paciente.Controls.Add(this.panelInfoPaciente);
+            this.panel_info_paciente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_info_paciente.Location = new System.Drawing.Point(0, 49);
+            this.panel_info_paciente.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_info_paciente.Name = "panel_info_paciente";
+            this.panel_info_paciente.Size = new System.Drawing.Size(689, 356);
+            this.panel_info_paciente.TabIndex = 1;
+            // 
+            // panelInfoPaciente
+            // 
+            this.panelInfoPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelInfoPaciente.BackColor = System.Drawing.Color.White;
+            this.panelInfoPaciente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelInfoPaciente.BorderRadius = 15;
+            this.panelInfoPaciente.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.panelInfoPaciente.Location = new System.Drawing.Point(0, 8);
+            this.panelInfoPaciente.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.panelInfoPaciente.Name = "panelInfoPaciente";
+            this.panelInfoPaciente.Size = new System.Drawing.Size(678, 222);
+            this.panelInfoPaciente.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.label1.Location = new System.Drawing.Point(2, 230);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(277, 36);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Historial de consultas";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // panel_historial_consultas
+            // 
+            this.panel_historial_consultas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_historial_consultas.Location = new System.Drawing.Point(6, 281);
+            this.panel_historial_consultas.Margin = new System.Windows.Forms.Padding(0, 15, 10, 0);
+            this.panel_historial_consultas.Name = "panel_historial_consultas";
+            this.panel_historial_consultas.Size = new System.Drawing.Size(672, 65);
+            this.panel_historial_consultas.TabIndex = 4;
             // 
             // UC_paciente_seleccionado
             // 
@@ -324,13 +297,10 @@
             this.guna2Panel1.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
-            this.guna2Panel3.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.guna2Panel5.ResumeLayout(false);
-            this.guna2Panel5.PerformLayout();
             this.guna2Panel6.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.guna2Panel7.ResumeLayout(false);
+            this.panel_info_paciente.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -344,15 +314,13 @@
         private Guna.UI2.WinForms.Guna2Button btn_editar_paciente;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label NombreApellido;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private Guna.UI2.WinForms.Guna2Panel panelInfoPaciente;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
+        private Guna.UI2.WinForms.Guna2Panel panel_info_paciente;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel7;
         private Guna.UI2.WinForms.Guna2Button btn_nueva_consulta;
+        private Guna.UI2.WinForms.Guna2Panel panelInfoPaciente;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Panel panel_historial_consultas;
     }
 }

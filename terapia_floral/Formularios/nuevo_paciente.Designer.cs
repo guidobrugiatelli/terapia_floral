@@ -52,9 +52,9 @@
             this.label1.Location = new System.Drawing.Point(16, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 30);
+            this.label1.Size = new System.Drawing.Size(197, 30);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nuevo Paciente";
+            this.label1.Text = "Nuevo Consultante";
             // 
             // txt_nombreapellido
             // 
@@ -72,7 +72,7 @@
             this.txt_nombreapellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_nombreapellido.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_nombreapellido.Location = new System.Drawing.Point(14, 61);
-            this.txt_nombreapellido.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_nombreapellido.Margin = new System.Windows.Forms.Padding(8);
             this.txt_nombreapellido.Name = "txt_nombreapellido";
             this.txt_nombreapellido.PasswordChar = '\0';
             this.txt_nombreapellido.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -98,7 +98,7 @@
             this.txt_lugarhora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_lugarhora.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_lugarhora.Location = new System.Drawing.Point(14, 157);
-            this.txt_lugarhora.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_lugarhora.Margin = new System.Windows.Forms.Padding(8);
             this.txt_lugarhora.Name = "txt_lugarhora";
             this.txt_lugarhora.PasswordChar = '\0';
             this.txt_lugarhora.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -124,7 +124,7 @@
             this.txt_dondevive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_dondevive.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_dondevive.Location = new System.Drawing.Point(14, 205);
-            this.txt_dondevive.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_dondevive.Margin = new System.Windows.Forms.Padding(8);
             this.txt_dondevive.Name = "txt_dondevive";
             this.txt_dondevive.PasswordChar = '\0';
             this.txt_dondevive.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -150,11 +150,11 @@
             this.txt_convivenciaanimal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_convivenciaanimal.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_convivenciaanimal.Location = new System.Drawing.Point(14, 253);
-            this.txt_convivenciaanimal.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_convivenciaanimal.Margin = new System.Windows.Forms.Padding(8);
             this.txt_convivenciaanimal.Name = "txt_convivenciaanimal";
             this.txt_convivenciaanimal.PasswordChar = '\0';
             this.txt_convivenciaanimal.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.txt_convivenciaanimal.PlaceholderText = "Convive con algún animal";
+            this.txt_convivenciaanimal.PlaceholderText = "¿Convive con algún animal?";
             this.txt_convivenciaanimal.SelectedText = "";
             this.txt_convivenciaanimal.Size = new System.Drawing.Size(408, 38);
             this.txt_convivenciaanimal.TabIndex = 5;
@@ -176,7 +176,7 @@
             this.txt_ocupacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_ocupacion.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_ocupacion.Location = new System.Drawing.Point(14, 301);
-            this.txt_ocupacion.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_ocupacion.Margin = new System.Windows.Forms.Padding(8);
             this.txt_ocupacion.Name = "txt_ocupacion";
             this.txt_ocupacion.PasswordChar = '\0';
             this.txt_ocupacion.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -202,7 +202,7 @@
             this.txt_enfermedades.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_enfermedades.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_enfermedades.Location = new System.Drawing.Point(14, 349);
-            this.txt_enfermedades.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_enfermedades.Margin = new System.Windows.Forms.Padding(8);
             this.txt_enfermedades.Name = "txt_enfermedades";
             this.txt_enfermedades.PasswordChar = '\0';
             this.txt_enfermedades.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -228,7 +228,7 @@
             this.txt_celular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_celular.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_celular.Location = new System.Drawing.Point(14, 396);
-            this.txt_celular.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_celular.Margin = new System.Windows.Forms.Padding(8);
             this.txt_celular.Name = "txt_celular";
             this.txt_celular.PasswordChar = '\0';
             this.txt_celular.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -255,7 +255,7 @@
             this.txt_correo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_correo.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_correo.Location = new System.Drawing.Point(14, 444);
-            this.txt_correo.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_correo.Margin = new System.Windows.Forms.Padding(8);
             this.txt_correo.Name = "txt_correo";
             this.txt_correo.PasswordChar = '\0';
             this.txt_correo.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -270,7 +270,7 @@
             this.panel_botones.Controls.Add(this.btn_cancelar);
             this.panel_botones.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_botones.Location = new System.Drawing.Point(0, 515);
-            this.panel_botones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_botones.Margin = new System.Windows.Forms.Padding(2);
             this.panel_botones.Name = "panel_botones";
             this.panel_botones.Size = new System.Drawing.Size(438, 69);
             this.panel_botones.TabIndex = 9;
@@ -289,7 +289,7 @@
             this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_agregar.ForeColor = System.Drawing.Color.White;
             this.btn_agregar.Location = new System.Drawing.Point(171, 2);
-            this.btn_agregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_agregar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(251, 50);
             this.btn_agregar.TabIndex = 11;
@@ -310,7 +310,7 @@
             this.btn_cancelar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_cancelar.ForeColor = System.Drawing.Color.ForestGreen;
             this.btn_cancelar.Location = new System.Drawing.Point(14, 2);
-            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(152, 50);
             this.btn_cancelar.TabIndex = 10;
@@ -333,7 +333,7 @@
             this.txt_fechanacimiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.txt_fechanacimiento.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.txt_fechanacimiento.Location = new System.Drawing.Point(14, 109);
-            this.txt_fechanacimiento.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txt_fechanacimiento.Margin = new System.Windows.Forms.Padding(8);
             this.txt_fechanacimiento.Name = "txt_fechanacimiento";
             this.txt_fechanacimiento.PasswordChar = '\0';
             this.txt_fechanacimiento.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -360,7 +360,7 @@
             this.Controls.Add(this.txt_lugarhora);
             this.Controls.Add(this.txt_nombreapellido);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(454, 600);
             this.MinimumSize = new System.Drawing.Size(454, 600);
             this.Name = "nuevo_paciente";

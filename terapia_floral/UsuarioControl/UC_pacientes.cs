@@ -150,8 +150,19 @@ namespace terapia_floral.UsuarioControl
                     labelNombreApellido.Text = nombreApellido;
                 }
 
+
                 Label labelUltimaConsulta = new Label();
-                labelUltimaConsulta.Text = "Última consulta: " + ultimaConsulta;
+                
+                if (!string.IsNullOrEmpty(ultimaConsulta))
+                {
+                    string[] resultado = ultimaConsulta.Split(new char[] { ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
+                    labelUltimaConsulta.Text = "Última consulta: " + resultado[2] + '/' + resultado[1] + '/' + resultado[0];
+                } else
+                {
+                    string[] resultado = ultimaConsulta.Split(new char[] { ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
+                    labelUltimaConsulta.Text = "Última consulta: --/--/----";
+                }
+
                 labelUltimaConsulta.Font = new Font("Segoe UI", 8, FontStyle.Regular);
                 labelUltimaConsulta.ForeColor = Color.DarkGray;
                 labelUltimaConsulta.AutoSize = true;

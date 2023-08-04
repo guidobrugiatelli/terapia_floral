@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Configuration;
 using System.Data.SQLite;
 using System.Drawing;
@@ -21,6 +22,7 @@ namespace terapia_floral.UsuarioControl
         private void UC_paciente_seleccionado_Load(object sender, EventArgs e)
         {
             obtenerPaciente();
+            obtenerHistorial();
         }
 
         private void obtenerPaciente()
@@ -84,7 +86,7 @@ namespace terapia_floral.UsuarioControl
                             labelDondeQuien.Font = new Font("Segoe UI", 14f, FontStyle.Regular, GraphicsUnit.Pixel);
                             labelDondeQuien.Width = panelInfoPaciente.Width;
 
-                            labelConviveAnimal.Text = "Convive con algún animal: " + conviveAnimal;
+                            labelConviveAnimal.Text = "¿Convive con algún animal?: " + conviveAnimal;
                             labelConviveAnimal.BackColor = Color.Transparent;
                             labelConviveAnimal.Location = new Point(10, 85);
                             labelConviveAnimal.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
@@ -152,11 +154,119 @@ namespace terapia_floral.UsuarioControl
             }
         }
 
+        private void obtenerHistorial()
+        {
+            panel_historial_consultas.Controls.Clear();
+
+            string sql = "SELECT * FROM fichas WHERE idpaciente = @id ORDER BY fecha DESC";
+
+            using (SQLiteConnection connection = new SQLiteConnection(database))
+            {
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", idPaciente);
+                connection.Open();
+
+                command.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        int posicion = 0; 
+                        int altoPanelHistorialConsultas = 0;
+                        
+                        while (reader.Read())
+                        {
+                            string fecha = reader["fecha"].ToString();
+                            string receta = reader["receta"].ToString();
+                            string idFicha = reader["id"].ToString();
+
+                            TableLayoutPanel tableLayoutPanel = new TableLayoutPanel(); 
+                            Label labelFecha = new Label();
+                            Guna2Button btnVerConsulta = new Guna2Button();
+                            Guna2TextBox textboxReceta = new Guna2TextBox();
+
+                            altoPanelHistorialConsultas += tableLayoutPanel.Height + 10;
+                            panel_historial_consultas.Height = altoPanelHistorialConsultas;
+
+                            tableLayoutPanel.ColumnCount = 3;
+                            tableLayoutPanel.RowCount = 1;
+                            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+                            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+                            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+                            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+                            tableLayoutPanel.Controls.Add(labelFecha, 0, 0);
+                            tableLayoutPanel.Controls.Add(textboxReceta, 1, 0);
+                            tableLayoutPanel.Controls.Add(btnVerConsulta, 2, 0);
+                            tableLayoutPanel.Location = new Point(0, posicion);
+                            tableLayoutPanel.Width = panel_historial_consultas.Width;
+                            tableLayoutPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                            tableLayoutPanel.Height = 65;
+
+                            string[] resultado = fecha.Split(new char[] { ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
+
+                            labelFecha.Text = resultado[2] + '/' + resultado[1] + '/' + resultado[0];
+                            labelFecha.TextAlign = ContentAlignment.TopRight;
+                            labelFecha.Padding = new Padding(0, 10, 5, 0);
+                            labelFecha.Dock = DockStyle.Fill;
+                            labelFecha.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+                            labelFecha.Font = new Font("Segoe UI", 14f, FontStyle.Regular, GraphicsUnit.Pixel);
+
+                            textboxReceta.Dock = DockStyle.Fill;
+                            textboxReceta.Height = 60;
+                            textboxReceta.Multiline = true;
+                            textboxReceta.ReadOnly = true;
+                            textboxReceta.BorderThickness = 0;
+                            textboxReceta.AutoSize = false;
+                            textboxReceta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+                            textboxReceta.Font = new Font("Segoe UI", 14f, FontStyle.Regular, GraphicsUnit.Pixel);
+                            textboxReceta.Text = receta;
+                            textboxReceta.Width = tableLayoutPanel.Width - labelFecha.Width - btnVerConsulta.Width - 30;
+
+                            btnVerConsulta.Text = "Ver consulta";
+                            //btnVerConsulta.Dock = DockStyle.Fill;
+                            btnVerConsulta.FillColor = Color.White; 
+                            btnVerConsulta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+                            btnVerConsulta.BorderRadius = 5;
+                            btnVerConsulta.Height = 30;
+                            btnVerConsulta.Cursor = Cursors.Hand;
+
+                            panel_historial_consultas.Controls.Add(tableLayoutPanel);
+                            posicion = posicion + tableLayoutPanel.Height + 10;
+                        }
+
+                        reader.Close();
+                    }
+                    else
+                    {
+
+                        Label label = new Label();
+
+                        label.Text = "Todavia no hay consultas";
+                        label.AutoSize = false;
+                        label.Dock = DockStyle.Fill;
+                        label.TextAlign = ContentAlignment.MiddleCenter;
+                        label.ForeColor = Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+                        label.Font = new Font("Segoe UI", 16f, FontStyle.Regular, GraphicsUnit.Pixel);
+
+                        panel_historial_consultas.Controls.Add(label);
+                    }
+                connection.Close();
+                }
+            }
+        }
+
         private void btn_nueva_consulta_Click(object sender, EventArgs e)
         {
             Form ficha = new ficha(idPaciente);
+            ficha.FormClosing += Ficha_FormClosing;
             ficha.TopMost = true;
             ficha.Show();
+        }
+
+        private void Ficha_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            obtenerHistorial();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

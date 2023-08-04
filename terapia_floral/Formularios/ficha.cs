@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Web.UI;
 using System.Windows.Forms;
 
@@ -18,8 +19,6 @@ namespace terapia_floral.Formularios
         private string idPaciente;
         private const int DefaultGroupBoxHeight = 40;
         private const int ExpandedGroupBoxHeight = 150;
-
-        private Dictionary<string, string> respuestasAnteriores = new Dictionary<string, string>();
 
         public ficha(string id)
         {
@@ -53,12 +52,12 @@ namespace terapia_floral.Formularios
                         Guna2TextBox textBoxRespuesta = new Guna2TextBox();
 
                         groupBoxPregunta.Location = new Point(0, posicion);
-                        groupBoxPregunta.Width = panel.Width - 30;
+                        groupBoxPregunta.Width = tableLayoutPanel2.Width - 20;
                         groupBoxPregunta.Height = 40;
                         groupBoxPregunta.BorderThickness = 1;
                         groupBoxPregunta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                         groupBoxPregunta.AutoSize = true;
-                        groupBoxPregunta.BorderRadius = 5;
+                        groupBoxPregunta.BorderRadius = 3;
                         groupBoxPregunta.CustomBorderColor = Color.WhiteSmoke;
                         groupBoxPregunta.BorderColor = Color.WhiteSmoke;
                         groupBoxPregunta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
@@ -73,8 +72,7 @@ namespace terapia_floral.Formularios
                         textBoxRespuesta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         textBoxRespuesta.Multiline = true;
                         textBoxRespuesta.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                        textBoxRespuesta.Width = groupBoxPregunta.Width - 4;
-                        textBoxRespuesta.Height = groupBoxPregunta.Height - 45;
+                        textBoxRespuesta.Width = groupBoxPregunta.Width - 6;
                         textBoxRespuesta.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
                         textBoxRespuesta.BorderThickness = 0;
                         textBoxRespuesta.Visible = false;
@@ -163,7 +161,7 @@ namespace terapia_floral.Formularios
             if (columnIndex >= 0 && columnIndex < totalColumns)
             {
                 // Configurar la columna seleccionada para un ancho del 100% (SizeType.Percent)
-                ColumnStyle selectedColumnStyle = new ColumnStyle(SizeType.Percent, 100);
+                ColumnStyle selectedColumnStyle = new ColumnStyle(SizeType.Percent, 95);
                 panel_preguntas_respuestas.ColumnStyles[columnIndex] = selectedColumnStyle;
 
                 // Configurar las otras columnas para un ancho absoluto de 0 (SizeType.Absolute)
@@ -252,49 +250,226 @@ namespace terapia_floral.Formularios
             label_fecha.Text = fecha.ToLongDateString();
         }
 
+        //private void btn_finalizar_ficha_Click(object sender, EventArgs e)
+        //{
+
+        //    const string characters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789";
+        //    StringBuilder idBuilder = new StringBuilder();
+        //    Random random = new Random();
+
+        //    for (int i = 0; i < 19; i++)
+        //    {
+        //        int index = random.Next(characters.Length);
+        //        idBuilder.Append(characters[index]);
+        //    }
+
+        //    string idFicha = idBuilder.ToString();
+
+        //    string receta = textBox_receta.Text;
+
+        //    if (!string.IsNullOrEmpty(receta))
+        //    {
+        //        string sql = "INSERT INTO fichas(id, idpaciente, receta, fecha) VALUES(@id, @idPaciente, @receta, @fecha)";
+
+        //        DateTime fecha = DateTime.Now;
+        //        long fechaMilisegundos = fecha.Ticks / TimeSpan.TicksPerMillisecond;
+
+        //        using (SQLiteConnection connection = new SQLiteConnection(database))
+        //        {
+        //            SQLiteCommand command = new SQLiteCommand(sql, connection);
+        //            command.Parameters.AddWithValue("@id", idFicha);
+        //            command.Parameters.AddWithValue("@idPaciente", idPaciente);
+        //            command.Parameters.AddWithValue("@receta", receta);
+        //            command.Parameters.AddWithValue("@fecha", fechaMilisegundos);
+
+        //            try
+        //            {
+        //                connection.Open();
+        //                int rowsAffected = command.ExecuteNonQuery();
+
+        //                if (rowsAffected > 0)
+        //                {
+        //                    foreach (Guna2Panel panelCategoria in panel_preguntas_respuestas.Controls.OfType<Guna2Panel>())
+        //                    {
+        //                        foreach (Guna2GroupBox groupBox in panelCategoria.Controls.OfType<Guna2GroupBox>())
+        //                        {
+
+        //                            // Encontrar el TextBox de respuesta dentro del GroupBox
+        //                            Guna2TextBox textBoxRespuesta = groupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
+
+        //                            if (textBoxRespuesta != null)
+        //                            {
+
+        //                                string idCategoria = groupBox.Tag.ToString();
+        //                                string respuesta = textBoxRespuesta.Text;
+        //                                string idPregunta = textBoxRespuesta.Tag.ToString();
+
+        //                                if (!string.IsNullOrEmpty(respuesta))
+        //                                {
+        //                                    string sqlPreguntas = "INSERT INTO respuestas(idficha, idpregunta, idcategoria, respuesta) VALUES(@id, @idPregunta, @idCategoria, @respuesta)";
+
+        //                                    using (SQLiteConnection connection2 = new SQLiteConnection(database))
+        //                                    {
+        //                                        SQLiteCommand command2 = new SQLiteCommand(sqlPreguntas, connection);
+        //                                        command2.Parameters.AddWithValue("@id", idFicha);
+        //                                        command2.Parameters.AddWithValue("@idPregunta", idPregunta);
+        //                                        command2.Parameters.AddWithValue("@idCategoria", idCategoria);
+        //                                        command2.Parameters.AddWithValue("@respuesta", respuesta);
+
+        //                                        try
+        //                                        {
+        //                                            connection.Open();
+        //                                        }
+        //                                        catch (Exception ex)
+        //                                        {
+        //                                            MessageBox.Show("Error al guardar: " + ex.Message);
+        //                                        }
+        //                                        connection.Close();
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+        //                    }
+        //                    this.Close();
+
+        //                }
+
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show("Error al guardar: " + ex.Message);
+        //            }
+        //            connection.Close();
+        //        }
+        //    }            
+        //}
+
         private void btn_finalizar_ficha_Click(object sender, EventArgs e)
         {
-            foreach (Guna2Panel panelCategoria in panel_preguntas_respuestas.Controls.OfType<Guna2Panel>())
+            const string characters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789";
+            StringBuilder idBuilder = new StringBuilder();
+            Random random = new Random();
+
+            for (int i = 0; i < 19; i++)
             {
-                foreach (Guna2GroupBox groupBox in panelCategoria.Controls.OfType<Guna2GroupBox>())
+                int index = random.Next(characters.Length);
+                idBuilder.Append(characters[index]);
+            }
+
+            string idFicha = idBuilder.ToString();
+
+            string receta = textBox_receta.Text;
+
+            if (!string.IsNullOrEmpty(receta))
+            {
+                string sqlFicha = "INSERT INTO fichas(id, idpaciente, receta, fecha) VALUES(@id, @idPaciente, @receta, @fecha)";
+
+                DateTime fecha = DateTime.Now;
+
+                using (SQLiteConnection connection = new SQLiteConnection(database))
                 {
+                    connection.Open();
 
-                        // Encontrar el TextBox de respuesta dentro del GroupBox
-                        Guna2TextBox textBoxRespuesta = groupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
-
-                        if (textBoxRespuesta != null)
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
                         {
-                            // Obtener el ID de la pregunta desde la propiedad Tag del GroupBox
-                            string idCategoria = groupBox.Tag.ToString();
+                            SQLiteCommand commandFicha = new SQLiteCommand(sqlFicha, connection);
+                            commandFicha.Parameters.AddWithValue("@id", idFicha);
+                            commandFicha.Parameters.AddWithValue("@idPaciente", idPaciente);
+                            commandFicha.Parameters.AddWithValue("@receta", receta);
+                            commandFicha.Parameters.AddWithValue("@fecha", fecha);
 
-                            // Obtener el valor y la propiedad Tag del TextBox de respuesta
-                            string respuesta = textBoxRespuesta.Text;
-                            string idPregunta = textBoxRespuesta.Tag.ToString();
+                            int rowsAffected = commandFicha.ExecuteNonQuery();
 
-                            // Ahora puedes hacer lo que necesites con la respuesta y su ID
+                            if (rowsAffected > 0)
+                            {
+                                string sqlActualizarUltimaConsulta = "UPDATE pacientes SET ultimaconsulta = @fecha WHERE id = @idPaciente";
 
-                            //MessageBox.Show("categoria ID: " + idCategoria);
-                            //MessageBox.Show("pregunta ID: " + idPregunta);
-                            //MessageBox.Show("Respuesta: " + respuesta);
+                                SQLiteCommand commandActualizar = new SQLiteCommand(sqlActualizarUltimaConsulta, connection);
+                                commandActualizar.Parameters.AddWithValue("@fecha", fecha);
+                                commandActualizar.Parameters.AddWithValue("@idPaciente", idPaciente);
+
+                                commandActualizar.ExecuteNonQuery();
+
+                                transaction.Commit();
+
+                                foreach (Guna2Panel panelCategoria in panel_preguntas_respuestas.Controls.OfType<Guna2Panel>())
+                                {
+                                    foreach (Guna2GroupBox groupBox in panelCategoria.Controls.OfType<Guna2GroupBox>())
+                                    {
+                                        Guna2TextBox textBoxRespuesta = groupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
+
+                                        if (textBoxRespuesta != null)
+                                        {
+
+                                            string idCategoria = groupBox.Tag.ToString();
+                                            string respuesta = textBoxRespuesta.Text;
+                                            string idPregunta = textBoxRespuesta.Tag.ToString();
+
+                                            if (!string.IsNullOrEmpty(respuesta))
+                                            {
+                                                string sqlPreguntas = "INSERT INTO respuestas(idficha, idpregunta, idcategoria, respuesta) VALUES(@id, @idPregunta, @idCategoria, @respuesta)";
+
+                                                using (SQLiteConnection connection3 = new SQLiteConnection(database))
+                                                {
+                                                    connection3.Open();
+
+                                                    using (SQLiteTransaction transaction3 = connection3.BeginTransaction())
+                                                    {
+                                                        try
+                                                        {
+                                                            SQLiteCommand commandRespuesta = new SQLiteCommand(sqlPreguntas, connection3);
+                                                            commandRespuesta.Parameters.AddWithValue("@id", idFicha);
+                                                            commandRespuesta.Parameters.AddWithValue("@idPregunta", idPregunta);
+                                                            commandRespuesta.Parameters.AddWithValue("@idCategoria", idCategoria);
+                                                            commandRespuesta.Parameters.AddWithValue("@respuesta", respuesta);
+
+                                                            commandRespuesta.ExecuteNonQuery();
+
+                                                            transaction3.Commit();
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+                                                            MessageBox.Show("Error al guardar respuesta: " + ex.Message);
+                                                            transaction3.Rollback();
+                                                        }
+                                                    }
+
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                    
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al guardar ficha: " + ex.Message);
+                            transaction.Rollback();
+                        }
+                    }
                 }
-            }             
+
+
+                this.Close();
+            }
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string estado = "off";
-            if (guna2Button2.Tag.ToString() == estado)
+            string estado = guna2Button1.Tag.ToString();
+             if (estado == "false")
             {
-                tableLayoutPanel1.RowStyles[3].Height = 250;
-                guna2Button2.Tag = "on";
-            }
-            else
+                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 50);
+                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 50);
+                guna2Button1.Tag = "true";
+            } else
             {
-                tableLayoutPanel1.RowStyles[3].Height = 55;
-                guna2Button2.Tag = "off";
-
+                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100);
+                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 0);
+                guna2Button1.Tag = "false";
             }
         }
     }
