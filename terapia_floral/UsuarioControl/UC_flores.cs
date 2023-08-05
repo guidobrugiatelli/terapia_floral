@@ -125,11 +125,6 @@ namespace terapia_floral.UsuarioControl
                         string descripcion = reader["descripcion"].ToString();
                         string equivalente = reader["equivalente"].ToString();
 
-                        if (string.IsNullOrEmpty(equivalente))
-                        {
-                            equivalente = "No tiene flores equivalentes";
-                        }
-
                         richTextBoxNombre.KeyUp += new KeyEventHandler(this.editar);
                         richTextBoxDescripcion.KeyUp += new KeyEventHandler(this.editar);
                         richTextBoxEquivalentes.KeyUp += new KeyEventHandler(this.editar);
@@ -299,7 +294,7 @@ namespace terapia_floral.UsuarioControl
                         {
                             btnGuardar.Visible = false;
                             btnCancelar.Visible = false;
-                            opcionesFlor.ColumnStyles[2].Width = 30;
+                            opcionesFlor.ColumnStyles[2].Width = 130;
 
                         }
                     }
@@ -342,7 +337,7 @@ namespace terapia_floral.UsuarioControl
                         DetalleFlor(id);
                         btnGuardar.Visible = false;
                         btnCancelar.Visible = false;    
-                        opcionesFlor.ColumnStyles[2].Width = 30;
+                        opcionesFlor.ColumnStyles[2].Width = 130;
 
                     }
                 }
@@ -383,7 +378,7 @@ namespace terapia_floral.UsuarioControl
 
                         btnGuardar.Visible = false;
                         btnCancelar.Visible = false;
-                        opcionesFlor.ColumnStyles[2].Width = 30;
+                        opcionesFlor.ColumnStyles[2].Width = 130;
                     }
 
                     reader.Close();

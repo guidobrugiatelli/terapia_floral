@@ -86,7 +86,7 @@ namespace terapia_floral.UsuarioControl
                             labelDondeQuien.Font = new Font("Segoe UI", 14f, FontStyle.Regular, GraphicsUnit.Pixel);
                             labelDondeQuien.Width = panelInfoPaciente.Width;
 
-                            labelConviveAnimal.Text = "¿Convive con algún animal?: " + conviveAnimal;
+                            labelConviveAnimal.Text = "Convive con algún animal: " + conviveAnimal;
                             labelConviveAnimal.BackColor = Color.Transparent;
                             labelConviveAnimal.Location = new Point(10, 85);
                             labelConviveAnimal.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
@@ -224,12 +224,15 @@ namespace terapia_floral.UsuarioControl
                             textboxReceta.Width = tableLayoutPanel.Width - labelFecha.Width - btnVerConsulta.Width - 30;
 
                             btnVerConsulta.Text = "Ver consulta";
-                            //btnVerConsulta.Dock = DockStyle.Fill;
                             btnVerConsulta.FillColor = Color.White; 
                             btnVerConsulta.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-                            btnVerConsulta.BorderRadius = 5;
                             btnVerConsulta.Height = 30;
+                            btnVerConsulta.AutoRoundedCorners = true;
+                            btnVerConsulta.BorderThickness = 1;
+                            btnVerConsulta.BorderColor = Color.FromArgb(((int)(((byte)(221)))),((int)(((byte)(221)))),((int)(((byte)(221)))));
                             btnVerConsulta.Cursor = Cursors.Hand;
+                            btnVerConsulta.Click += BtnVerConsulta_Click;
+                            btnVerConsulta.Tag = idFicha;
 
                             panel_historial_consultas.Controls.Add(tableLayoutPanel);
                             posicion = posicion + tableLayoutPanel.Height + 10;
@@ -254,6 +257,18 @@ namespace terapia_floral.UsuarioControl
                 connection.Close();
                 }
             }
+        }
+
+        private void BtnVerConsulta_Click(object sender, EventArgs e)
+        {
+            Guna2Button btnVerConsulta = (Guna2Button)sender;
+
+            string idFicha = btnVerConsulta.Tag.ToString();
+
+            ficha_completada fichaCompletada = new ficha_completada(idFicha, idPaciente);
+            fichaCompletada.FormClosing += Ficha_FormClosing;
+            fichaCompletada.TopMost = true;
+            fichaCompletada.Show();
         }
 
         private void btn_nueva_consulta_Click(object sender, EventArgs e)

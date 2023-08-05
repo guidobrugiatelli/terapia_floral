@@ -47,7 +47,7 @@
             this.panel_superior.Margin = new System.Windows.Forms.Padding(0);
             this.panel_superior.MaximumSize = new System.Drawing.Size(0, 34);
             this.panel_superior.Name = "panel_superior";
-            this.panel_superior.Size = new System.Drawing.Size(663, 32);
+            this.panel_superior.Size = new System.Drawing.Size(684, 32);
             this.panel_superior.TabIndex = 0;
             // 
             // btn_flores
@@ -100,19 +100,19 @@
             this.panel_informacion.BackColor = System.Drawing.Color.White;
             this.panel_informacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_informacion.Location = new System.Drawing.Point(0, 32);
-            this.panel_informacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_informacion.Margin = new System.Windows.Forms.Padding(2);
             this.panel_informacion.Name = "panel_informacion";
-            this.panel_informacion.Size = new System.Drawing.Size(663, 505);
+            this.panel_informacion.Size = new System.Drawing.Size(684, 505);
             this.panel_informacion.TabIndex = 1;
             // 
             // menu_inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 537);
+            this.ClientSize = new System.Drawing.Size(684, 537);
             this.Controls.Add(this.panel_informacion);
             this.Controls.Add(this.panel_superior);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(679, 576);
             this.Name = "menu_inicio";
             this.Text = "Software Terapia Floral";

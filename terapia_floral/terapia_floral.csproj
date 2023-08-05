@@ -85,6 +85,12 @@
     <Compile Include="Formularios\ficha.Designer.cs">
       <DependentUpon>ficha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\ficha_completada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ficha_completada.Designer.cs">
+      <DependentUpon>ficha_completada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\menu_inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ficha.resx">
       <DependentUpon>ficha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ficha_completada.resx">
+      <DependentUpon>ficha_completada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\menu_inicio.resx">
       <DependentUpon>menu_inicio.cs</DependentUpon>

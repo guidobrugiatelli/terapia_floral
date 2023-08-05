@@ -1,40 +1,39 @@
 ﻿using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Data.SQLite;
-using System.Diagnostics;
+using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Web.UI;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Linq;
+using System.Globalization;
 
 namespace terapia_floral.Formularios
 {
-    public partial class ficha : Form
+    public partial class ficha_completada : Form
     {
         private static string database = ConfigurationManager.ConnectionStrings["database"].ConnectionString;
+        private string idFicha;
         private string idPaciente;
         private const int DefaultGroupBoxHeight = 40;
         private const int ExpandedGroupBoxHeight = 150;
 
-        public ficha(string id)
+        public ficha_completada(string idFicha, string idPaciente)
         {
             InitializeComponent();
-            idPaciente = id;            
+            this.idPaciente = idPaciente;   
+            this.idFicha = idFicha;
         }
 
         private void mostrarPreguntas(string idCategoria, int posicionPanel)
         {
 
-            string sql = "SELECT * FROM preguntas WHERE idcategoria = @id";
+            string sql = "SELECT * FROM preguntas WHERE idcategoria = @idCategoria";
 
             using (SQLiteConnection connection = new SQLiteConnection(database))
             {
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.Parameters.AddWithValue("@id", idCategoria);
+                command.Parameters.AddWithValue("@idCategoria", idCategoria);
                 connection.Open();
 
                 command.CommandType = CommandType.Text;
@@ -65,7 +64,7 @@ namespace terapia_floral.Formularios
                         groupBoxPregunta.Tag = idCategoria;
                         groupBoxPregunta.Text = pregunta;
                         groupBoxPregunta.Click += groupBoxPregunta_Click;
-                        groupBoxPregunta.Padding = new Padding(3);
+                        groupBoxPregunta.Padding = new Padding(3);                        
 
                         textBoxRespuesta.PlaceholderText = "Respuesta...";
                         textBoxRespuesta.PlaceholderForeColor = Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -81,10 +80,10 @@ namespace terapia_floral.Formularios
 
                         groupBoxPregunta.Controls.Add(textBoxRespuesta);
 
-                        if(posicionPanel == 1) categoria_1.Controls.Add(groupBoxPregunta);
-                        else if(posicionPanel == 2) categoria_2.Controls.Add(groupBoxPregunta);
-                        else if(posicionPanel == 3) categoria_3.Controls.Add(groupBoxPregunta);
-                        else if(posicionPanel == 4) categoria_4.Controls.Add(groupBoxPregunta);
+                        if (posicionPanel == 1) categoria_1.Controls.Add(groupBoxPregunta);
+                        else if (posicionPanel == 2) categoria_2.Controls.Add(groupBoxPregunta);
+                        else if (posicionPanel == 3) categoria_3.Controls.Add(groupBoxPregunta);
+                        else if (posicionPanel == 4) categoria_4.Controls.Add(groupBoxPregunta);
 
                         posicion += groupBoxPregunta.Height + 10;
                     }
@@ -93,15 +92,14 @@ namespace terapia_floral.Formularios
                     reader.Close();
                 }
                 connection.Close();
-            }               
+            }
         }
-
 
         private void groupBoxPregunta_Click(object sender, EventArgs e)
         {
             if (sender is Guna2GroupBox clickedGroupBox)
             {
-                
+
                 int currentHeight = clickedGroupBox.Height;
 
                 // Verificar si el GroupBox está expandido o no
@@ -144,8 +142,49 @@ namespace terapia_floral.Formularios
                 if (textBox != null)
                 {
                     textBox.Visible = !isExpanded;
+                    string idPregunta = textBox.Tag.ToString();
+
+                    if (!isExpanded)
+                    {
+                        string sql = "SELECT respuesta FROM respuestas WHERE idFicha = @idFicha and idpregunta = @idPregunta";
+                        using (SQLiteConnection connection = new SQLiteConnection(database))
+                        {
+                            SQLiteCommand command = new SQLiteCommand(sql, connection);
+                            command.Parameters.AddWithValue("@idFicha", idFicha);
+                            command.Parameters.AddWithValue("@idPregunta", idPregunta);
+
+                            connection.Open();
+
+                            command.CommandType = CommandType.Text;
+
+                            using (SQLiteDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    textBox.Text = reader["respuesta"].ToString();
+                                }
+                            }
+                        }
+                    }
                 }
 
+            }
+        }
+
+        private void btn_preguntas_Click(object sender, System.EventArgs e)
+        {
+                string estado = btn_preguntas.Tag.ToString();
+                if (estado == "false")
+                {
+                    tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 50);
+                    tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 50);
+                    btn_preguntas.Tag = "true";
+                }
+                else
+                {
+                    tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100);
+                    tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 0);
+                    btn_preguntas.Tag = "false";
             }
         }
 
@@ -176,16 +215,19 @@ namespace terapia_floral.Formularios
             }
         }
 
-        private void ficha_load(object sender, EventArgs e)
+        private void ficha_completada_Load(object sender, EventArgs e)
         {
-            string sql = "SELECT p.nombreapellido AS nombre_paciente, c.idcategoria, c.nombrecategoria " +
+            string sql = "SELECT p.nombreapellido AS nombre_paciente, c.idcategoria, c.nombrecategoria, f.fecha, f.receta " +
                          "FROM pacientes p " +
-                         "JOIN categorias c ON p.id = @id";
+                         "JOIN categorias c ON p.id = @idPaciente " +
+                         "JOIN fichas f ON f.idpaciente = p.id " +
+                         "WHERE f.id = @idFicha";
 
             using (SQLiteConnection connection = new SQLiteConnection(database))
             {
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.Parameters.AddWithValue("@id", idPaciente);
+                command.Parameters.AddWithValue("@idPaciente", idPaciente);
+                command.Parameters.AddWithValue("@idFicha", idFicha);
                 connection.Open();
 
                 command.CommandType = CommandType.Text;
@@ -201,10 +243,20 @@ namespace terapia_floral.Formularios
                         string nombre = reader["nombre_paciente"].ToString();
                         nombre_paciente.Text = nombre;
 
+                        string fechaFicha = reader["fecha"].ToString();
+                        DateTime fechaDesdeBD = DateTime.Parse(fechaFicha);
+
+                        string fechaLarga = fechaDesdeBD.ToLongDateString();
+
+                        fecha_ficha.Text = fechaLarga;
+
                         string idCategoria = reader["idcategoria"].ToString();
                         string nombreCategoria = reader["nombrecategoria"].ToString();
+                        string receta = reader["receta"].ToString();
 
-                        Guna2Panel panelCategoria = new Guna2Panel();    
+                        textBox_receta.Text = receta;
+
+                        Guna2Panel panelCategoria = new Guna2Panel();
                         Guna2Button btnCategoria = new Guna2Button();
 
                         btnCategoria.Text = nombreCategoria;
@@ -219,14 +271,14 @@ namespace terapia_floral.Formularios
                         btnCategoria.FillColor = Color.White;
                         btnCategoria.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         btnCategoria.BorderColor = Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-                        btnCategoria.BorderThickness = 1;   
+                        btnCategoria.BorderThickness = 1;
                         btnCategoria.Height = 55;
                         btnCategoria.Click += btn_categoria_Click;
 
-                        if (posicionPanel == 1) categoria_1.Tag = idCategoria;                        
-                        else if (posicionPanel == 2) categoria_2.Tag = idCategoria;                        
-                        else if (posicionPanel == 3) categoria_3.Tag = idCategoria;                        
-                        else if (posicionPanel == 4) categoria_4.Tag = idCategoria;                        
+                        if (posicionPanel == 1) categoria_1.Tag = idCategoria;
+                        else if (posicionPanel == 2) categoria_2.Tag = idCategoria;
+                        else if (posicionPanel == 3) categoria_3.Tag = idCategoria;
+                        else if (posicionPanel == 4) categoria_4.Tag = idCategoria;
 
                         mostrarPreguntas(idCategoria, posicionPanel);
 
@@ -243,139 +295,6 @@ namespace terapia_floral.Formularios
                 }
 
                 connection.Close();
-            }
-
-            DateTime fecha = DateTime.Now;
-
-            label_fecha.Text = fecha.ToLongDateString();
-        }
-
-        private void btn_finalizar_ficha_Click(object sender, EventArgs e)
-        {
-            const string characters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789";
-            StringBuilder idBuilder = new StringBuilder();
-            Random random = new Random();
-
-            for (int i = 0; i < 19; i++)
-            {
-                int index = random.Next(characters.Length);
-                idBuilder.Append(characters[index]);
-            }
-
-            string idFicha = idBuilder.ToString();
-
-            string receta = textBox_receta.Text;
-
-            if (!string.IsNullOrEmpty(receta))
-            {
-                string sqlFicha = "INSERT INTO fichas(id, idpaciente, receta, fecha) VALUES(@id, @idPaciente, @receta, @fecha)";
-
-                DateTime fecha = DateTime.Now;
-
-                using (SQLiteConnection connection = new SQLiteConnection(database))
-                {
-                    connection.Open();
-
-                    using (SQLiteTransaction transaction = connection.BeginTransaction())
-                    {
-                        try
-                        {
-                            SQLiteCommand commandFicha = new SQLiteCommand(sqlFicha, connection);
-                            commandFicha.Parameters.AddWithValue("@id", idFicha);
-                            commandFicha.Parameters.AddWithValue("@idPaciente", idPaciente);
-                            commandFicha.Parameters.AddWithValue("@receta", receta);
-                            commandFicha.Parameters.AddWithValue("@fecha", fecha);
-
-                            int rowsAffected = commandFicha.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                string sqlActualizarUltimaConsulta = "UPDATE pacientes SET ultimaconsulta = @fecha WHERE id = @idPaciente";
-
-                                SQLiteCommand commandActualizar = new SQLiteCommand(sqlActualizarUltimaConsulta, connection);
-                                commandActualizar.Parameters.AddWithValue("@fecha", fecha);
-                                commandActualizar.Parameters.AddWithValue("@idPaciente", idPaciente);
-
-                                commandActualizar.ExecuteNonQuery();
-
-                                transaction.Commit();
-
-                                foreach (Guna2Panel panelCategoria in panel_preguntas_respuestas.Controls.OfType<Guna2Panel>())
-                                {
-                                    foreach (Guna2GroupBox groupBox in panelCategoria.Controls.OfType<Guna2GroupBox>())
-                                    {
-                                        Guna2TextBox textBoxRespuesta = groupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
-
-                                        if (textBoxRespuesta != null)
-                                        {
-
-                                            string idCategoria = groupBox.Tag.ToString();
-                                            string respuesta = textBoxRespuesta.Text;
-                                            string idPregunta = textBoxRespuesta.Tag.ToString();
-
-                                            if (!string.IsNullOrEmpty(respuesta))
-                                            {
-                                                string sqlPreguntas = "INSERT INTO respuestas(idficha, idpregunta, idcategoria, respuesta) VALUES(@id, @idPregunta, @idCategoria, @respuesta)";
-
-                                                using (SQLiteConnection connection3 = new SQLiteConnection(database))
-                                                {
-                                                    connection3.Open();
-
-                                                    using (SQLiteTransaction transaction3 = connection3.BeginTransaction())
-                                                    {
-                                                        try
-                                                        {
-                                                            SQLiteCommand commandRespuesta = new SQLiteCommand(sqlPreguntas, connection3);
-                                                            commandRespuesta.Parameters.AddWithValue("@id", idFicha);
-                                                            commandRespuesta.Parameters.AddWithValue("@idPregunta", idPregunta);
-                                                            commandRespuesta.Parameters.AddWithValue("@idCategoria", idCategoria);
-                                                            commandRespuesta.Parameters.AddWithValue("@respuesta", respuesta);
-
-                                                            commandRespuesta.ExecuteNonQuery();
-
-                                                            transaction3.Commit();
-                                                        }
-                                                        catch (Exception ex)
-                                                        {
-                                                            MessageBox.Show("Error al guardar respuesta: " + ex.Message);
-                                                            transaction3.Rollback();
-                                                        }
-                                                    }
-
-                                                }
-
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error al guardar ficha: " + ex.Message);
-                            transaction.Rollback();
-                        }
-                    }
-                }
-
-
-                this.Close();
-            }
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            string estado = guna2Button1.Tag.ToString();
-             if (estado == "false")
-            {
-                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 50);
-                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 50);
-                guna2Button1.Tag = "true";
-            } else
-            {
-                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100);
-                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 0);
-                guna2Button1.Tag = "false";
             }
         }
     }
