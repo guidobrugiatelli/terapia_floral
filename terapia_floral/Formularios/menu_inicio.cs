@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using terapia_floral.Formularios;
 using terapia_floral.UsuarioControl;
 
 namespace terapia_floral
@@ -36,5 +37,10 @@ namespace terapia_floral
             agregarUC(uc);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form form_preguntas = new Formularios.cargar_preguntas();
+            form_preguntas.Show();
+        }
     }
 }

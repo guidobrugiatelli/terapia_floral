@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\cargar_preguntas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\cargar_preguntas.Designer.cs">
+      <DependentUpon>cargar_preguntas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\editar_paciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
       <DependentUpon>UC_paciente_sin _seleccion.cs</DependentUpon>
     </Compile>
     <Content Include="Resources\cruz.png" />
+    <EmbeddedResource Include="Formularios\cargar_preguntas.resx">
+      <DependentUpon>cargar_preguntas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\editar_paciente.resx">
       <DependentUpon>editar_paciente.cs</DependentUpon>
     </EmbeddedResource>
