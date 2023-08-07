@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Linq;
-using System.Globalization;
+using System.Text;
 
 namespace terapia_floral.Formularios
 {
@@ -17,6 +17,8 @@ namespace terapia_floral.Formularios
         private string idPaciente;
         private const int DefaultGroupBoxHeight = 40;
         private const int ExpandedGroupBoxHeight = 150;
+        private string Receta;
+        private string Respuesta;
 
         public ficha_completada(string idFicha, string idPaciente)
         {
@@ -49,6 +51,7 @@ namespace terapia_floral.Formularios
 
                         Guna2GroupBox groupBoxPregunta = new Guna2GroupBox();
                         Guna2TextBox textBoxRespuesta = new Guna2TextBox();
+                        Guna2Button btnGuardar = new Guna2Button();
 
                         groupBoxPregunta.Location = new Point(0, posicion);
                         groupBoxPregunta.Width = tableLayoutPanel2.Width - 20;
@@ -142,10 +145,13 @@ namespace terapia_floral.Formularios
                 if (textBox != null)
                 {
                     textBox.Visible = !isExpanded;
+                    textBox.KeyUp += TextBox_TextChanged;
+
                     string idPregunta = textBox.Tag.ToString();
 
                     if (!isExpanded)
                     {
+
                         string sql = "SELECT respuesta FROM respuestas WHERE idFicha = @idFicha and idpregunta = @idPregunta";
                         using (SQLiteConnection connection = new SQLiteConnection(database))
                         {
@@ -161,6 +167,8 @@ namespace terapia_floral.Formularios
                             {
                                 if (reader.Read())
                                 {
+                                    Respuesta = reader["respuesta"].ToString();
+                                    
                                     textBox.Text = reader["respuesta"].ToString();
                                 }
                             }
@@ -171,21 +179,9 @@ namespace terapia_floral.Formularios
             }
         }
 
-        private void btn_preguntas_Click(object sender, System.EventArgs e)
+        private void TextBox_TextChanged(object sender, EventArgs e)
         {
-                string estado = btn_preguntas.Tag.ToString();
-                if (estado == "false")
-                {
-                    tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 0);
-                    tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 100);
-                    btn_preguntas.Tag = "true";
-                }
-                else
-                {
-                    tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100);
-                    tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 0);
-                    btn_preguntas.Tag = "false";
-            }
+            guna2Button3.Visible = true;
         }
 
         private void btn_categoria_Click(object sender, EventArgs e)
@@ -254,6 +250,7 @@ namespace terapia_floral.Formularios
                         string nombreCategoria = reader["nombrecategoria"].ToString();
                         string receta = reader["receta"].ToString();
 
+                        Receta = receta;
                         textBox_receta.Text = receta;
 
                         Guna2Panel panelCategoria = new Guna2Panel();
@@ -268,6 +265,7 @@ namespace terapia_floral.Formularios
                         btnCategoria.Cursor = Cursors.Hand;
                         btnCategoria.AutoSize = true;
                         btnCategoria.AutoRoundedCorners = true;
+                        btnCategoria.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
                         btnCategoria.FillColor = Color.White;
                         btnCategoria.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         btnCategoria.BorderColor = Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
@@ -296,6 +294,103 @@ namespace terapia_floral.Formularios
 
                 connection.Close();
             }
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            string estado = guna2Button1.Tag.ToString();
+            if (estado == "false")
+            {
+                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 0);
+                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 100);
+                guna2Button1.Text = "Receta";
+                guna2Button1.Tag = "true";
+            }
+            else
+            {
+                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100);
+                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 0);
+                guna2Button1.Text = "Preguntas";
+                guna2Button1.Tag = "false";
+
+            }
+        }
+
+        private void textBox_receta_TextChanged(object sender, EventArgs e)
+        {            
+            if(Receta != textBox_receta.Text) guna2Button2.Visible = true;
+            else guna2Button2.Visible = false;
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            string sql = "UPDATE fichas SET receta = @receta WHERE id = @id";
+
+            using (SQLiteConnection connection = new SQLiteConnection(database))
+            {
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", idFicha);
+                command.Parameters.AddWithValue("@receta", textBox_receta.Text);
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        guna2Button2.Visible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar: " + ex.Message);
+                }
+
+                connection.Close();
+            }
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {         
+            //foreach (Guna2Panel panelCategoria in panel_preguntas_respuestas.Controls.OfType<Guna2Panel>())
+            //{
+            //    foreach (Guna2GroupBox groupBox in panelCategoria.Controls.OfType<Guna2GroupBox>())
+            //    {
+            //        Guna2TextBox textBoxRespuesta = groupBox.Controls.OfType<Guna2TextBox>().FirstOrDefault();
+
+            //        {
+            //            string sqlPreguntas = "UPDATE respuestas SET respuesta = @respuesta WHERE idficha = @idFicha and idpregunta = @idPregunta";
+
+            //            using (SQLiteConnection connection3 = new SQLiteConnection(database))
+            //            {
+            //                connection3.Open();
+
+            //                using (SQLiteTransaction transaction3 = connection3.BeginTransaction())
+            //                {
+            //                    try
+            //                    {
+            //                        SQLiteCommand commandRespuesta = new SQLiteCommand(sqlPreguntas, connection3);
+            //                        commandRespuesta.Parameters.AddWithValue("@idFicha", idFicha);
+            //                        commandRespuesta.Parameters.AddWithValue("@idPregunta", textBoxRespuesta.Tag);
+            //                        commandRespuesta.Parameters.AddWithValue("@respuesta", textBoxRespuesta.Text);
+
+            //                        commandRespuesta.ExecuteNonQuery();
+
+            //                        transaction3.Commit();
+            //                    }
+            //                    catch (Exception ex)
+            //                    {
+            //                        MessageBox.Show("Error al guardar respuesta: " + ex.Message);
+            //                        transaction3.Rollback();
+            //                    }
+            //                }
+
+            //            }
+            //        }   
+            //    }   
+            //}
+
         }
     }
 }

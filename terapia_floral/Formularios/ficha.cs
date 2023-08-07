@@ -363,19 +363,24 @@ namespace terapia_floral.Formularios
             }
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void guna2Button1_Click_2(object sender, EventArgs e)
         {
             string estado = guna2Button1.Tag.ToString();
-             if (estado == "false")
+            if(estado == "false")
             {
                 tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 0);
                 tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 100);
+                guna2Button1.Text = "Receta";
                 guna2Button1.Tag = "true";
-            } else
+
+            }
+            else
             {
                 tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100);
                 tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 0);
+                guna2Button1.Text = "Preguntas";
                 guna2Button1.Tag = "false";
+
             }
         }
     }

@@ -58,7 +58,7 @@ namespace terapia_floral.UsuarioControl
                     connection.Open();
 
                     // Consulta SQL para obtener los campos nombreapellido y ultimaconsulta
-                    string consulta = "SELECT id, nombreapellido, ultimaconsulta FROM pacientes";
+                    string consulta = "SELECT id, nombreapellido, ultimaconsulta FROM pacientes ORDER BY nombreapellido ASC";
 
                     using (SQLiteCommand command = new SQLiteCommand(consulta, connection))
                     {
@@ -85,7 +85,7 @@ namespace terapia_floral.UsuarioControl
                     connection.Open();
 
                     // Consulta SQL para obtener los campos nombreapellido y ultimaconsulta
-                    string consulta = "SELECT id, nombreapellido, ultimaconsulta FROM Pacientes WHERE nombreapellido LIKE @busqueda";
+                    string consulta = "SELECT id, nombreapellido, ultimaconsulta FROM Pacientes WHERE nombreapellido LIKE @busqueda ORDER BY nombreapellido ASC";
 
                     using (SQLiteCommand command = new SQLiteCommand(consulta, connection))
                     {
@@ -191,5 +191,9 @@ namespace terapia_floral.UsuarioControl
             }
         }
 
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            GenerarPanelesPacientes();
+        }
     }
 }

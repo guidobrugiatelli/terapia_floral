@@ -40,12 +40,12 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(730, 544);
             this.label1.TabIndex = 1;
-            this.label1.Text = "¡Selecciona un paciente!";
+            this.label1.Text = "¡Selecciona un consultante!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UC_paciente_sin_seleccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
