@@ -368,8 +368,8 @@ namespace terapia_floral.Formularios
             string estado = guna2Button1.Tag.ToString();
              if (estado == "false")
             {
-                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 50);
-                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 50);
+                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 0);
+                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 100);
                 guna2Button1.Tag = "true";
             } else
             {

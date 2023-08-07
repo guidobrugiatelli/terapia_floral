@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel_superior = new Guna.UI2.WinForms.Guna2Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_flores = new Guna.UI2.WinForms.Guna2Button();
             this.btn_pacientes = new Guna.UI2.WinForms.Guna2Button();
             this.panel_informacion = new Guna.UI2.WinForms.Guna2Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel_superior.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,10 +47,23 @@
             this.panel_superior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_superior.Location = new System.Drawing.Point(0, 0);
             this.panel_superior.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_superior.MaximumSize = new System.Drawing.Size(0, 42);
+            this.panel_superior.MaximumSize = new System.Drawing.Size(0, 34);
             this.panel_superior.Name = "panel_superior";
-            this.panel_superior.Size = new System.Drawing.Size(912, 39);
+            this.panel_superior.Size = new System.Drawing.Size(684, 32);
             this.panel_superior.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(617, 10);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 19);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_flores
             // 
@@ -66,10 +79,10 @@
             this.btn_flores.FillColor = System.Drawing.Color.White;
             this.btn_flores.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_flores.ForeColor = System.Drawing.Color.Gray;
-            this.btn_flores.Location = new System.Drawing.Point(135, 1);
+            this.btn_flores.Location = new System.Drawing.Point(101, 1);
             this.btn_flores.Margin = new System.Windows.Forms.Padding(1);
             this.btn_flores.Name = "btn_flores";
-            this.btn_flores.Size = new System.Drawing.Size(92, 34);
+            this.btn_flores.Size = new System.Drawing.Size(69, 28);
             this.btn_flores.TabIndex = 1;
             this.btn_flores.Text = "Flores";
             this.btn_flores.Click += new System.EventHandler(this.btn_flores_Click);
@@ -92,7 +105,7 @@
             this.btn_pacientes.Location = new System.Drawing.Point(0, 1);
             this.btn_pacientes.Margin = new System.Windows.Forms.Padding(1);
             this.btn_pacientes.Name = "btn_pacientes";
-            this.btn_pacientes.Size = new System.Drawing.Size(133, 34);
+            this.btn_pacientes.Size = new System.Drawing.Size(100, 28);
             this.btn_pacientes.TabIndex = 0;
             this.btn_pacientes.Text = "Consultantes";
             this.btn_pacientes.Click += new System.EventHandler(this.btn_pacientes_Click);
@@ -101,31 +114,21 @@
             // 
             this.panel_informacion.BackColor = System.Drawing.Color.White;
             this.panel_informacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_informacion.Location = new System.Drawing.Point(0, 39);
-            this.panel_informacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel_informacion.Location = new System.Drawing.Point(0, 32);
+            this.panel_informacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_informacion.Name = "panel_informacion";
-            this.panel_informacion.Size = new System.Drawing.Size(912, 622);
+            this.panel_informacion.Size = new System.Drawing.Size(684, 505);
             this.panel_informacion.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(787, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // menu_inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 661);
+            this.ClientSize = new System.Drawing.Size(684, 537);
             this.Controls.Add(this.panel_informacion);
             this.Controls.Add(this.panel_superior);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(899, 698);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(678, 574);
             this.Name = "menu_inicio";
             this.Text = "Software Terapia Floral";
             this.Load += new System.EventHandler(this.menu_inicio_Load);

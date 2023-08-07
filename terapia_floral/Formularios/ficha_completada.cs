@@ -176,8 +176,8 @@ namespace terapia_floral.Formularios
                 string estado = btn_preguntas.Tag.ToString();
                 if (estado == "false")
                 {
-                    tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 50);
-                    tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 50);
+                    tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 0);
+                    tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 100);
                     btn_preguntas.Tag = "true";
                 }
                 else
