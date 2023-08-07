@@ -122,3 +122,4 @@ C:\Users\Guido\Documents\Software Terapista Floral\Final\terapia_floral\terapia_
 C:\Users\Guido\Documents\Software Terapista Floral\Final\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.CopyComplete
 C:\Users\Guido\Documents\Software Terapista Floral\Final\terapia_floral\terapia_floral\obj\Debug\terapia_floral.exe
 C:\Users\Guido\Documents\Software Terapista Floral\Final\terapia_floral\terapia_floral\obj\Debug\terapia_floral.pdb
+D:\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.cargar_preguntas.resources
