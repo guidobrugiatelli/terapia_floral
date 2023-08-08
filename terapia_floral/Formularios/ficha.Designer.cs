@@ -78,7 +78,7 @@
             this.nombre_paciente.Location = new System.Drawing.Point(15, 0);
             this.nombre_paciente.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nombre_paciente.Name = "nombre_paciente";
-            this.nombre_paciente.Size = new System.Drawing.Size(348, 50);
+            this.nombre_paciente.Size = new System.Drawing.Size(273, 50);
             this.nombre_paciente.TabIndex = 0;
             this.nombre_paciente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -91,7 +91,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -105,7 +105,7 @@
             // 
             this.header_ficha.ColumnCount = 2;
             this.header_ficha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.header_ficha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.header_ficha.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
             this.header_ficha.Controls.Add(this.guna2Panel1, 0, 0);
             this.header_ficha.Controls.Add(this.guna2Panel2, 1, 0);
             this.header_ficha.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -125,7 +125,7 @@
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.guna2Panel1.Size = new System.Drawing.Size(363, 50);
+            this.guna2Panel1.Size = new System.Drawing.Size(288, 50);
             this.guna2Panel1.TabIndex = 0;
             // 
             // guna2Panel2
@@ -133,10 +133,10 @@
             this.guna2Panel2.Controls.Add(this.guna2Button1);
             this.guna2Panel2.Controls.Add(this.btn_finalizar_ficha);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel2.Location = new System.Drawing.Point(363, 0);
+            this.guna2Panel2.Location = new System.Drawing.Point(288, 0);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(300, 50);
+            this.guna2Panel2.Size = new System.Drawing.Size(375, 50);
             this.guna2Panel2.TabIndex = 1;
             // 
             // guna2Button1
@@ -144,23 +144,25 @@
             this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Button1.Animated = true;
             this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.guna2Button1.BorderRadius = 15;
+            this.guna2Button1.BorderThickness = 1;
             this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(213)))), ((int)(((byte)(182)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.White;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.guna2Button1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.guna2Button1.Location = new System.Drawing.Point(4, 7);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.guna2Button1.Location = new System.Drawing.Point(76, 7);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(139, 33);
             this.guna2Button1.TabIndex = 1;
             this.guna2Button1.Tag = "false";
             this.guna2Button1.Text = "Preguntas";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_2);
             // 
             // btn_finalizar_ficha
             // 
@@ -176,8 +178,8 @@
             this.btn_finalizar_ficha.FillColor = System.Drawing.Color.ForestGreen;
             this.btn_finalizar_ficha.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_finalizar_ficha.ForeColor = System.Drawing.Color.White;
-            this.btn_finalizar_ficha.Location = new System.Drawing.Point(146, 7);
-            this.btn_finalizar_ficha.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_finalizar_ficha.Location = new System.Drawing.Point(221, 7);
+            this.btn_finalizar_ficha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_finalizar_ficha.Name = "btn_finalizar_ficha";
             this.btn_finalizar_ficha.Size = new System.Drawing.Size(139, 33);
             this.btn_finalizar_ficha.TabIndex = 0;
@@ -240,7 +242,7 @@
             this.tableLayoutPanel_receta.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel_receta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_receta.Location = new System.Drawing.Point(11, 12);
-            this.tableLayoutPanel_receta.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel_receta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel_receta.Name = "tableLayoutPanel_receta";
             this.tableLayoutPanel_receta.RowCount = 2;
             this.tableLayoutPanel_receta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -316,7 +318,7 @@
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Padding = new System.Windows.Forms.Padding(15);
+            this.guna2Panel3.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
             this.guna2Panel3.Size = new System.Drawing.Size(1, 456);
             this.guna2Panel3.TabIndex = 1;
             // 
@@ -439,7 +441,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1, 356);
             this.label1.TabIndex = 4;
-            this.label1.Text = "¡Selecciona una categoría!";
+            this.label1.Text = "¡Selecciona una ficha!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ficha
@@ -450,8 +452,8 @@
             this.ClientSize = new System.Drawing.Size(663, 537);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Location = new System.Drawing.Point(0, 1);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(678, 574);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(678, 573);
             this.Name = "ficha";
             this.Text = "ficha";
             this.Load += new System.EventHandler(this.ficha_load);

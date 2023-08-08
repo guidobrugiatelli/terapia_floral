@@ -123,3 +123,36 @@ C:\Users\Guido\Documents\Software Terapista Floral\Final\terapia_floral\terapia_
 C:\Users\Guido\Documents\Software Terapista Floral\Final\terapia_floral\terapia_floral\obj\Debug\terapia_floral.exe
 C:\Users\Guido\Documents\Software Terapista Floral\Final\terapia_floral\terapia_floral\obj\Debug\terapia_floral.pdb
 D:\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.cargar_preguntas.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\database.db
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\terapia_floral.exe.config
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\terapia_floral.exe
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\terapia_floral.pdb
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\EntityFramework.dll
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\Guna.UI2.dll
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.dll
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\EntityFramework.xml
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.xml
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.AssemblyReference.cache
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.SuggestedBindingRedirects.cache
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.cargar_preguntas.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.editar_paciente.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.ficha.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.ficha_completada.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.menu_inicio.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.nueva_flor.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.nuevo_paciente.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Properties.Resources.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_flores.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_historial.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_pacientes.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_paciente_seleccionado.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_paciente_sin_seleccion.resources
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.GenerateResource.cache
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.CoreCompileInputs.cache
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.CopyComplete
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.exe
+C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.pdb

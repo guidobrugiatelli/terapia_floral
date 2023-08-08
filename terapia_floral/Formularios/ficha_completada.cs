@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Linq;
-using System.Globalization;
+using System.Collections.Generic;
 
 namespace terapia_floral.Formularios
 {
@@ -17,6 +17,15 @@ namespace terapia_floral.Formularios
         private string idPaciente;
         private const int DefaultGroupBoxHeight = 40;
         private const int ExpandedGroupBoxHeight = 150;
+        private string Receta;
+        public class RespuestaInfo
+        {
+            public string IdPregunta { get; set; }
+            public string Respuesta { get; set; }
+            public string idCategoria { get; set; } // Agrega más propiedades según sea necesario
+        }
+        private List<RespuestaInfo> respuestasLista = new List<RespuestaInfo>();
+
 
         public ficha_completada(string idFicha, string idPaciente)
         {
@@ -49,6 +58,7 @@ namespace terapia_floral.Formularios
 
                         Guna2GroupBox groupBoxPregunta = new Guna2GroupBox();
                         Guna2TextBox textBoxRespuesta = new Guna2TextBox();
+                        Guna2Button btnGuardar = new Guna2Button();
 
                         groupBoxPregunta.Location = new Point(0, posicion);
                         groupBoxPregunta.Width = tableLayoutPanel2.Width - 20;
@@ -99,10 +109,8 @@ namespace terapia_floral.Formularios
         {
             if (sender is Guna2GroupBox clickedGroupBox)
             {
-
                 int currentHeight = clickedGroupBox.Height;
 
-                // Verificar si el GroupBox está expandido o no
                 bool isExpanded = currentHeight == ExpandedGroupBoxHeight;
 
                 clickedGroupBox.Height = isExpanded ? DefaultGroupBoxHeight : ExpandedGroupBoxHeight;
@@ -142,10 +150,13 @@ namespace terapia_floral.Formularios
                 if (textBox != null)
                 {
                     textBox.Visible = !isExpanded;
+                    textBox.KeyUp += TextBox_TextChanged;
+
                     string idPregunta = textBox.Tag.ToString();
 
                     if (!isExpanded)
                     {
+
                         string sql = "SELECT respuesta FROM respuestas WHERE idFicha = @idFicha and idpregunta = @idPregunta";
                         using (SQLiteConnection connection = new SQLiteConnection(database))
                         {
@@ -160,7 +171,7 @@ namespace terapia_floral.Formularios
                             using (SQLiteDataReader reader = command.ExecuteReader())
                             {
                                 if (reader.Read())
-                                {
+                                {                                    
                                     textBox.Text = reader["respuesta"].ToString();
                                 }
                             }
@@ -171,21 +182,33 @@ namespace terapia_floral.Formularios
             }
         }
 
-        private void btn_preguntas_Click(object sender, System.EventArgs e)
+        private void TextBox_TextChanged(object sender, EventArgs e)
         {
-                string estado = btn_preguntas.Tag.ToString();
-                if (estado == "false")
-                {
-                    tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 0);
-                    tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 100);
-                    btn_preguntas.Tag = "true";
-                }
-                else
-                {
-                    tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100);
-                    tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 0);
-                    btn_preguntas.Tag = "false";
+            Guna2TextBox textBoxActual = (Guna2TextBox)sender;
+            string idPregunta = textBoxActual.Tag.ToString();
+            string respuestaEditada = textBoxActual.Text;
+
+            Guna2GroupBox parentGroupBox = textBoxActual.Parent as Guna2GroupBox;
+            string idCategoria = parentGroupBox.Tag.ToString();
+
+            int index = respuestasLista.FindIndex(item => item.IdPregunta == idPregunta);
+            if (index != -1)
+            {
+                respuestasLista[index].Respuesta = respuestaEditada;
             }
+            else
+            {
+
+                RespuestaInfo nuevaRespuesta = new RespuestaInfo
+                {
+                    IdPregunta = idPregunta,
+                    Respuesta = respuestaEditada,
+                    idCategoria = idCategoria // Por ejemplo, asignamos un valor arbitrario
+                };
+                respuestasLista.Add(nuevaRespuesta);
+            }
+
+            guna2Button3.Visible = true;
         }
 
         private void btn_categoria_Click(object sender, EventArgs e)
@@ -254,6 +277,7 @@ namespace terapia_floral.Formularios
                         string nombreCategoria = reader["nombrecategoria"].ToString();
                         string receta = reader["receta"].ToString();
 
+                        Receta = receta;
                         textBox_receta.Text = receta;
 
                         Guna2Panel panelCategoria = new Guna2Panel();
@@ -268,6 +292,7 @@ namespace terapia_floral.Formularios
                         btnCategoria.Cursor = Cursors.Hand;
                         btnCategoria.AutoSize = true;
                         btnCategoria.AutoRoundedCorners = true;
+                        btnCategoria.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
                         btnCategoria.FillColor = Color.White;
                         btnCategoria.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
                         btnCategoria.BorderColor = Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
@@ -296,6 +321,136 @@ namespace terapia_floral.Formularios
 
                 connection.Close();
             }
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            string estado = guna2Button1.Tag.ToString();
+            if (estado == "false")
+            {
+                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 0);
+                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 100);
+                guna2Button1.Text = "Receta";
+                guna2Button1.Tag = "true";
+            }
+            else
+            {
+                tableLayoutPanel3.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100);
+                tableLayoutPanel3.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 0);
+                guna2Button1.Text = "Preguntas";
+                guna2Button1.Tag = "false";
+
+            }
+        }
+
+        private void textBox_receta_TextChanged(object sender, EventArgs e)
+        {            
+            if(Receta != textBox_receta.Text) guna2Button2.Visible = true;
+            else guna2Button2.Visible = false;
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            string sql = "UPDATE fichas SET receta = @receta WHERE id = @id";
+
+            using (SQLiteConnection connection = new SQLiteConnection(database))
+            {
+                SQLiteCommand command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", idFicha);
+                command.Parameters.AddWithValue("@receta", textBox_receta.Text);
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        guna2Button2.Visible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar: " + ex.Message);
+                }
+
+                connection.Close();
+            }
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+
+            foreach (RespuestaInfo respuestaInfo in respuestasLista)
+            {
+                string idPregunta = respuestaInfo.IdPregunta;
+                string respuestaTexto = respuestaInfo.Respuesta;
+                string idCategoria = respuestaInfo.idCategoria;
+
+                // Verificar si el registro ya existe en la base de datos
+                string selectSql = "SELECT COUNT(*) FROM respuestas WHERE idficha = @idFicha AND idpregunta = @idPregunta";
+
+                using (SQLiteConnection connection = new SQLiteConnection(database))
+                {
+                    try
+                    {
+                        connection.Open();
+
+                        using (SQLiteCommand selectCommand = new SQLiteCommand(selectSql, connection))
+                        {
+                            selectCommand.Parameters.AddWithValue("@idFicha", idFicha);
+                            selectCommand.Parameters.AddWithValue("@idPregunta", idPregunta);
+
+                            int count = Convert.ToInt32(selectCommand.ExecuteScalar());
+
+                            if (count > 0)
+                            {
+                                // El registro ya existe, realizar actualización
+                                string updateSql = "UPDATE respuestas SET respuesta = @respuesta WHERE idficha = @idFicha AND idpregunta = @idPregunta";
+
+                                using (SQLiteCommand updateCommand = new SQLiteCommand(updateSql, connection))
+                                {
+                                    updateCommand.Parameters.AddWithValue("@idFicha", idFicha);
+                                    updateCommand.Parameters.AddWithValue("@idPregunta", idPregunta);
+                                    updateCommand.Parameters.AddWithValue("@respuesta", respuestaTexto);
+
+                                    int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                                    if (rowsAffected > 0)
+                                    {
+                                        guna2Button3.Visible = false;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // El registro no existe, realizar inserción
+                                string insertSql = "INSERT INTO respuestas (idficha, idpregunta, respuesta, idcategoria) VALUES (@idFicha, @idPregunta, @respuesta, @idCategoria)";
+
+                                using (SQLiteCommand insertCommand = new SQLiteCommand(insertSql, connection))
+                                {
+                                    insertCommand.Parameters.AddWithValue("@idFicha", idFicha);
+                                    insertCommand.Parameters.AddWithValue("@idPregunta", idPregunta);
+                                    insertCommand.Parameters.AddWithValue("@respuesta", respuestaTexto);
+                                    insertCommand.Parameters.AddWithValue("@idCategoria", idCategoria);
+
+                                    int rowsAffected = insertCommand.ExecuteNonQuery();
+
+                                    if (rowsAffected > 0)
+                                    {
+                                        guna2Button3.Visible = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
         }
     }
 }
