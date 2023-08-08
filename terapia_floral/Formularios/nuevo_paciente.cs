@@ -47,7 +47,7 @@ namespace terapia_floral.Formularios
 
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-                string sql = "INSERT INTO pacientes(id,nombreapellido, fechanacimiento, lugarhora, dondevive, conviveanimal, ocupacion, enfermedades, celular, correo) VALUES(@id,@nombreapellido, @fechanacimiento, @lugarhora, @dondevive, @conviveanimal, @ocupacion, @enfermedades, @celular, @correo)";
+                string sql = "INSERT INTO pacientes(id,nombreapellido, fechanacimiento, dondevive, conviveanimal, ocupacion, celular, correo, primeravez) VALUES(@id,@nombreapellido, @fechanacimiento, @dondevive, @conviveanimal, @ocupacion, @celular, @correo, @primeravez)";
 
                 if (!string.IsNullOrEmpty(txt_nombreapellido.Text))
                 {
@@ -59,13 +59,11 @@ namespace terapia_floral.Formularios
                         SQLiteCommand command = new SQLiteCommand(sql, connection);
                         command.Parameters.AddWithValue("@id", id);
                         command.Parameters.AddWithValue("@nombreapellido", txt_nombreapellido.Text);
-                        command.Parameters.AddWithValue("@fechanacimiento", txt_fechanacimiento.Text);
-                        command.Parameters.AddWithValue("@lugarhora", txt_lugarhora.Text);
-                        command.Parameters.AddWithValue("@lugarhora", txt_lugarhora.Text); 
+                        command.Parameters.AddWithValue("@fechanacimiento", txt_fechanacimiento.Text);                        
                         command.Parameters.AddWithValue("@dondevive", txt_dondevive.Text);
                         command.Parameters.AddWithValue("@conviveanimal", txt_convivenciaanimal.Text);
                         command.Parameters.AddWithValue("@ocupacion", txt_ocupacion.Text);
-                        command.Parameters.AddWithValue("@enfermedades", txt_enfermedades.Text);
+                        command.Parameters.AddWithValue("@primeravez", textBox_primeravez.Text);
                         command.Parameters.AddWithValue("@celular", txt_celular.Text);
                         command.Parameters.AddWithValue("@correo", txt_correo.Text);
 

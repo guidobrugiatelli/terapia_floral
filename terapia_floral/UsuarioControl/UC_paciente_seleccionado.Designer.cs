@@ -40,9 +40,17 @@
             this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
             this.btn_nueva_consulta = new Guna.UI2.WinForms.Guna2Button();
             this.panel_info_paciente = new Guna.UI2.WinForms.Guna2Panel();
-            this.panelInfoPaciente = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_historial_consultas = new Guna.UI2.WinForms.Guna2Panel();
+            this.panelInfoPaciente = new Guna.UI2.WinForms.Guna2Panel();
+            this.labelPrimeraVez = new System.Windows.Forms.Label();
+            this.labelCorreo = new System.Windows.Forms.Label();
+            this.labelCelular = new System.Windows.Forms.Label();
+            this.labelOcupacion = new System.Windows.Forms.Label();
+            this.labelConviveAnimal = new System.Windows.Forms.Label();
+            this.labelDondeQuien = new System.Windows.Forms.Label();
+            this.labelFechaHora = new System.Windows.Forms.Label();
+            this.richTextBox_primera_vez = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -51,6 +59,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.guna2Panel7.SuspendLayout();
             this.panel_info_paciente.SuspendLayout();
+            this.panelInfoPaciente.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -246,25 +255,11 @@
             this.panel_info_paciente.Size = new System.Drawing.Size(689, 356);
             this.panel_info_paciente.TabIndex = 1;
             // 
-            // panelInfoPaciente
-            // 
-            this.panelInfoPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelInfoPaciente.BackColor = System.Drawing.Color.White;
-            this.panelInfoPaciente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelInfoPaciente.BorderRadius = 15;
-            this.panelInfoPaciente.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.panelInfoPaciente.Location = new System.Drawing.Point(0, 8);
-            this.panelInfoPaciente.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.panelInfoPaciente.Name = "panelInfoPaciente";
-            this.panelInfoPaciente.Size = new System.Drawing.Size(678, 222);
-            this.panelInfoPaciente.TabIndex = 0;
-            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-            this.label1.Location = new System.Drawing.Point(2, 230);
+            this.label1.Location = new System.Drawing.Point(2, 285);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(277, 36);
@@ -276,11 +271,136 @@
             // 
             this.panel_historial_consultas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_historial_consultas.Location = new System.Drawing.Point(6, 281);
+            this.panel_historial_consultas.Location = new System.Drawing.Point(6, 336);
             this.panel_historial_consultas.Margin = new System.Windows.Forms.Padding(0, 15, 10, 0);
             this.panel_historial_consultas.Name = "panel_historial_consultas";
-            this.panel_historial_consultas.Size = new System.Drawing.Size(672, 65);
+            this.panel_historial_consultas.Size = new System.Drawing.Size(655, 65);
             this.panel_historial_consultas.TabIndex = 4;
+            // 
+            // panelInfoPaciente
+            // 
+            this.panelInfoPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelInfoPaciente.AutoScroll = true;
+            this.panelInfoPaciente.AutoScrollMargin = new System.Drawing.Size(0, 10);
+            this.panelInfoPaciente.BackColor = System.Drawing.Color.White;
+            this.panelInfoPaciente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelInfoPaciente.BorderRadius = 15;
+            this.panelInfoPaciente.Controls.Add(this.richTextBox_primera_vez);
+            this.panelInfoPaciente.Controls.Add(this.labelPrimeraVez);
+            this.panelInfoPaciente.Controls.Add(this.labelCorreo);
+            this.panelInfoPaciente.Controls.Add(this.labelCelular);
+            this.panelInfoPaciente.Controls.Add(this.labelOcupacion);
+            this.panelInfoPaciente.Controls.Add(this.labelConviveAnimal);
+            this.panelInfoPaciente.Controls.Add(this.labelDondeQuien);
+            this.panelInfoPaciente.Controls.Add(this.labelFechaHora);
+            this.panelInfoPaciente.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.panelInfoPaciente.Location = new System.Drawing.Point(0, 8);
+            this.panelInfoPaciente.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.panelInfoPaciente.Name = "panelInfoPaciente";
+            this.panelInfoPaciente.Size = new System.Drawing.Size(671, 277);
+            this.panelInfoPaciente.TabIndex = 0;
+            // 
+            // labelPrimeraVez
+            // 
+            this.labelPrimeraVez.AutoSize = true;
+            this.labelPrimeraVez.BackColor = System.Drawing.Color.Transparent;
+            this.labelPrimeraVez.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.labelPrimeraVez.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.labelPrimeraVez.Location = new System.Drawing.Point(10, 171);
+            this.labelPrimeraVez.Name = "labelPrimeraVez";
+            this.labelPrimeraVez.Size = new System.Drawing.Size(960, 19);
+            this.labelPrimeraVez.TabIndex = 6;
+            this.labelPrimeraVez.Text = "¿Primera vez que tomará flores? ¿De qué sistemas? ¿Alguna medicación o alergia? ¿" +
+    "Está en simultáneo haciendo otros tratamientos? (alopáticos u holísticos)";
+            // 
+            // labelCorreo
+            // 
+            this.labelCorreo.AutoSize = true;
+            this.labelCorreo.BackColor = System.Drawing.Color.Transparent;
+            this.labelCorreo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.labelCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.labelCorreo.Location = new System.Drawing.Point(10, 144);
+            this.labelCorreo.Name = "labelCorreo";
+            this.labelCorreo.Size = new System.Drawing.Size(122, 19);
+            this.labelCorreo.TabIndex = 5;
+            this.labelCorreo.Text = "Correo eletrónico: ";
+            // 
+            // labelCelular
+            // 
+            this.labelCelular.AutoSize = true;
+            this.labelCelular.BackColor = System.Drawing.Color.Transparent;
+            this.labelCelular.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.labelCelular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.labelCelular.Location = new System.Drawing.Point(10, 117);
+            this.labelCelular.Name = "labelCelular";
+            this.labelCelular.Size = new System.Drawing.Size(58, 19);
+            this.labelCelular.TabIndex = 4;
+            this.labelCelular.Text = "Celular: ";
+            // 
+            // labelOcupacion
+            // 
+            this.labelOcupacion.AutoSize = true;
+            this.labelOcupacion.BackColor = System.Drawing.Color.Transparent;
+            this.labelOcupacion.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.labelOcupacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.labelOcupacion.Location = new System.Drawing.Point(10, 90);
+            this.labelOcupacion.Name = "labelOcupacion";
+            this.labelOcupacion.Size = new System.Drawing.Size(81, 19);
+            this.labelOcupacion.TabIndex = 3;
+            this.labelOcupacion.Text = "Ocupación: ";
+            // 
+            // labelConviveAnimal
+            // 
+            this.labelConviveAnimal.AutoSize = true;
+            this.labelConviveAnimal.BackColor = System.Drawing.Color.Transparent;
+            this.labelConviveAnimal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.labelConviveAnimal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.labelConviveAnimal.Location = new System.Drawing.Point(10, 63);
+            this.labelConviveAnimal.Name = "labelConviveAnimal";
+            this.labelConviveAnimal.Size = new System.Drawing.Size(173, 19);
+            this.labelConviveAnimal.TabIndex = 2;
+            this.labelConviveAnimal.Text = "Convive con algún animal: ";
+            // 
+            // labelDondeQuien
+            // 
+            this.labelDondeQuien.AutoSize = true;
+            this.labelDondeQuien.BackColor = System.Drawing.Color.Transparent;
+            this.labelDondeQuien.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.labelDondeQuien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.labelDondeQuien.Location = new System.Drawing.Point(10, 36);
+            this.labelDondeQuien.Name = "labelDondeQuien";
+            this.labelDondeQuien.Size = new System.Drawing.Size(160, 19);
+            this.labelDondeQuien.TabIndex = 1;
+            this.labelDondeQuien.Text = "Donde y con quien vive: ";
+            // 
+            // labelFechaHora
+            // 
+            this.labelFechaHora.AutoSize = true;
+            this.labelFechaHora.BackColor = System.Drawing.Color.Transparent;
+            this.labelFechaHora.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.labelFechaHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.labelFechaHora.Location = new System.Drawing.Point(10, 10);
+            this.labelFechaHora.Name = "labelFechaHora";
+            this.labelFechaHora.Size = new System.Drawing.Size(187, 19);
+            this.labelFechaHora.TabIndex = 0;
+            this.labelFechaHora.Text = "Fecha y lugar de nacimiento: ";
+            // 
+            // richTextBox_primera_vez
+            // 
+            this.richTextBox_primera_vez.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox_primera_vez.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.richTextBox_primera_vez.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox_primera_vez.Cursor = System.Windows.Forms.Cursors.Default;
+            this.richTextBox_primera_vez.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.richTextBox_primera_vez.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.richTextBox_primera_vez.Location = new System.Drawing.Point(14, 194);
+            this.richTextBox_primera_vez.Name = "richTextBox_primera_vez";
+            this.richTextBox_primera_vez.ReadOnly = true;
+            this.richTextBox_primera_vez.Size = new System.Drawing.Size(969, 56);
+            this.richTextBox_primera_vez.TabIndex = 7;
+            this.richTextBox_primera_vez.Text = "";
             // 
             // UC_paciente_seleccionado
             // 
@@ -301,6 +421,8 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.guna2Panel7.ResumeLayout(false);
             this.panel_info_paciente.ResumeLayout(false);
+            this.panelInfoPaciente.ResumeLayout(false);
+            this.panelInfoPaciente.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -322,5 +444,13 @@
         private Guna.UI2.WinForms.Guna2Panel panelInfoPaciente;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Panel panel_historial_consultas;
+        private System.Windows.Forms.Label labelPrimeraVez;
+        private System.Windows.Forms.Label labelCorreo;
+        private System.Windows.Forms.Label labelCelular;
+        private System.Windows.Forms.Label labelOcupacion;
+        private System.Windows.Forms.Label labelConviveAnimal;
+        private System.Windows.Forms.Label labelDondeQuien;
+        private System.Windows.Forms.Label labelFechaHora;
+        private System.Windows.Forms.RichTextBox richTextBox_primera_vez;
     }
 }

@@ -25,8 +25,8 @@ namespace terapia_floral.Formularios
 
             string sql = 
                 "UPDATE pacientes SET " +
-                "fechanacimiento = @fechanacimiento, lugarhora = @lugarhora,dondevive = @dondevive, " +
-                "conviveanimal = @conviveanimal, ocupacion = @ocupacion, enfermedades = @enfermedades, celular = @celular, correo = @correo " +
+                "fechanacimiento = @fechanacimiento, dondevive = @dondevive, conviveanimal = @conviveanimal, " +
+                "ocupacion = @ocupacion, celular = @celular, correo = @correo, primeravez = @primeravez " +
                 "WHERE id = @id";
 
             using (SQLiteConnection connection = new SQLiteConnection(database))
@@ -35,13 +35,12 @@ namespace terapia_floral.Formularios
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
                 command.Parameters.AddWithValue("@id", idPaciente);
                 command.Parameters.AddWithValue("@fechanacimiento", txt_fechanacimiento.Text);
-                command.Parameters.AddWithValue("@lugarhora", txt_lugarhora.Text);
                 command.Parameters.AddWithValue("@dondevive", txt_dondevive.Text);
                 command.Parameters.AddWithValue("@conviveanimal", txt_convivenciaanimal.Text);
                 command.Parameters.AddWithValue("@ocupacion", txt_ocupacion.Text);
-                command.Parameters.AddWithValue("@enfermedades", txt_enfermedades.Text);
                 command.Parameters.AddWithValue("@celular", txt_celular.Text);
                 command.Parameters.AddWithValue("@correo", txt_correo.Text);
+                command.Parameters.AddWithValue("@primeravez", textBox_primeravez.Text);
 
                 try
                 {
@@ -82,24 +81,22 @@ namespace terapia_floral.Formularios
                     {
                         string nombre = reader["nombreapellido"].ToString();
                         string fechaHora = reader["fechanacimiento"].ToString();
-                        string lugarHoraNacimiento = reader["lugarhora"].ToString();
                         string dondeQuien = reader["dondevive"].ToString();
                         string conviveAnimal = reader["conviveanimal"].ToString();
                         string ocupacion = reader["ocupacion"].ToString();
-                        string enfermedades = reader["enfermedades"].ToString();
                         string celular = reader["celular"].ToString();
                         string correo = reader["correo"].ToString();
+                        string primeraVez = reader["primeravez"].ToString();
 
                         label1.Text = "Editar a " + nombre;
 
                         txt_fechanacimiento.Text = fechaHora;
-                        txt_lugarhora.Text = lugarHoraNacimiento;
                         txt_dondevive.Text = dondeQuien;
                         txt_convivenciaanimal.Text = conviveAnimal;
                         txt_ocupacion.Text = ocupacion;
-                        txt_enfermedades.Text = enfermedades;
                         txt_celular.Text = celular;
                         txt_correo.Text = correo;
+                        textBox_primeravez.Text = primeraVez;
                     }
                 }
             }
