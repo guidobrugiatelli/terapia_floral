@@ -52,7 +52,7 @@
             this.btn_cancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(213)))), ((int)(((byte)(182)))));
             this.btn_cancelar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_cancelar.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btn_cancelar.Location = new System.Drawing.Point(10, 476);
+            this.btn_cancelar.Location = new System.Drawing.Point(442, 478);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(179, 50);
             this.btn_cancelar.TabIndex = 0;
@@ -73,9 +73,9 @@
             this.btn_agregar.FillColor = System.Drawing.Color.ForestGreen;
             this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_agregar.ForeColor = System.Drawing.Color.White;
-            this.btn_agregar.Location = new System.Drawing.Point(197, 476);
+            this.btn_agregar.Location = new System.Drawing.Point(629, 478);
             this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(231, 50);
+            this.btn_agregar.Size = new System.Drawing.Size(243, 50);
             this.btn_agregar.TabIndex = 1;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
@@ -92,12 +92,11 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(80, 60, 80, 60);
-            this.panel1.Size = new System.Drawing.Size(438, 540);
+            this.panel1.Size = new System.Drawing.Size(884, 540);
             this.panel1.TabIndex = 1;
             // 
             // textBoxEquivalentes
             // 
-            this.textBoxEquivalentes.AutoRoundedCorners = true;
             this.textBoxEquivalentes.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.textBoxEquivalentes.BorderRadius = 20;
             this.textBoxEquivalentes.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -110,14 +109,15 @@
             this.textBoxEquivalentes.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.textBoxEquivalentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.textBoxEquivalentes.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
-            this.textBoxEquivalentes.Location = new System.Drawing.Point(9, 384);
-            this.textBoxEquivalentes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxEquivalentes.Location = new System.Drawing.Point(444, 118);
+            this.textBoxEquivalentes.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxEquivalentes.Multiline = true;
             this.textBoxEquivalentes.Name = "textBoxEquivalentes";
             this.textBoxEquivalentes.PasswordChar = '\0';
             this.textBoxEquivalentes.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.textBoxEquivalentes.PlaceholderText = "Equivalentes";
             this.textBoxEquivalentes.SelectedText = "";
-            this.textBoxEquivalentes.Size = new System.Drawing.Size(417, 42);
+            this.textBoxEquivalentes.Size = new System.Drawing.Size(430, 324);
             this.textBoxEquivalentes.TabIndex = 5;
             // 
             // textBoxDescripcion
@@ -135,14 +135,14 @@
             this.textBoxDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.textBoxDescripcion.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.textBoxDescripcion.Location = new System.Drawing.Point(9, 118);
-            this.textBoxDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDescripcion.Multiline = true;
             this.textBoxDescripcion.Name = "textBoxDescripcion";
             this.textBoxDescripcion.PasswordChar = '\0';
             this.textBoxDescripcion.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.textBoxDescripcion.PlaceholderText = "Descripción";
             this.textBoxDescripcion.SelectedText = "";
-            this.textBoxDescripcion.Size = new System.Drawing.Size(418, 258);
+            this.textBoxDescripcion.Size = new System.Drawing.Size(430, 324);
             this.textBoxDescripcion.TabIndex = 4;
             // 
             // label1
@@ -172,13 +172,13 @@
             this.textBoxNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.textBoxNombre.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
             this.textBoxNombre.Location = new System.Drawing.Point(9, 67);
-            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.PasswordChar = '\0';
             this.textBoxNombre.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.textBoxNombre.PlaceholderText = "Nombre";
             this.textBoxNombre.SelectedText = "";
-            this.textBoxNombre.Size = new System.Drawing.Size(417, 42);
+            this.textBoxNombre.Size = new System.Drawing.Size(864, 42);
             this.textBoxNombre.TabIndex = 2;
             // 
             // nueva_flor
@@ -186,11 +186,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(438, 540);
+            this.ClientSize = new System.Drawing.Size(884, 540);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(454, 556);
-            this.MinimumSize = new System.Drawing.Size(454, 556);
+            this.MaximumSize = new System.Drawing.Size(900, 556);
+            this.MinimumSize = new System.Drawing.Size(900, 556);
             this.Name = "nueva_flor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;

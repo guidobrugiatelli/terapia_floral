@@ -77,7 +77,7 @@
             this.txt_nombreapellido.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.txt_nombreapellido.PlaceholderText = "Nombre y apellido";
             this.txt_nombreapellido.SelectedText = "";
-            this.txt_nombreapellido.Size = new System.Drawing.Size(408, 38);
+            this.txt_nombreapellido.Size = new System.Drawing.Size(429, 38);
             this.txt_nombreapellido.TabIndex = 1;
             // 
             // txt_dondevive
@@ -103,7 +103,7 @@
             this.txt_dondevive.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.txt_dondevive.PlaceholderText = "Dónde y con quién convive";
             this.txt_dondevive.SelectedText = "";
-            this.txt_dondevive.Size = new System.Drawing.Size(408, 38);
+            this.txt_dondevive.Size = new System.Drawing.Size(429, 38);
             this.txt_dondevive.TabIndex = 3;
             // 
             // txt_convivenciaanimal
@@ -129,7 +129,7 @@
             this.txt_convivenciaanimal.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.txt_convivenciaanimal.PlaceholderText = "Convive con algún animal";
             this.txt_convivenciaanimal.SelectedText = "";
-            this.txt_convivenciaanimal.Size = new System.Drawing.Size(408, 38);
+            this.txt_convivenciaanimal.Size = new System.Drawing.Size(429, 38);
             this.txt_convivenciaanimal.TabIndex = 4;
             // 
             // txt_ocupacion
@@ -155,7 +155,7 @@
             this.txt_ocupacion.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.txt_ocupacion.PlaceholderText = "Ocupación";
             this.txt_ocupacion.SelectedText = "";
-            this.txt_ocupacion.Size = new System.Drawing.Size(408, 38);
+            this.txt_ocupacion.Size = new System.Drawing.Size(429, 38);
             this.txt_ocupacion.TabIndex = 5;
             // 
             // txt_celular
@@ -181,7 +181,7 @@
             this.txt_celular.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.txt_celular.PlaceholderText = "Celular";
             this.txt_celular.SelectedText = "";
-            this.txt_celular.Size = new System.Drawing.Size(408, 38);
+            this.txt_celular.Size = new System.Drawing.Size(429, 38);
             this.txt_celular.TabIndex = 6;
             this.txt_celular.TextChanged += new System.EventHandler(this.guna2TextBox7_TextChanged);
             // 
@@ -208,7 +208,7 @@
             this.txt_correo.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.txt_correo.PlaceholderText = "Correo electrónico";
             this.txt_correo.SelectedText = "";
-            this.txt_correo.Size = new System.Drawing.Size(408, 38);
+            this.txt_correo.Size = new System.Drawing.Size(429, 38);
             this.txt_correo.TabIndex = 7;
             // 
             // panel_botones
@@ -216,10 +216,10 @@
             this.panel_botones.Controls.Add(this.btn_agregar);
             this.panel_botones.Controls.Add(this.btn_cancelar);
             this.panel_botones.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_botones.Location = new System.Drawing.Point(0, 515);
+            this.panel_botones.Location = new System.Drawing.Point(0, 425);
             this.panel_botones.Margin = new System.Windows.Forms.Padding(2);
             this.panel_botones.Name = "panel_botones";
-            this.panel_botones.Size = new System.Drawing.Size(438, 69);
+            this.panel_botones.Size = new System.Drawing.Size(884, 69);
             this.panel_botones.TabIndex = 9;
             // 
             // btn_agregar
@@ -235,7 +235,7 @@
             this.btn_agregar.FillColor = System.Drawing.Color.ForestGreen;
             this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_agregar.ForeColor = System.Drawing.Color.White;
-            this.btn_agregar.Location = new System.Drawing.Point(171, 2);
+            this.btn_agregar.Location = new System.Drawing.Point(616, 2);
             this.btn_agregar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(251, 50);
@@ -256,7 +256,7 @@
             this.btn_cancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(213)))), ((int)(((byte)(182)))));
             this.btn_cancelar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_cancelar.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btn_cancelar.Location = new System.Drawing.Point(14, 2);
+            this.btn_cancelar.Location = new System.Drawing.Point(459, 2);
             this.btn_cancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(152, 50);
@@ -286,7 +286,7 @@
             this.txt_fechanacimiento.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.txt_fechanacimiento.PlaceholderText = "Fecha y lugar de nacimiento";
             this.txt_fechanacimiento.SelectedText = "";
-            this.txt_fechanacimiento.Size = new System.Drawing.Size(408, 38);
+            this.txt_fechanacimiento.Size = new System.Drawing.Size(429, 38);
             this.txt_fechanacimiento.TabIndex = 2;
             // 
             // textBox_primeravez
@@ -304,15 +304,16 @@
             this.textBox_primeravez.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.textBox_primeravez.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.textBox_primeravez.HoverState.BorderColor = System.Drawing.Color.ForestGreen;
-            this.textBox_primeravez.Location = new System.Drawing.Point(14, 400);
+            this.textBox_primeravez.Location = new System.Drawing.Point(459, 61);
             this.textBox_primeravez.Margin = new System.Windows.Forms.Padding(8);
             this.textBox_primeravez.Multiline = true;
             this.textBox_primeravez.Name = "textBox_primeravez";
             this.textBox_primeravez.PasswordChar = '\0';
             this.textBox_primeravez.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.textBox_primeravez.PlaceholderText = "¿Primera vez que toma flores?";
+            this.textBox_primeravez.PlaceholderText = "¿Primera vez que tomará flores? ¿De qué sistemas? \r\n¿Alguna medicación o alergia?" +
+    " \r\n¿Está en simultáneo haciendo otros tratamientos?\r\n(alopáticos u holísticos)";
             this.textBox_primeravez.SelectedText = "";
-            this.textBox_primeravez.Size = new System.Drawing.Size(408, 83);
+            this.textBox_primeravez.Size = new System.Drawing.Size(408, 326);
             this.textBox_primeravez.TabIndex = 8;
             // 
             // nuevo_paciente
@@ -320,7 +321,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(438, 584);
+            this.ClientSize = new System.Drawing.Size(884, 494);
             this.ControlBox = false;
             this.Controls.Add(this.textBox_primeravez);
             this.Controls.Add(this.txt_fechanacimiento);
@@ -333,8 +334,8 @@
             this.Controls.Add(this.txt_nombreapellido);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(454, 600);
-            this.MinimumSize = new System.Drawing.Size(454, 600);
+            this.MaximumSize = new System.Drawing.Size(900, 510);
+            this.MinimumSize = new System.Drawing.Size(900, 510);
             this.Name = "nuevo_paciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;

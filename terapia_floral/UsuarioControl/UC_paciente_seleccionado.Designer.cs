@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel_historial_consultas = new Guna.UI2.WinForms.Guna2Panel();
             this.panelInfoPaciente = new Guna.UI2.WinForms.Guna2Panel();
+            this.richTextBox_primera_vez = new System.Windows.Forms.RichTextBox();
             this.labelPrimeraVez = new System.Windows.Forms.Label();
             this.labelCorreo = new System.Windows.Forms.Label();
             this.labelCelular = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.labelConviveAnimal = new System.Windows.Forms.Label();
             this.labelDondeQuien = new System.Windows.Forms.Label();
             this.labelFechaHora = new System.Windows.Forms.Label();
-            this.richTextBox_primera_vez = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -259,7 +259,7 @@
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-            this.label1.Location = new System.Drawing.Point(2, 285);
+            this.label1.Location = new System.Drawing.Point(2, 298);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(277, 36);
@@ -271,10 +271,10 @@
             // 
             this.panel_historial_consultas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_historial_consultas.Location = new System.Drawing.Point(6, 336);
+            this.panel_historial_consultas.Location = new System.Drawing.Point(6, 349);
             this.panel_historial_consultas.Margin = new System.Windows.Forms.Padding(0, 15, 10, 0);
             this.panel_historial_consultas.Name = "panel_historial_consultas";
-            this.panel_historial_consultas.Size = new System.Drawing.Size(655, 65);
+            this.panel_historial_consultas.Size = new System.Drawing.Size(638, 65);
             this.panel_historial_consultas.TabIndex = 4;
             // 
             // panelInfoPaciente
@@ -298,8 +298,24 @@
             this.panelInfoPaciente.Location = new System.Drawing.Point(0, 8);
             this.panelInfoPaciente.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.panelInfoPaciente.Name = "panelInfoPaciente";
-            this.panelInfoPaciente.Size = new System.Drawing.Size(671, 277);
+            this.panelInfoPaciente.Size = new System.Drawing.Size(689, 277);
             this.panelInfoPaciente.TabIndex = 0;
+            // 
+            // richTextBox_primera_vez
+            // 
+            this.richTextBox_primera_vez.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox_primera_vez.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.richTextBox_primera_vez.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox_primera_vez.Cursor = System.Windows.Forms.Cursors.Default;
+            this.richTextBox_primera_vez.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.richTextBox_primera_vez.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+            this.richTextBox_primera_vez.Location = new System.Drawing.Point(14, 194);
+            this.richTextBox_primera_vez.Name = "richTextBox_primera_vez";
+            this.richTextBox_primera_vez.ReadOnly = true;
+            this.richTextBox_primera_vez.Size = new System.Drawing.Size(1268, 56);
+            this.richTextBox_primera_vez.TabIndex = 7;
+            this.richTextBox_primera_vez.Text = "";
             // 
             // labelPrimeraVez
             // 
@@ -385,22 +401,6 @@
             this.labelFechaHora.Size = new System.Drawing.Size(187, 19);
             this.labelFechaHora.TabIndex = 0;
             this.labelFechaHora.Text = "Fecha y lugar de nacimiento: ";
-            // 
-            // richTextBox_primera_vez
-            // 
-            this.richTextBox_primera_vez.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox_primera_vez.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.richTextBox_primera_vez.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox_primera_vez.Cursor = System.Windows.Forms.Cursors.Default;
-            this.richTextBox_primera_vez.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.richTextBox_primera_vez.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-            this.richTextBox_primera_vez.Location = new System.Drawing.Point(14, 194);
-            this.richTextBox_primera_vez.Name = "richTextBox_primera_vez";
-            this.richTextBox_primera_vez.ReadOnly = true;
-            this.richTextBox_primera_vez.Size = new System.Drawing.Size(969, 56);
-            this.richTextBox_primera_vez.TabIndex = 7;
-            this.richTextBox_primera_vez.Text = "";
             // 
             // UC_paciente_seleccionado
             // 

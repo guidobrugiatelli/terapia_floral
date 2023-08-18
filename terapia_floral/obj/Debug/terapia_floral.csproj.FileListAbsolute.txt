@@ -156,3 +156,37 @@ C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.cs
 C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.CopyComplete
 C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.exe
 C:\Users\aguco\Desktop\terapia_floral\terapia_floral\obj\Debug\terapia_floral.pdb
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\database.db
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\terapia_floral.exe.config
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\terapia_floral.exe
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\terapia_floral.pdb
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\EntityFramework.dll
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\EntityFramework.SqlServer.dll
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\Guna.UI2.dll
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.dll
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\EntityFramework.xml
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\EntityFramework.SqlServer.xml
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\bin\Debug\System.Data.SQLite.xml
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.AssemblyReference.cache
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.SuggestedBindingRedirects.cache
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.cargar_preguntas.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.editar_paciente.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.ficha.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.ficha_completada.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.menu_inicio.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.nueva_flor.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.nuevo_paciente.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Properties.Resources.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_flores.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_historial.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_pacientes.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_paciente_seleccionado.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.UsuarioControl.UC_paciente_sin_seleccion.resources
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.GenerateResource.cache
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.CoreCompileInputs.cache
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.csproj.CopyComplete
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.exe
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.pdb
+D:\Proyectos\proyectos visual studio c#\terapia_floral\terapia_floral\obj\Debug\terapia_floral.Formularios.Detalle.resources

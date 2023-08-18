@@ -10,9 +10,6 @@ namespace terapia_floral.UsuarioControl
     public partial class UC_flores : UserControl
     {
         private static string database = ConfigurationManager.ConnectionStrings["database"].ConnectionString;
-        RichTextBox richTextBoxNombre = new RichTextBox();
-        RichTextBox richTextBoxDescripcion = new RichTextBox();
-        RichTextBox richTextBoxEquivalentes = new RichTextBox();
 
         public UC_flores()
         {
@@ -40,7 +37,6 @@ namespace terapia_floral.UsuarioControl
 
         private void UC_flores_Load(object sender, System.EventArgs e)
         {
-            DetalleFlor(null);
             obtenerFlores();
         }
 
@@ -89,95 +85,16 @@ namespace terapia_floral.UsuarioControl
             {
                 string id = tablaFlores.Rows[e.RowIndex].Tag.ToString();
 
-                if (!btnGuardar.Visible)
-                {
-                    DetalleFlor(id);
-                    btnBorrar.Tag = id;
-                }
-                else
-                {
-                    MessageBox.Show("Guarda los cambios antes de salir del detalle");
-                }
+                Detalle detalleFlor = new Detalle(id);
+                detalleFlor.FormClosing += detalleFlor_FormClosing;
+                detalleFlor.ShowDialog();
             }
         }
 
-        private void DetalleFlor(string id)
+        private void detalleFlor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string sql = "SELECT * FROM flores WHERE id = @id";
-
-            using (SQLiteConnection connection = new SQLiteConnection(database))
-            {
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.Parameters.AddWithValue("@id",id);
-                connection.Open();
-
-                command.CommandType = System.Data.CommandType.Text;
-
-                using (SQLiteDataReader reader = command.ExecuteReader())
-                {
-                    panelNombre.Controls.Clear();
-                    panelDescripcion.Controls.Clear();
-                    panelEquivalentes.Controls.Clear();
-
-                    while (reader.Read())
-                    {
-                        string nombre = reader["nombre"].ToString();
-                        string descripcion = reader["descripcion"].ToString();
-                        string equivalente = reader["equivalente"].ToString();
-
-                        richTextBoxNombre.KeyUp += new KeyEventHandler(this.editar);
-                        richTextBoxDescripcion.KeyUp += new KeyEventHandler(this.editar);
-                        richTextBoxEquivalentes.KeyUp += new KeyEventHandler(this.editar);
-
-                        richTextBoxNombre.Text = nombre;
-                        richTextBoxNombre.Font = new Font("Segoe UI", 17F, FontStyle.Bold, GraphicsUnit.Pixel);
-                        richTextBoxNombre.BackColor = Color.White;
-                        richTextBoxNombre.BorderStyle = BorderStyle.None;
-                        richTextBoxNombre.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-                        richTextBoxNombre.Cursor = Cursors.Arrow;
-                        richTextBoxNombre.Dock = DockStyle.Fill;
-                        richTextBoxNombre.Multiline = true;
-
-                        int preferredHeight = richTextBoxNombre.GetPreferredSize(new Size(richTextBoxNombre.Width, 0)).Height;
-                        richTextBoxNombre.Height = preferredHeight;
-
-                        richTextBoxDescripcion.Text = descripcion;
-                        richTextBoxDescripcion.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-                        richTextBoxDescripcion.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-                        richTextBoxDescripcion.BackColor = Color.White;
-                        richTextBoxDescripcion.BorderStyle = BorderStyle.None;
-                        richTextBoxDescripcion.Cursor = Cursors.Arrow;
-                        richTextBoxDescripcion.Dock = DockStyle.Fill;
-
-                        richTextBoxEquivalentes.Text = equivalente;
-                        richTextBoxEquivalentes.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-                        richTextBoxEquivalentes.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
-                        richTextBoxEquivalentes.BackColor = Color.White;
-                        richTextBoxEquivalentes.BorderStyle = BorderStyle.None;
-                        richTextBoxEquivalentes.Cursor = Cursors.Arrow;
-                        richTextBoxEquivalentes.Dock = DockStyle.Fill;
-
-                        panelNombre.Controls.Add(richTextBoxNombre);
-                        panelDescripcion.Controls.Add(richTextBoxDescripcion);
-                        panelEquivalentes.Controls.Add(richTextBoxEquivalentes);
-
-                        richTextBoxNombre.Tag = id;
-                        richTextBoxDescripcion.Tag = id;
-                        richTextBoxEquivalentes.Tag = id;
-
-                    }
-
-                    reader.Close();
-
-                }
-                connection.Close();
-            }
-
-            if (!string.IsNullOrEmpty(id)) tableLayoutPanel1.ColumnStyles[1].Width = 300;
-                else tableLayoutPanel1.ColumnStyles[1].Width = 0;
-            
+            obtenerFlores();
         }
-
         private void btn_nueva_flor_Click(object sender, EventArgs e)
         {
             nueva_flor NuevaFlor = new nueva_flor();
@@ -207,185 +124,5 @@ namespace terapia_floral.UsuarioControl
             }
         }
 
-        private void ocultarDetalleFlor(object sender, EventArgs e)
-        {
-            if (!btnGuardar.Visible)
-            {
-                panelNombre.Controls.Clear();
-                panelDescripcion.Controls.Clear();
-                panelEquivalentes.Controls.Clear();
-                tableLayoutPanel1.ColumnStyles[1].Width = 0;
-                btnGuardar.Visible = false;
-            } else
-            {
-                MessageBox.Show("Guarda o Cancela los cambios antes de salir del detalle");
-            }
-        }
-
-        private void btnBorrar_Click(object sender, EventArgs e)
-        {
-            string sql = "DELETE FROM flores WHERE id = @id";
-
-            using (SQLiteConnection connection = new SQLiteConnection(database))
-            {
-                connection.Open();
-
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.Parameters.AddWithValue("@id", btnBorrar.Tag);
-            
-                try
-                {
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
-                    {
-                        obtenerFlores();
-                        panelNombre.Controls.Clear();
-                        panelDescripcion.Controls.Clear();
-                        panelEquivalentes.Controls.Clear();
-                        btnGuardar.Visible = false;
-                        tableLayoutPanel1.ColumnStyles[1].Width = 0;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al eliminar flor: " + ex.Message);
-                }
-                connection.Close();
-            }
-        }
-
-        private void editar(object sender, KeyEventArgs e)
-        {
-            RichTextBox richTextBox = (RichTextBox)sender;
-
-            string id = richTextBox.Tag.ToString();
-
-            string sql = "SELECT * FROM flores WHERE id = @id";
-
-            using (SQLiteConnection connection = new SQLiteConnection(database))
-            {
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.Parameters.AddWithValue("@id", id);
-
-                connection.Open();
-
-                command.CommandType = System.Data.CommandType.Text;
-
-                using (SQLiteDataReader reader = command.ExecuteReader())
-                {
-
-                    while (reader.Read())
-                    {
-                        string nombre = reader["nombre"].ToString();
-                        string descripcion = reader["descripcion"].ToString();
-                        string equivalente = reader["equivalente"].ToString();
-
-                        if (nombre != richTextBoxNombre.Text || descripcion != richTextBoxDescripcion.Text || equivalente != richTextBoxEquivalentes.Text)
-                        {
-                            btnGuardar.Visible = true;
-                            btnCancelar.Visible = true;
-                            opcionesFlor.ColumnStyles[2].Width = 0;
-
-                            btnGuardar.Tag = id;
-                            btnCancelar.Tag = id;
-                        }
-                        else
-                        {
-                            btnGuardar.Visible = false;
-                            btnCancelar.Visible = false;
-                            opcionesFlor.ColumnStyles[2].Width = 130;
-
-                        }
-                    }
-
-                    reader.Close();
-
-                }
-                connection.Close();
-            }
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            string equivalente = richTextBoxEquivalentes.Text;
-            string id = btnGuardar.Tag.ToString();
-
-            if (equivalente == "No tiene flores equivalentes")
-            {
-                equivalente = "";
-            }
-
-            string sql = "UPDATE flores SET nombre = @nombre, descripcion = @descripcion, equivalente = @equivalente WHERE id = @id";
-
-            using (SQLiteConnection connection = new SQLiteConnection(database))
-            {
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.Parameters.AddWithValue("@id", id);
-                command.Parameters.AddWithValue("@nombre", richTextBoxNombre.Text);
-                command.Parameters.AddWithValue("@descripcion", richTextBoxDescripcion.Text);
-                command.Parameters.AddWithValue("@equivalente", equivalente);
-
-                try
-                {
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
-                    {
-                        obtenerFlores();
-                        DetalleFlor(id);
-                        btnGuardar.Visible = false;
-                        btnCancelar.Visible = false;    
-                        opcionesFlor.ColumnStyles[2].Width = 130;
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al guardar: " + ex.Message);
-                }
-
-                connection.Close();
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            string sql = "SELECT * FROM flores WHERE id = @id";
-
-            using (SQLiteConnection connection = new SQLiteConnection(database))
-            {
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.Parameters.AddWithValue("@id", btnCancelar.Tag);
-
-                connection.Open();
-
-                command.CommandType = System.Data.CommandType.Text;
-
-                using (SQLiteDataReader reader = command.ExecuteReader())
-                {
-
-                    while (reader.Read())
-                    {
-                        string nombre = reader["nombre"].ToString();
-                        string descripcion = reader["descripcion"].ToString();
-                        string equivalente = reader["equivalente"].ToString();
-
-                        richTextBoxNombre.Text = nombre;
-                        richTextBoxDescripcion.Text = descripcion;
-                        richTextBoxEquivalentes.Text = equivalente;
-
-                        btnGuardar.Visible = false;
-                        btnCancelar.Visible = false;
-                        opcionesFlor.ColumnStyles[2].Width = 130;
-                    }
-
-                    reader.Close();
-
-                }
-                connection.Close();
-            }
-        }
     }
 }
