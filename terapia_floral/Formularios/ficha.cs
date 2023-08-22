@@ -42,6 +42,8 @@ namespace terapia_floral.Formularios
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     int posicion = 0;
+                    int posicionFicha1 = 40;
+                    int preguntaCounter = 0;
 
                     while (reader.Read())
                     {
@@ -81,12 +83,51 @@ namespace terapia_floral.Formularios
 
                         groupBoxPregunta.Controls.Add(textBoxRespuesta);
 
-                        if(posicionPanel == 1) categoria_1.Controls.Add(groupBoxPregunta);
-                        else if(posicionPanel == 2) categoria_2.Controls.Add(groupBoxPregunta);
-                        else if(posicionPanel == 3) categoria_3.Controls.Add(groupBoxPregunta);
-                        else if(posicionPanel == 4) categoria_4.Controls.Add(groupBoxPregunta);
+                        if (posicionPanel == 1) {
+                            Label labelSeccion = new Label();
+                            labelSeccion.Text = "PRESENTACION Y ENFOQUE / Fase de desarrollo con preguntas disparadoras";
+                            labelSeccion.Location = new Point(0, 0);
+                            labelSeccion.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+                            labelSeccion.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+                            labelSeccion.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+                            groupBoxPregunta.Location = new Point(0, posicionFicha1);
+                            categoria_1.Controls.Add(labelSeccion); 
+                            categoria_1.Controls.Add(groupBoxPregunta); 
+                        }
+                        else if (posicionPanel == 2) categoria_2.Controls.Add(groupBoxPregunta);
+                        else if (posicionPanel == 3) categoria_3.Controls.Add(groupBoxPregunta);
+                        else if (posicionPanel == 4) categoria_4.Controls.Add(groupBoxPregunta);
 
                         posicion += groupBoxPregunta.Height + 10;
+                        posicionFicha1 += groupBoxPregunta.Height + 10;
+
+                        preguntaCounter++;
+
+                        if (preguntaCounter == 3 || preguntaCounter == 6 || preguntaCounter == 9 || preguntaCounter == 16 || preguntaCounter == 26 || preguntaCounter == 30 || preguntaCounter == 39)
+                        {
+
+                            string text = preguntaCounter == 3 ? "PREGUNTAS CLAVES DE CADA ENTREVISTA" :
+                                          preguntaCounter == 6 ? "ACUERDO DE SESIÓN" :
+                                          preguntaCounter == 9 ? "Preguntas por Interpretaciones de sentimientos" :
+                                          preguntaCounter == 16 ? "Definir una meta para que el consultante sea el protagonista." :
+                                          preguntaCounter == 26 ? "DETECCIÓN DE BRECHA. La propuesta es trabajar desde un espacio de RESPONSABILIDAD y MIRADA CONSCIENTE" :
+                                          preguntaCounter == 30 ? "CUANDO EL CONSULTANTE GENERA CONCIENCIA PODEMOS PREGUNTARLE" :
+                                          preguntaCounter == 39 ? "CIERRE" : "";
+
+
+                            Label labelSeccion = new Label();
+                            labelSeccion.Text = text; 
+                            posicionFicha1 += labelSeccion.Height + 20;
+                            labelSeccion.Location = new Point(0, posicionFicha1 - 30);
+                            labelSeccion.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+                            labelSeccion.ForeColor = Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
+                            labelSeccion.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                            // Agregar el label al panel correspondiente
+                            if (posicionPanel == 1) categoria_1.Controls.Add(labelSeccion);
+
+                        }
+
                     }
 
 
@@ -121,6 +162,13 @@ namespace terapia_floral.Formularios
                                 groupBox.Location = new Point(groupBox.Location.X, groupBox.Location.Y + 110);
                             }
                         }
+                        foreach (Label label in panelCategoria.Controls.OfType<Label>())
+                        {
+                            if (label.Location.Y > clickedGroupBox.Location.Y && clickedGroupBox.Tag == panelCategoria.Tag)
+                            {
+                                label.Location = new Point(label.Location.X, label.Location.Y + 110);
+                            }
+                        }
                     }
                 }
                 else
@@ -133,6 +181,13 @@ namespace terapia_floral.Formularios
                             if (groupBox != clickedGroupBox && groupBox.Location.Y > clickedGroupBox.Location.Y && clickedGroupBox.Tag == panelCategoria.Tag)
                             {
                                 groupBox.Location = new Point(groupBox.Location.X, groupBox.Location.Y - 110);
+                            }
+                        }
+                        foreach (Label label in panelCategoria.Controls.OfType<Label>())
+                        {
+                            if (label.Location.Y > clickedGroupBox.Location.Y && clickedGroupBox.Tag == panelCategoria.Tag)
+                            {
+                                label.Location = new Point(label.Location.X, label.Location.Y - 110);
                             }
                         }
                     }

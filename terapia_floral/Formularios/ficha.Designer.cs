@@ -91,7 +91,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -156,7 +156,7 @@
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(88)))));
             this.guna2Button1.Location = new System.Drawing.Point(76, 7);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(139, 33);
             this.guna2Button1.TabIndex = 1;
@@ -179,7 +179,7 @@
             this.btn_finalizar_ficha.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btn_finalizar_ficha.ForeColor = System.Drawing.Color.White;
             this.btn_finalizar_ficha.Location = new System.Drawing.Point(221, 7);
-            this.btn_finalizar_ficha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_finalizar_ficha.Margin = new System.Windows.Forms.Padding(2);
             this.btn_finalizar_ficha.Name = "btn_finalizar_ficha";
             this.btn_finalizar_ficha.Size = new System.Drawing.Size(139, 33);
             this.btn_finalizar_ficha.TabIndex = 0;
@@ -242,7 +242,7 @@
             this.tableLayoutPanel_receta.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel_receta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_receta.Location = new System.Drawing.Point(11, 12);
-            this.tableLayoutPanel_receta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel_receta.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel_receta.Name = "tableLayoutPanel_receta";
             this.tableLayoutPanel_receta.RowCount = 2;
             this.tableLayoutPanel_receta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -318,7 +318,7 @@
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.guna2Panel3.Padding = new System.Windows.Forms.Padding(15);
             this.guna2Panel3.Size = new System.Drawing.Size(1, 456);
             this.guna2Panel3.TabIndex = 1;
             // 
@@ -452,7 +452,7 @@
             this.ClientSize = new System.Drawing.Size(663, 537);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Location = new System.Drawing.Point(0, 1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(678, 573);
             this.Name = "ficha";
             this.Text = "ficha";
