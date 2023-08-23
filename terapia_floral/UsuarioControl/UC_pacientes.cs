@@ -141,7 +141,7 @@ namespace terapia_floral.UsuarioControl
 
                 if (nombreApellido.Length > 20)
                 {
-                    labelNombreApellido.Text = nombreApellido.Substring(0, 20) + "...";
+                    labelNombreApellido.Text = nombreApellido.Substring(0, 17) + "...";
                     ToolTip toolTip = new ToolTip();
                     toolTip.SetToolTip(labelNombreApellido, nombreApellido); // Mostrar el nombre completo en el tooltip
                 }
